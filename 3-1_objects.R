@@ -314,7 +314,7 @@ increm
 
 spp.code <- 1:length(spp)
 
-abund.data <- data.frame(spp.code, spp, t(abund.M), 	increm)
+abund.data <- data.frame(spp.code, spp, t(abund.M), increm)
 abund.data
 
 class(abund.data)

@@ -18,7 +18,7 @@ getwd()
 
 # Para cambiar el directorio de trabajo:
 # setwd(dir="dirección a una carpeta en tu computadora"), por ejemplo:
-setwd(dir="~/Dropbox/Teaching/R_Basics_Workshop/")
+setwd(dir="~/Google\ Drive/bioinfotmatics_INMEGEN/R_Basics_workshop")
 
 getwd() # Confirma el cambio del directorio de trabajo
 
@@ -31,7 +31,7 @@ getwd() # Confirma el cambio del directorio de trabajo
 
 # Lista los archivos y carpetas en el directorio de trabajo:
 list.files()
-
+dir()
 
 
 ### B. PRINCIPALES FUNCIONES PARA ABRIR Y GUARDAR ARCHIVOS #####################
@@ -60,7 +60,7 @@ help(read.table)
 
 # Esto crea un objeto con nombre *path.to.files* que tiene un caracter con la 
 # dirección a una carpeta que tiene los archivos de datos para el taller.
-path.to.files <- "~/Dropbox/Teaching/R_Basics_Workshop/4_Datasets/"
+path.to.files <- "~/Google\ Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/"
 
 list.files(path.to.files)
 
