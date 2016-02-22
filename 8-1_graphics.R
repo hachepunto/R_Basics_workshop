@@ -375,9 +375,17 @@ plot(iris$Petal.Length ~ iris$Petal.Width, cex=3, pch=21, col="black", bg="grey"
 
 dev.off() 
 
+# PDF
 
+pdf("SepalLenght_vs_SepalWidth.pdf") 
 
+# Paso 2. Crear la figura en el archivo
+plot(iris$Petal.Length ~ iris$Petal.Width, cex=3, pch=21, col="black", bg="grey",
+    main="Plot of Petal Length vs. Petals Width", xlab="Petal Width", 
+    ylab="Petal Length", cex.lab=1.5, cex.axis=1.5, bty="l", las=1)
 
+# Paso 3. Cerrar el archivo
+dev.off() 
 
 
 

@@ -82,16 +82,13 @@ wood.density[-c(2,5,7)] # Esto extrae todo, excepto los elementos  2, 5 y 7
 # Esto extrae los elementos que corresponden a TRUE.
 
 wood.density
-wood.density < 15 # Esto genera un vector lógico donde TRUE son valores de 
-                  # *wood.density* < 15
+wood.density < 15 # Esto genera un vector lógico donde TRUE son valores de *wood.density* < 15
 
-wood.density[wood.density<15] # Esto extrae los elementos de *wood.density* que 
-                              # son menores que 15
+wood.density[wood.density<15] # Esto extrae los elementos de *wood.density* que son menores que 15
 
-spp[wood.density<15] # Esto extrae los valores de *spp* que corresponden a 
-                     # valores de *wood.density* menores que 15!
+spp[wood.density<15] # Esto extrae los valores de *spp* que corresponden a valores de *wood.density* menores que 15!
 
-spp=="sp_b"            
+spp=="sp_b"
 wood.density[spp=="sp_b"] 
 
 
@@ -99,7 +96,7 @@ wood.density[spp=="sp_b"]
 wood.density[spp=="sp_b" | spp=="sp_c"] 
 
 wood.density[spp=="sp_b" & spp=="sp_c"] 
-                  
+
 wood.density[wood.density<15 & wood.density>25]
 
 wood.density[wood.density>15 & wood.density<25]
@@ -112,12 +109,10 @@ wood.density[wood.density<15 | wood.density>25]
 # Esta función da la posicion de los elementos que cumplen una cierta condición
 
 # En que elementos de *wood.density* el valor es mayor que 15?
-which(wood.density>15) # IMPORTANTE: Estos no son los elementos de wood.density 
-                       # pero sus posiciones!
+which(wood.density>15) # IMPORTANTE: Estos no son los elementos de wood.density pero ¡sí sus posiciones!
 
-# Que elementos de *wood.density* son mayores que 15?
-wood.density[which(wood.density>15)] # Esto, en cambio, extrae los valores de 
-                                     # *wood.density*
+# ¿Qué elementos de *wood.density* son mayores que 15?
+wood.density[which(wood.density>15)] # Esto, en cambio, extrae los valores de *wood.density*
 
 spp[which(wood.density>15)]
 
@@ -141,8 +136,7 @@ spp
 
 wood.density["3"] # Extrae el valor en *wood.density* que tiene el nombre "3"
 
-wood.density[spp=="sp_c"] # Esto, en cambio, extrae el valor en *wood.density* 
-                          # que corresponde a "spp_c" en *spp*
+wood.density[spp=="sp_c"] # Esto, en cambio, extrae el valor en *wood.density* que corresponde a "spp_c" en *spp*
        
 spp["15"] 
 spp[15] 
@@ -221,9 +215,8 @@ CO2[, -100]
 # columnas
 
 CO2[2010, ] # Esto genera un error porque no hay 2010 filas
-CO2["2010", ] # Esto NO genera un error porque estamos haciendo una 
-              # indexación de la fila llamada "2010" 
-                 
+CO2["2010", ] # Esto NO genera un error porque estamos haciendo una indexación de la fila llamada "2010" 
+
 CO2["2010", "Mexico"] 
                       
 
@@ -234,8 +227,7 @@ plot(CO2[, "Mexico"] ~ years, col="forestgreen", type="b")
 
 
 # Como cambiaron las emisiones de CO2 en México en el siglo 21?
-plot(CO2[years>2000, "Mexico"] ~ years[years>2000], 
-  col="forestgreen", type="b")
+plot(CO2[years>2000, "Mexico"] ~ years[years>2000], col="forestgreen", type="b")
 
   
 # Como se comparan las emisiones en México con las de EEUU y Ecuador
