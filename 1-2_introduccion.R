@@ -30,10 +30,9 @@ x <- 50
 # en un objeto solo es necesario escribir su nombre:
 x
 
-# Como ya habrás notado, R no corre lineas que comiencen con '#'.
-# Esto se usa para crear comentarios. 
+# R no corre lineas que comiencen con '#'. Esto se usa para crear comentarios. 
 
-# R ya tiene integrados algunos calores de algunas constantes fundamentales.
+# R ya tiene integrados algunos valores de algunas constantes fundamentales.
 # Por ejemplo para encontrar el valor de Pi, solo escribe: 
 pi
 
@@ -47,7 +46,7 @@ pi
 # Por ejemplo, la función 'rnorm' genera valores a azar con distribución normal:
 rnorm(50)
 
-# Las funciones actúa en o son modificadas por argumentos. Los argumentos definen como
+# Las funciones actúan en o son modificadas por argumentos. Los argumentos definen como
 # trabajará una función. En este ejemplo, la función 'rnorm' es modificada por un 
 # argumento que tiene el valor de 50. Como resultado, obtienes 50 valores al azar de una
 # distribución normal. Puedes pedir el número de valores que quieras:
@@ -181,8 +180,8 @@ abline(regress.rn, col="red")
 
 
 # Grafica los residuos y ponle leyendas a los ejes:
-plot(fitted(regress.rn), resid(regress.rn), xlab="ValoresAjustados",
-  ylab="Residuos", main="Residuos vs Ajustados")
+plot(fitted(regress.rn), resid(regress.rn), xlab="ValoresAjustados",  
+	ylab="Residuos", main="Residuos vs Ajustados")
 
 
 # Simula 100 lanzamientos de una moneda y ve los resultados:
