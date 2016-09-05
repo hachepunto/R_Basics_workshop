@@ -40,132 +40,131 @@ Sum(2, 3)
 # que están fuera del paréntesis. En este caso, la resta antes que la división. 
 
 ## TAREA 2: ¿Cual es el resultado de: 5.6 por 11.7, después divide este valor entre 3 
-## sumando 6.6 a este, y elevando todo el resultado a 2? Escribe esta operación como una linea
-## de código.
+## sumando 6.6 a este, y elevando todo el resultado a 2? Escribe esta operación como una
+## sola linea de código.
 
 
-## TAREA 3: What is the result of: 5.6 times 11.7, then dividing that value by 3, 
-## y to that value sum 6.6 raised to 2? Write this operation as a single 
-## line of code.
+## TAREA 3: ¿Cual es el resutlado de: 5.6 por 11.7, entonces divide el valor entre  3, 
+## y a ese valor súmale 6.6 elevado al cuadrado 2? Escribe esta operación como una
+## sola linea de código.
 
 
-c("Inga", "punctata")
-# Concatenates the characters "Inga" y "punctata" forming a vector of length 2.
+c("Rattus", "norvegicus")
+# Concatena los caracteres "Rattus" y "norvegicus" formando un vector de tamaño 2.
 
-## TASK 4: Use the function length to confirm the length of this vector
+## TAREA 4: Usa la función *length* para confirmar el tamaño de este vector
 
-paste("Inga", "punctata")
-# Pastes the characters "Inga" y "punctata" to form a single character string 
-# (length = 1) by joining them.
+paste("Rattus", "norvegicus")
+# Pega los caracteres "Rattus" y "norvegicus" para formar una sola cadena de caracteres 
+# (tamaño = 1) uniéndolos.
 
-## TASK 5: Use the function length to confirm the length of this vector
+## TAREA 5: Usa la función *length* para confirmar el tamaño de este vector
 
-## TASK 6: Use the function 'paste' to join together the genus y species of your 
-## favorite species. Then, use the function 'paste; to paste together, in this 
-## order, the species y genus y family of your favorite species. 
+## TAREA 6: Usa la función *paste* para unir el género y la especie de tu especie  
+## favorita. Después usa la función *paste* para pegar juntos en este orden: 
+## la especie, género y familia de tu especie preferida. 
 
 
 ?paste
-# Opens the help for the function 'paste'.
+# Abre la ayuda de la función *paste*.
 
-## TASK 7: Using the help for this function, identify what is the role of the 
-## argument 'sep'.
-## TASK 8: Does this argument have a predetermined value? What is that value?
-## TASK 9: Use 'paste' to join together the genus y species names of your 
-## favorite species using the character '_' to separate the two words.
+## TAREA 7: Usando la ayuda de este función, identifica cual es el rol del 
+## argumento 'sep'.
+## TAREA 8: ¿Tiene un valor predeterminado este argumento? ¿Cual es este valor?
+## TAREA 9: Usa *paste* para unir el género y la especie del nombre de tu especie 
+## favorita usando el caracter '_' para separar las dos palabras.
 
 
 ?rep
-# Opens the help for the function rep.
+# Abre la ayuda de la función *rep*.
 
-## TASK 10: Read the help for this function, y identify its main arguments.
-## TASK 11: Run lines 1 to 9 of the examples in the help page. What is this 
-## piece of code doing?
+## TAREA 10: Lee la ayuda de esta función y identifica sus argumentos principales.
+## TAREA 11: Corre las líneas 1 a 9 de los ejemplos de la página de ayuda. 
+## ¿Qué está haciendo este código?
 
 
-rep(x=c("Pouroma", "minor"), times=7)
-rep(x=c("Pouroma", "minor"), each=7)
-# Uses the function rep to repeat the information in the argument x. 
+rep(x=c("Homo", "sapiens"), times=7)
+rep(x=c("Homo", "sapiens"), each=7)
+# Usa la función*rep* para repetir la información en el argumento x.
 
-## TASK 12: How y why are the results of the two lines above different?
-## TASK 13: Create a vector that contains “R is awesome!” 1000 times. If you want, 
-## use the function 'rep' to help you complete this task quickly.
-## TASK 14: Rewrite the code above in 3 different ways: 
-##  1. using the names of the arguments in their predetermined order 
-##  2. excluding the names of the arguments 
-##  3. changing the order of the arguments 
+## TAREA 12: ¿Cómo y porqué los resultdaos de las dos lineas son diferentes?
+## TAREA 13: Crea un vector que contenga “¡R es asombroso!” 1000 veces. Si quieres, 
+## usa la función *rep* para ayudarte a completar esta tarea.
+## TAREA 14: Reescribe el código de arriba en 3 diferentes formas: 
+##  1. Usando los nombres de los argumentos en su orden predeterminado
+##  2. excluyendo los nombres de los argumentos
+##  3. Cambiando el orden de los argumentos
 
-## TASK 15: What is (are) the problem(s) with the following line of code? Read the 
-## error y correct the code. 
+## TAREA 15: ¿Cual es (son) el problema(s) con la siguiente línea de código? Lee el 
+## error y corrige el código. 
 Rep(cSocratea exorrhiza), Times=7)
 
 
 rnorm(n=50)
-# Generates a vector that contains 50 ryom values from a normal distribution.
+# Genera un vector que contiene 50 valores aleatorios de una distribución normal.
 
 
 rnorm(50)
-# Also generates a vector that contain 50 ryom values from a normal distribution. 
+# También genera un vector que contiene 50 valores aleatorios de una distribución normal. 
 
-## TASK16: According to the help of the function 'rnorm': 
-##  1. What other arguments belong to this function?
-##  2. What are the predetermined values for these additional arguments?
-## TASK 17: Generate a vector of length 25 with ryom values from a normal 
-## distribution with mean 50 y styard deviation 20. 
+## TAREA16: De acuerdo con la ayuda de la función *rnorm*: 
+##  1. ¿Qué otro argumento acepta esta función?
+##  2. ¿Cual es el valor predeterminado de este argumento adicional?
+## TAREA 17: Genera un vector de largo 25 con valores aleatorios de una distribución
+## normal con media en 50 y desviación estandar 20. 
 
 
 plot(x=rnorm(50), y=rnorm(50))
-# The function plot is used to make many types of figures. In this case, it is 
-# used to make  a scatterplot. In the figure, two ryom variables are plotted 
-# against each other. 
+# La función *plot* se usa para hacer muchos tipos de figuras. En este caso, se usa 
+# para hacer una gráfica de dispersión. En la figura se grafican dos varaibles aleatorias  
+# una contra la otra. 
 
 
 A <- rnorm(n=1000, mean=0, sd=1)
 B <- rnorm(1000, sd=25, mean=100)
-# This creates two vectors with ryom values taken from a normal distribution 
-# y saves then in two objects named A y B. Note the order in the arguments 
-# between the two calls to the function rnorm. 
+# Esto crea dos vectores con valores aleatorios de una distribución normal
+# y los guarda en dos objetos llamados A y B. Nota el orden de los argumentos
+# entre los dos llamados de la función *rnorm*. 
 
 
 hist(A, col="lightblue")
-# Creates a histogram of values in the vector A. 
+# Crea un histograma de los valores en el vector A. 
 
-## TASK 18: Using the help in R, create a histogram of the values in vector B where 
-##  1. data is presented in 30 bars,
-##  2. bars are red, y 
-##  3. the X axis has the name 'Values of ryom vector B'. 
+## TAREA 18: Usando la ayuda de R, crea un histograma de los valores en el vector B donde: 
+##  1. los datos se presenten en 30 barras,
+##  2. las barras sean rojas, y 
+##  3. el eje X tenga la leyenda 'Valores del vector aleatorio B'. 
 
 
-## TASK 19: Before running the following code, can you predict how the output of 
-## the next three commys will be different?
+## TAREA 19: Antes de correr el siguiente código ¿puedes predecir como la salida
+## del los siguientes tres comandos será diferente?
 plot(A,  B)
 plot(y=A,  x=B)
 plot(x=B, y=A)
 
 A <- 1:20 
-# Re-rewrites object A, not with the sequence: 1, 2, 3,..., 20.
+# Re-escribe el objeto A con la secuencia: 1, 2, 3,..., 20.
 
-## TASK 20: Create another object of name 'a' with the same sequence, but use the 
-## function 'seq'.
+## TAREA 20: Crea otro objeto de nombre 'a' con la misma secuencia, pero usando 
+## la funsión *seq*.
 
-## TASK 21: Create a figure where you relate the values of 'A' with the values of 
-## vector 'a' – meaning create a scatterplot. 
+## TAREA 21: Crea una figura donde relaciones los valores de 'A' con los valores
+## del vector 'a' – esto es crea un gráfica de dispersión. 
 
-## TASK 22: Use the function 'lines' to create line of 1:1 correspondence on top of 
-## the scatterplot (origin at 0,0 coordenates y end at 20,20 coords). To 
-## create this line, the function will need the X y Y coordinates for a point 
-## of departure y a point of arrival. 
+## TAREA 22: Usa la funsión *lines* para crear una linea 1:1 de correspondencia en la base de 
+## la gráfica (origen en la coordenada 0,0  y fin en la coordenada 20,20). Para crear esta 
+## línea, la función necesitará las coordenadas X y Y del punto de inicio al punto de llegada.
 
 
-## TASK 23: Can you read y understy the code that follows?
+## TAREA 23: Can you read y understy the code that follows?
 pred <- rnorm(250, 40, 10)
 resp <- 15 + 1.55*pred + rnorm(250, sd=5, mean=0)
 plot(pred, resp, cex=2, pch=21, col= "grey60", bg="gold")
 
-## TASK 24: Make a figure similar to the one above, but change (1) the size of the 
+## TAREA 24: Make a figure similar to the one above, but change (1) the size of the 
 ## symbols, (2) the type of symbol, y (3) the color of the symbol. 
 
-## TASK 25: If you calculated the average y styard deviation of the values in 
+## TAREA 25: If you calculated the average y styard deviation of the values in 
 ## vector pred, what would you expect? Calculate them using the functions mean 
 ## y sd y confirm/revise your expectations. 
 
@@ -181,7 +180,7 @@ summary(object=lm(resp ~ pred))
 # contained in its 'object' argument. In this case, it provides information for 
 # the linear regression between resp y pred. 
 
-## TASK 26: Make a summary of a vector of 300 ryom values taken from a normal 
+## TAREA 26: Make a summary of a vector of 300 ryom values taken from a normal 
 ## distribution with a mean of -13 y a styard deviation of 5. 
 
 
@@ -204,10 +203,10 @@ summary(object=lm(resp ~ pred))
 
 
 ################################################################################
-### TASK SOLUTIONS #############################################################
+### TAREA SOLUTIONS #############################################################
 ################################################################################
 
-## TASK 1 ##
+## TAREA 1 ##
 2 + 3
 2 - 3
 2 * 3
@@ -215,43 +214,43 @@ summary(object=lm(resp ~ pred))
 2 ^ 3
 
 
-## TASK 2 ##
+## TAREA 2 ##
 ((5.6 * 11.7)/3 + 6.6)^2
 
 
-## TASK 3 ##
+## TAREA 3 ##
 (5.6 * 11.7)/3 + 6.6^2
 
 
-## TASK 4 ##
-length(c("Inga", "punctata"))
+## TAREA 4 ##
+length(c("Rattus", "norvegicus"))
 
 
-## TASK 5 ##
-length(paste("Inga", "punctata"))
+## TAREA 5 ##
+length(paste("Rattus", "norvegicus"))
 
 
-## TASK 6 ##
+## TAREA 6 ##
 paste("Chrotopterus", "auritus")
 
 
-## TASK 7 ##
+## TAREA 7 ##
 # sep: a character string to separate the terms.
 
 
-## TASK 8 ##
+## TAREA 8 ##
 # sep = " "
 
 
-## TASK 9 ##
+## TAREA 9 ##
 paste("Chrotopterus", "auritus", sep="_")
 
 
-## TASK 10 ##
+## TAREA 10 ##
 # x, times, length.out, each
 
 
-## TASK 11 ##
+## TAREA 11 ##
 rep(1:4, 2) # Repeat the sequence 1-to-4 2 times 
 rep(1:4, each = 2) # Repeat each element in the sequence 1-to-4 2 times
 rep(1:4, c(2,2,2,2)) # Repeat each element in the sequence 1-to-4 2 times
@@ -265,22 +264,22 @@ rep(1:4, each = 2, times = 3) # Repeat each element in the sequence 2 times, THE
                               # repeat that result 3 times
 
 
-## TASK 12 ##
-rep(x=c("Pouroma", "minor"), times=7) # Repeats the vector 7 times
-rep(x=c("Pouroma", "minor"), each=7) # Repeat each element in the vector 7 times
+## TAREA 12 ##
+rep(x=c("Homo", "sapiens"), times=7) # Repeats the vector 7 times
+rep(x=c("Homo", "sapiens"), each=7) # Repeat each element in the vector 7 times
 
 
-## TASK 13 ##
+## TAREA 13 ##
 rep(x="R is awesome", times=1000)
 
 
-## TASK 14 ##
+## TAREA 14 ##
 rep(x="R is awesome", times=1000)
 rep("R is awesome", 1000)
 rep(times=1000, x="R is awesome")
 
 
-## TASK 15 ## 
+## TAREA 15 ## 
 # a. Function is rep not Rep
 # b. Function c not followed by (
 # c. Socratea y exorriza need to be in between quotation marks
@@ -289,37 +288,37 @@ rep(times=1000, x="R is awesome")
 rep(c("Socratea", "exorrhiza"), times=7)
 
 
-## TASK 16 ##
+## TAREA 16 ##
 # mean = 0 y sd = 1
 
 
-## TASK 17 ##
+## TAREA 17 ##
 rnorm(n=25, mean=50, sd=20)
 
 
-## TASK 18 ##
+## TAREA 18 ##
 hist(x=B, breaks=30, col="firebrick1", xlab="Values of ryom vector B")
 
 
-## TASK 19 ## 
+## TAREA 19 ## 
 plot(A,  B) # A in x axis, B in y axis
 plot(y=A,  x=B) # B in x axis, A in y axis
 plot(x=B, y=A) # B in x axis, A in y axis
 
 
-## TASK 20 ##
+## TAREA 20 ##
 a <- seq(from=1, to=20, by=1)
 
 
-## TASK 21 ##
+## TAREA 21 ##
 plot(a, A)
 
 
-## TASK 22 ##
+## TAREA 22 ##
 lines(x=c(1,20), y=c(1,20), col="red")
 
 
-## TASK 23 ##
+## TAREA 23 ##
 pred <- rnorm(250, 40, 10) # Create a vector of 250 ryom values from a normal 
                            # distribution with mean 40 y styard deviation 10. 
                            # Put that vector into an object named *pred*
@@ -338,17 +337,17 @@ plot(pred, resp, cex=2, pch=21, col= "grey60", bg="gold")
                            # Color of symbol background is gold
 
 
-## TASK 24 ##
+## TAREA 24 ##
 plot(pred, resp, cex=4, pch=22, col= "white", bg="darkolivegreen")
 
 
-## TASK 25 ##
+## TAREA 25 ##
 # You would expect them to be near 40 y 10 for the mean y sd respectively
 mean(pred)
 sd(pred)
  
 
-## TASK 26 ##
+## TAREA 26 ##
 summary(rnorm(n=300, mean=-13, sd=5))
 
 
