@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                                        ###
-### EJERCISIO 1.1: Una muestra de una sesión de R                            ###
-###                                                                          ###
-### Center for Conservation and Sustainable Development                      ###
-### Missouri Botanical Garden                                                ###
-### Website: rbasicsworkshop.weebly.com                                      ### 
+### R BASICS WORKSHOP                                                					          ###
+### EJERCISIO 1.1: Una muestra de una sesión de R                           			         ###
+###                                                               						                      ###
+### Unida de Servicios Bioinformáticos    						                      ###
+### Instituto Nacional de Medicina Genómica                                               			          ###
+### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
 ################################################################################
 
 ## OBJECTIVE:
