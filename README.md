@@ -27,3 +27,19 @@ Basado en el [curso](http://rbasicsworkshop.weebly.com/) de [J. Sebastián Tello
 
 <http://swirlstats.com> (aprende R en R)
 
+### Editores de texto y entornos de desarrollo integrado (integrated development environment, IDE)
+
+#### Multiplataforma:
+[RStudio](https://www.rstudio.com/) (IDE)
+
+[Atom](https://atom.io/)
+
+[Gedit](https://wiki.gnome.org/Apps/Gedit)
+
+[SublimeText](https://www.sublimetext.com/) ($70 USD)
+
+#### Mac
+[TextWrangler](http://www.barebones.com/products/textwrangler/)
+
+#### Windows
+[Notepad++](https://notepad-plus-plus.org/)
