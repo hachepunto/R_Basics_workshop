@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                                                            ###
-### PRESENTATION 8-1: GRÁFICOS                                                 ### 
-###                                                                                                           ###
-### Unida de Servicios Bioinformáticos                                                ###
-### Instituto Nacional de Medicina Genómica                                                                   ###
-### Website: github.com/hachepunto/R_Basics_workshop                                               ### 
+### R BASICS WORKSHOP                                                                                                            ###
+### PRESENTATION 8-1: GRÁFICOS                                                                                              ### 
+###                                                                                                                                                     ###
+### Unida de Servicios Bioinformáticos                                                                                             ###
+### Instituto Nacional de Medicina Genómica                                                                                   ###
+### Website: github.com/hachepunto/R_Basics_workshop                                                                ### 
 ################################################################################
 
 
@@ -340,8 +340,8 @@ plot(iris$Sepal.Length, iris$Petal.Length)
 # archivos: *jpeg*, *png*, *tiff*, *bmp*, *pdf*, *postcript*.
 
 
-# Ejemplo utilizando *png*
-help(png)
+# Ejemplo utilizando *pdf*
+help(pdf)
 
 
 getwd() # ver cual es el directorio de trabajo
@@ -352,7 +352,7 @@ getwd() # ver cual es el directorio de trabajo
 
 ## Primera versión ##
 # Paso 1. Abrir el archivo:
-png(filename="SepalLenght_vs_SepalWidth.png") 
+pdf(file="SepalLenght_vs_SepalWidth.pdf", width = 9, height = 7) 
 
 # Paso 2. Crear la figura en el archivo
 plot(iris$Petal.Length ~ iris$Petal.Width, cex=3, pch=21, col="black", bg="grey",
@@ -365,8 +365,8 @@ dev.off()
 
 
 ## Segunda versión ##
-# En esta versión hemos hecho la figura mucho más grande y de mejor calidad
-png(filename="SepalLenght_vs_SepalWidth_2.png", width=480*13, height=480*10, 
+# En esta versión hemos hecho la figura en formato png de tamaño grande y de buena calidad
+png(filename="SepalLenght_vs_SepalWidth.png", width=480*13, height=480*10, 
     pointsize=12*1.5, res=600) 
 
 plot(iris$Petal.Length ~ iris$Petal.Width, cex=3, pch=21, col="black", bg="grey",

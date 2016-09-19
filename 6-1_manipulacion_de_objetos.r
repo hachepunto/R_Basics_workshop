@@ -1,207 +1,205 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                                                                            ###
-### PRESENTATION 7-1: MANIPULACIÓN DE OBJETOS - INDEXACIÓN                                   ### 
+### PRESENTATION 7-1: MANIPULACIÃ“N DE OBJETOS - INDEXACIÃ“N                                   ### 
 ###                                                                                                                                                     ###
-### Unida de Servicios Bioinformáticos                                                                                            ###
-### Instituto Nacional de Medicina Genómica                                                                                  ###
+### Unida de Servicios BioinformÃ¡ticos                                                                                            ###
+### Instituto Nacional de Medicina GenÃ³mica                                                                                  ###
 ### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
 ################################################################################
 
 
-## INTRODUCCIÓN ################################################################
-# El sistema de indexación es una manera eficiente y flexible de acceder 
-# selectivamente a elementos de un objeto. La indexación puede ser numérica, 
-# lógica o por nombres. Para indexar se utilizan los corchetes o paréntesis 
-# cuadrados *[ ]* y el símbolo *$*. Además, en esta sección aprenderemos el uso 
-# de algunas otras funciones útiles como *which*, *unique*, y *str*. 
+## INTRODUCCIÃ“N ################################################################
+# El sistema de indexaciÃ³n es una manera eficiente y flexible de acceder 
+# selectivamente a elementos de un objeto. La indexaciÃ³n puede ser numÃ©rica, 
+# lÃ³gica o por nombres. Para indexar se utilizan los corchetes o parÃ©ntesis 
+# cuadrados *[ ]* y el sÃ­mbolo de pesos (*$*). AdemÃ¡s, en esta secciÃ³n aprenderemos el uso 
+# de algunas otras funciones Ãºtiles como *which*, *unique*, y *str*. 
 
 # Esta parte del taller esta dividida en las siguientes secciones:
 
-## Tipos de indexación ##
-# A. Indexación numérica
-# B. Indexación lógica
-# C. Indexación utilizando *which*
-# D. Indexación por nombres
+## Tipos de indexaciÃ³n ##
+# A. IndexaciÃ³n numÃ©rica
+# B. IndexaciÃ³n lÃ³gica
+# C. IndexaciÃ³n utilizando *which*
+# D. IndexaciÃ³n por nombres
 
 # E. Reemplazar elementos de un objeto
 
-## Indexación por clases de objetos ##
-# F. Indexación de vectores
-# G. Indexación de matrices
-# H. Indexación de marcos de datos
-# I. Indexación de listas
-# J. Indexación de otros objetos - ejemplo con objeto "lm"
+## IndexaciÃ³n por clases de objetos ##
+# F. IndexaciÃ³n de vectores
+# G. IndexaciÃ³n de matrices
+# H. IndexaciÃ³n de marcos de datos
+# I. IndexaciÃ³n de listas
+# J. IndexaciÃ³n de otros objetos - ejemplo con objeto "lm"
 
 
 
-### A. INDEXACIÓN NUMÉRICA #####################################################
+### A. INDEXACIÃ“N NUMÃ‰RICA #####################################################
 
-# Supongamos que tenemos un vector con 20 individuos de arboles de 4 especies
-spp <- rep(paste("sp", c("a", "b", "c", "d"), sep="_"), each=5)
-spp
+# Supongamos que tenemos un vector con 20 muestras de 4 genes
+genes <- rep(paste("gen", c("a", "b", "c", "d"), sep="_"), each=5)
+genes
 
-class(spp)
-length(spp)
+class(genes)
+length(genes)
 
-# Supongamos ahora que tenemos un vector con medidas de densidad de madera para
-# cada individuo
-wood.density <- c(8.0766242,  9.8493313,  2.9028278, 10.0433943,  0.1470901, 
+# Supongamos ahora que tenemos un vector con los niveles de expresiÃ³n para
+# cada muestra
+expression <- c(8.0766242,  9.8493313,  2.9028278, 10.0433943,  0.1470901, 
   12.5288041, 10.6120501, 14.6478501,  8.2003356, 17.9935623, 12.4214381, 
   18.3749778, 24.0950527, 19.3236943, 15.5498672, 22.0520207, 28.9908186, 
   17.5659344, 26.0387389, 14.1152262)
-wood.density
-class(wood.density)
-length(wood.density)
+expression
+class(expression)
+length(expression)
 
 
 
 # Se utiliza el numero del elemento que se quiere extraer entre corchetes *[ ]*. 
-spp[2]
-spp[10]
+genes[2]
+genes[10]
 
-wood.density[2]
-wood.density[10]
+expression[2]
+expression[10]
 
-# También se puede extraer más que un solo numero
-spp[c(7,7,7)]
-wood.density[c(2,5,7)]
+# TambiÃ©n se puede extraer mÃ¡s que un solo numero
+genes[c(7,7,7)]
+expression[c(2,5,7)]
 
 
-## IMPORTANTE: en la indexación numérica se puede utilizar el signo de resta *-*
+## IMPORTANTE: en la indexaciÃ³n numÃ©rica se puede utilizar el signo de resta *-*
 ## para extraer todos los elementos excepto aquellos que se indican entre corchetes
 
-spp[2] # Esto extrae el segundo elemento
-spp[-2] # Esto extrae todos los elementos excepto el segundo!
+genes[2] # Esto extrae el segundo elemento
+genes[-2] # Esto extrae todos los elementos excepto el segundo!
 
-wood.density[c(2,5,7)] # Esto extrae los elementos 2, 5 y 7
-wood.density[-c(2,5,7)] # Esto extrae todo, excepto los elementos  2, 5 y 7
+expression[c(2,5,7)] # Esto extrae los elementos 2, 5 y 7
+expression[-c(2,5,7)] # Esto extrae todo, excepto los elementos  2, 5 y 7
 
 
 
-### B. INDEXACIÓN LÓGICA #######################################################
+### B. INDEXACIÃ“N LÃ“GICA #######################################################
 # Se utiliza valores TRUE y FALSE entre corchetes *[]* para extraer elementos. 
 # Esto extrae los elementos que corresponden a TRUE.
 
-wood.density
-wood.density < 15 # Esto genera un vector lógico donde TRUE son valores de 
-                  # *wood.density* < 15
+expression
+expression < 15 # Esto genera un vector lÃ³gico donde TRUE son valores de 
+                  # *expression* < 15
 
-wood.density[wood.density<15] # Esto extrae los elementos de *wood.density* que 
+expression[expression<15] # Esto extrae los elementos de *expression* que 
                               # son menores que 15
 
-spp[wood.density<15] 
+genes[expression<15] 
 
-spp=="sp_b"            
-wood.density[spp=="sp_b"] 
-
-
-# También se pueden utilizar condiciones más complejas
-wood.density[spp=="sp_b" | spp=="sp_c"] 
-
-wood.density[spp=="sp_b" & spp=="sp_c"] 
-
-wood.density[spp=="sp_b" & wood.density>15] 
+genes=="gen_b"            
+expression[genes=="gen_b"] 
 
 
-                  
-wood.density[wood.density<15 & wood.density>25]
+# TambiÃ©n se pueden utilizar condiciones mÃ¡s complejas
+expression[genes=="gen_b" | genes=="gen_c"] 
 
-wood.density[wood.density>15 & wood.density<25]
+expression[genes=="gen_b" & genes=="gen_c"] 
 
-wood.density[wood.density<15 | wood.density>25]
-
-
-
-### C. INDEXACIÓN UTILIZANDO *which* ###########################################
-# Esta función da la posicion de los elementos que cumplen una cierta condición
-
-# En que elementos de *wood.density* el valor es mayor que 15?
-which(wood.density>15) # IMPORTANTE: Estos no son los elementos de wood.density 
-                       # pero sus posiciones!
-
-# Que elementos de *wood.density* son mayores que 15?
-wood.density[which(wood.density>15)] # Esto, en cambio, extrae los valores de 
-                                     # *wood.density*
-
-spp[which(wood.density>15)] 
-
-which(spp=="sp_b") 
-wood.density[which(spp=="sp_b")]
+expression[genes=="gen_b" & expression>15] 
 
 
                   
-### D. INDEXACIÓN POR NOMBRES ##################################################
+expression[expression<15 & expression>25]
+
+expression[expression>15 & expression<25]
+
+expression[expression<15 | expression>25]
+
+
+
+### C. INDEXACIÃ“N UTILIZANDO *which* ###########################################
+# Esta funciÃ³n da la posicion de los elementos que cumplen una cierta condiciÃ³n
+
+# En que elementos de *expression* el valor es mayor que 15?
+which(expression>15) # IMPORTANTE: Estos no son los elementos de expression sino sus posiciones!
+
+# Que elementos de *expression* son mayores que 15?
+expression[which(expression>15)] # Esto, en cambio, extrae los valores de *expression*
+
+genes[which(expression>15)] 
+
+which(genes=="gen_b") 
+expression[which(genes=="gen_b")]
+
+
+                  
+### D. INDEXACIÃ“N POR NOMBRES ##################################################
 # Se utiliza nombres de elementos entre corchetes *[]* para extraerlos                  
 
-# Para este tipo de indexación, los elementos deben tener nombres:     
-wood.density
-names(wood.density) <- length(wood.density):1
-wood.density
+# Para este tipo de indexaciÃ³n, los elementos deben tener nombres:     
+expression
+names(expression) <- length(expression):1
+expression
 
-spp
-names(spp) <- length(spp):1 # Aquí es mejor no utilizar nombres repetidos
-spp
+genes
+names(genes) <- length(genes):1 # AquÃ­ es mejor no utilizar nombres repetidos
+genes
 
 
-wood.density["3"] # Extrae el valor en *wood.density* que tiene el nombre "3"
+expression["3"] # Extrae el valor en *expression* que tiene el nombre "3"
 
-wood.density[spp=="sp_c"] # Esto, en cambio, extrae el valor en *wood.density* 
-                          # que corresponde a "spp_c" en *spp*
+expression[genes=="gen_c"] # Esto, en cambio, extrae el valor en *expression* que corresponde a
+                                              # "gen_c" en *genes*
        
-spp["15"] 
-spp[15] 
+genes["15"] 
+genes[15] 
 
 
-# También se pueden extraer varios elementos por nombre
-wood.density[c("4", "8", "20")]
-wood.density[c(4, 8, 20)] # Estas dos líneas NO son equivalentes
+# TambiÃ©n se pueden extraer varios elementos por nombre
+expression[c("4", "8", "20")]
+expression[c(4, 8, 20)] # Estas dos lÃ­neas NO son equivalentes
 
-spp[c("4", "8", "20")]
-spp[c(4, 8, 20)] # Estas dos líneas NO son equivalentes
+genes[c("4", "8", "20")]
+genes[c(4, 8, 20)] # Estas dos lÃ­neas NO son equivalentes
 
 
 
 
 ### E. REEMPLAZAR VALORES EN UN OBJETO #########################################
-# El sistema de indexación nos permite reemplazar o re-escribir los valores de
+# El sistema de indexaciÃ³n nos permite reemplazar o re-escribir los valores de
 # elementos particulares dentro de un objeto
 
-spp
-spp[c(1,4,18)]
+genes
+genes[c(1,4,18)]
 
 
-spp[c(1,4,18)] <- "spp_x"
+genes[c(1,4,18)] <- "gen_x"
 
-spp <- c(spp, "sp_aslj")
+genes <- c(genes, "gen_aslj")
 
-spp
-
-
+genes
 
 
-### F. INDEXACIÓN DE VECTORES ##################################################
-# La indexación de vectores la practicamos ya en tipos de indexación. Los valores
+
+
+### F. INDEXACIÃ“N DE VECTORES ##################################################
+# La indexaciÃ³n de vectores la practicamos ya en tipos de indexaciÃ³n. Los valores
 # que quieren extraerse van entre corchetes.
 
 
 
 
-### G. INDEXACIÓN DE MATRICES ##################################################
+### G. INDEXACIÃ“N DE MATRICES ##################################################
 
 # Abramos un archivo de datos (data_carbondioxideyearlyemissions.txt) para 
-# practicar indexación de matrices. Esto contiene datos de emisiones de CO2
-# por país (columnas) por año (filas).
+# practicar indexaciÃ³n de matrices. Esto contiene datos de emisiones de CO2
+# por paÃ­s (columnas) por aÃ±o (filas).
 CO2 <- read.table(file=file.choose(), header=TRUE, row.names=1, sep="\t")
 
 dim(CO2)
-class(CO2) # La función *read.table* siempre produce un marco de datos
+class(CO2) # La funciÃ³n *read.table* siempre produce un marco de datos
 
 # Transformemos el marco de datos a una matriz
 CO2 <- as.matrix(CO2)
 class(CO2)
 head(CO2)
 
-# La manera más común de indexar matrices es por fila y por columna.
+# La manera mÃ¡s comÃºn de indexar matrices es por fila y por columna.
 CO2[150, 30] # Esto extrae el valor en la fila 150 y la columna 30 de la matriz
 
 rownames(CO2)[150]
@@ -214,7 +212,7 @@ CO2[45, 200]
 CO2[240, 155]
 
 
-# También se pueden extraer varias columnas y/o filas al mismo tiempo
+# TambiÃ©n se pueden extraer varias columnas y/o filas al mismo tiempo
 CO2[c(200, 45, 240), c(45, 200, 155)]
 
 
@@ -229,28 +227,27 @@ CO2[-10, ] # Esto extrae todos los elementos excepto la fila numero 10
 CO2[, -100] 
               
 
-# Las matrices también se pueden indexar por los nombres de las filas o las 
+# Las matrices tambiÃ©n se pueden indexar por los nombres de las filas o las 
 # columnas
 
 CO2[2010, ] # Esto genera un error porque no hay 2010 filas
 CO2["2010", ] # Esto NO genera un error porque estamos haciendo una 
-              # indexación de la fila llamada "2010" 
+              # indexaciÃ³n de la fila llamada "2010" 
                  
 CO2["2010", "Mexico"] 
                       
 
-# Como han cambiado las emisiones de CO2 en México?
+# Como han cambiado las emisiones de CO2 en MÃ©xico?
 years <- as.numeric(rownames(CO2))
 
 plot(CO2[, "Mexico"] ~ years, col="forestgreen")
 
 
-# Como cambiaron las emisiones de CO2 en México en el siglo 21?
-plot(CO2[years>2000, "Mexico"] ~ years[years>2000], 
-  col="forestgreen", type="b")
+# Como cambiaron las emisiones de CO2 en MÃ©xico en el siglo 21?
+plot(CO2[years>2000, "Mexico"] ~ years[years>2000], col="forestgreen", type="b")
 
   
-# Como se comparan las emisiones en México con las de EEUU y Ecuador
+# Como se comparan las emisiones en MÃ©xico con las de EEUU y Ecuador
 plot(CO2[, "United.States"]~years, col="navy", type="l", lwd=4, ylab="Emisiones")
 
 points(CO2[, "Mexico"]~years, col="forestgreen", type="l", lwd=4)
@@ -263,7 +260,7 @@ CO2[years>1950, "Mexico"] <- 0
 plot(CO2[, "Mexico"] ~ years, col="forestgreen", type="b")
 
 
-## IMPORTANTE: las matrices también pueden indexarse por numero de elemento, no
+## IMPORTANTE: las matrices tambiÃ©n pueden indexarse por numero de elemento, no
 ## solamente por fila y columna
 
 M <- matrix(letters[-26], ncol=5)
@@ -283,8 +280,8 @@ M[25]
 
 
 
-### H. INDEXACIÓN DE MARCOS DE DATOS ###########################################
-# La indexación de marcos de datos es muy parecida a la de matrices excepto por
+### H. INDEXACIÃ“N DE MARCOS DE DATOS ###########################################
+# La indexaciÃ³n de marcos de datos es muy parecida a la de matrices excepto por
 # estos dos aspectos:
 
 # 1. Los marcos de datos no pueden indexarse por numero de elemento, solo 
@@ -301,8 +298,8 @@ M.df[2,2]
 M.df[7]
 
 
-# 2. Las columnas (variables) en un marco de datos tambien se pueden indexar
-# por nombre utilizando el símbolo *$* después del nombre del objeto. Esto no 
+# 2. Las columnas (variables) en un marco de datos tambiÃ©n se pueden indexar
+# por nombre utilizando el sÃ­mbolo *$* despuÃ©s del nombre del objeto. Esto no 
 # se puede hacer en las matrices:
 
 colnames(M)
@@ -323,9 +320,9 @@ help(iris)
 class(iris)
 dim(iris)
 
-str(iris) # La función *str* reporta un resumen de la estructura de un objeto
+str(iris) # La funciÃ³n *str* reporta un resumen de la estructura de un objeto
 
-iris[,1:4] # Estas primeras columnas son variables morfológicas
+iris[,1:4] # Estas primeras columnas son variables morfolÃ³gicas
 iris[,5] # Esta ultima columna  tiene nombres de especies
 
 
@@ -338,10 +335,10 @@ levels(species)
 
 species <- as.vector(species)
 class(species)
-unique(species) # Crea una lista de valores únicos
+unique(species) # Crea una lista de valores Ãºnicos
 
 
-# Grafico de la longitud del sépalo y longitud del pétalo de I. setosa y 
+# Grafico de la longitud del sÃ©palo y longitud del pÃ©talo de I. setosa y 
 # I. virginica
 plot(morpho$Sepal.Length ~ morpho$Sepal.Width, type="n")
 
@@ -356,7 +353,7 @@ points(morpho$Sepal.Length[species=="virginica"] ~
 
 
 
-### I. INDEXACIÓN DE LISTAS ####################################################
+### I. INDEXACIÃ“N DE LISTAS ####################################################
 
 L1 <- list(c(0.01, 3.1), c(0.02, 4.0, 0.1), c("a"), c(0.01, 2.9), c(0.03), 
     c(0.04, 3.4, 8.2, 1.6)) 
@@ -383,7 +380,7 @@ class(L1.1)
 L1[-1]
 L1[1:3]
 
-L1["elem_1"] # En listas, también se puede hacer indexación por nombres
+L1["elem_1"] # En listas, tambiÃ©n se puede hacer indexaciÃ³n por nombres
 class(L1["elem_1"])
 
 L1[["elem_1"]]
@@ -412,11 +409,11 @@ L1[[2]] [L1[[2]]<1]
 
 
 
-### J. INDEXACIÓN DE UN OBJETO 'LM' ############################################
+### J. INDEXACIÃ“N DE UN OBJETO 'LM' ############################################
 
-# Abramos un archivo de datos (Data_BatsEnviroAmerica.txt) para crear un modelo 
-# lineal y practicar indexación. Este archivo contiene datos de riqueza de 
-# especies de murciélagos en el Nuevo Mundo así como de varias variables 
+# Abramos un archivo de datos (data_batsenviroamerica.txt) para crear un modelo 
+# lineal y practicar indexaciÃ³n. Este archivo contiene datos de riqueza de 
+# especies de murciÃ©lagos en el Nuevo Mundo asÃ­ como de varias variables 
 # ambientales en celdas de 100 x 100 km.
 
 bat.data <- read.table(file=file.choose(), header=TRUE, sep="\t")
@@ -425,18 +422,18 @@ class(bat.data)
 
 colnames(bat.data)
 
-length(which(bat.data$richness == 0)) # Haciendo indexación podemos saber 
+length(which(bat.data$richness == 0)) # Haciendo indexaciÃ³n podemos saber 
                                       # cuantos 0s hay en los datos
 length(which(bat.data$richness > 0))
 
 
-# Para el resto de análisis vamos a eliminar todas las celdas que tienen 
-# riqueza 0 (no tienen murciélagos)
+# Para el resto de anÃ¡lisis vamos a eliminar todas las celdas que tienen 
+# riqueza 0 (no tienen murciÃ©lagos)
 dim(bat.data)
 bat.data <- bat.data[-which(bat.data$richness==0), ]
 dim(bat.data)
 
-hist(bat.data$richness) # Haciendo indexación de la columna "richness" podemos
+hist(bat.data$richness) # Haciendo indexaciÃ³n de la columna "richness" podemos
                         # crear un histograma de los valores de riqueza 
 
 plot(bat.data$richness ~ bat.data$temp_AVG)                   
@@ -453,11 +450,11 @@ summary(model.1)
 class(model.1)
 str(model.1) # A pesar de que este es un objeto lm tiene la estructura de lista
 
-model.1[[1]] # Indexación numérica para extraer coeficientes
-model.1$coefficients # Indexación por nombres para extraer coeficientes
+model.1[[1]] # IndexaciÃ³n numÃ©rica para extraer coeficientes
+model.1$coefficients # IndexaciÃ³n por nombres para extraer coeficientes
 
-model.1$coefficients[1] # Indexación por nombres y numérica para el intercepto
-model.1$coefficients["(Intercept)"] # Indexación por nombres para el intercepto
+model.1$coefficients[1] # IndexaciÃ³n por nombres y numÃ©rica para el intercepto
+model.1$coefficients["(Intercept)"] # IndexaciÃ³n por nombres para el intercepto
 
 model.1$coefficients[2]
 model.1$coefficients[3]
@@ -469,9 +466,9 @@ model.1$fitted.values[1:10]
 plot(log(bat.data$richness) ~ bat.data$temp_AVG )                   
 points(model.1$fitted.values ~ bat.data$temp_AVG, col="red")                   
 
-
+install.packages("car") #instala el paquete *car*
 library(car) # Abre el paquete *car*
-avPlots(model=model.1) # Esto produce un grafico de "variables añadidas" o de 
+avPlots(model=model.1) # Esto produce un grafico de "variables aÃ±adidas" o de 
                        # "residuos parciales" mostrando el efecto de cada variable
 
 ?avPlots

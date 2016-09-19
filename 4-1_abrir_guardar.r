@@ -62,11 +62,11 @@ help(read.table)
 # dirección a una carpeta que tiene los archivos de datos para el taller.
 path.to.files <- "/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/"
 
-list.files(path.to.files)
+dir(path.to.files)
 
 exam.expr.mt <- read.table(file=paste(path.to.files, "Example_expression_set.txt", 
     sep=""), header=TRUE, sep="\t")
-
+exam.expr.mt <- read.table(file="/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/Example_expression_set.txt", header=TRUE, sep="\t")
 # Alternativamente, se puede utilizar la función *file.choose* para buscar el
 # archivo en la computadora:
 exam.expr.mt <- read.table(file=file.choose(), header=TRUE, sep="\t")
@@ -125,6 +125,8 @@ help(save)
 
 save(expr.data, file = "expr.data.RData")
 
+load("expr.data.RData")
+dir()
 # A veces, cuando tienes muchos objetos, es conveniente guardar todo el ambiente de trabajo. La función
 # de atajo de *save* para hacer esto es *save.image*.
 
