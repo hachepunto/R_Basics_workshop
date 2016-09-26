@@ -333,8 +333,8 @@ plot(iris$Sepal.Length, iris$Petal.Length)
 
 ### E. GUARDAR GRÁFICOS COMO ARCHIVOS ########################################## 
 
-# Así como es posible enviar un grafico a una ventana abierta, es posible 
-# enviar un grafico a un archivo abierto (ambos son tipos de "graphical devices").
+# Así como es posible enviar un gráfico a una ventana abierta, es posible 
+# enviar un gráfico a un archivo abierto (ambos son tipos de "graphical devices").
 
 # como *X11()* abre ventanas, hay varias funciones que abren varios tipos de 
 # archivos: *jpeg*, *png*, *tiff*, *bmp*, *pdf*, *postcript*.

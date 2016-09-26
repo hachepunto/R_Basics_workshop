@@ -90,7 +90,7 @@ help(seq)
 # o usa el símbolo de interrogación:
 ?seq
 
-# 8. Cuando aparecen *...* en el archivo de ayudade una función frecuentemente significan  
+# 8. Cuando aparecen *...* en el archivo de ayuda de una función frecuentemente significan  
 # multiples argumentos sin nombre:
 
 ?c
@@ -115,9 +115,9 @@ seq(from     =     5,      to     =     20,      by     =     0.5)
 
 rep(x = "R", times = 10)
 
-rpois(n=10, lambda=5)
+rpois(n = 10, lambda = 5)
 
-rpois(n=10) # ¿Por qué esta no funciona?
+rpois(n =10) # ¿Por qué esta no funciona?
 
 rnorm(n=10)
 
@@ -234,7 +234,7 @@ help(seq)
 install.packages("gProfileR")
 
 # Después, cada vez que va a ser usado, el paquete necesita ser cargado con *library*
-library("gProfileR")
+library(gProfileR)
 
 help("gProfileR")
 

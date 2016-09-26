@@ -140,7 +140,6 @@ genes
 names(genes) <- length(genes):1 # Aquí es mejor no utilizar nombres repetidos
 genes
 
-
 expression["3"] # Extrae el valor en *expression* que tiene el nombre "3"
 
 expression[genes=="gen_c"] # Esto, en cambio, extrae el valor en *expression* que corresponde a
@@ -336,7 +335,7 @@ levels(species)
 species <- as.vector(species)
 class(species)
 unique(species) # Crea una lista de valores únicos
-
+table(species)
 
 # Grafico de la longitud del sépalo y longitud del pétalo de I. setosa y 
 # I. virginica
@@ -424,6 +423,7 @@ colnames(bat.data)
 
 length(which(bat.data$richness == 0)) # Haciendo indexación podemos saber 
                                       # cuantos 0s hay en los datos
+sum(bat.data$richness == 0)
 length(which(bat.data$richness > 0))
 
 
