@@ -1,6 +1,6 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                                                                            ###
-### PRESENTATION 8-1: GRÁFICOS                                                                                              ### 
+### PRESENTATION 7-1: GRÁFICOS                                                                                              ### 
 ###                                                                                                                                                     ###
 ### Unida de Servicios Bioinformáticos                                                                                             ###
 ### Instituto Nacional de Medicina Genómica                                                                                   ###

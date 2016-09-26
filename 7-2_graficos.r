@@ -1,6 +1,6 @@
 ################################################################################
 ### R BASICS WORKSHOP                                       				                     ###
-### EJERCICIO 8-2: Gráficos                                                  ###
+### EJERCICIO 7-2: Gráficos                                                  ###
 ###                                                               						                      ###
 ### Unida de Servicios Bioinformáticos    						                      ###
 ### Instituto Nacional de Medicina Genómica                                               			          ###

@@ -1,10 +1,10 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### EXERCISE 10.1: Writing your own functions                                ### 
-###                                                                          ###
-### Center for Conservation and Sustainable Development                      ###
-### Missouri Botanical Garden                                                ###
-### Website: rbasicsworkshop.weebly.com                                      ### 
+### EXERCISE 9-2: Writing your own functions                                ### 
+###                                                                                                                                                   ###
+### Unida de Servicios Bioinformáticos                                                                                           ###
+### Instituto Nacional de Medicina Genómica                                                                                 ###
+### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
 ################################################################################
 
 

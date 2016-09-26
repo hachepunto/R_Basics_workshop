@@ -1,6 +1,6 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                                    ###
-### PRESENTATION 9-1: CONTROL DE FLUJO                                         ### 
+### PRESENTATION 8-1: CONTROL DE FLUJO                                         ### 
 ###                                                                                                 ###
 ### Unida de Servicios Bioinformáticos                                      ###
 ### Instituto Nacional de Medicina Genómica                                                               ###

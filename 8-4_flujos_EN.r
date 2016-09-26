@@ -1,10 +1,10 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### EXERCISE 9-4: Flow control                                               ### 
-###                                                                          ###
-### Center for Conservation and Sustainable Development                      ###
-### Missouri Botanical Garden                                                ###
-### Website: rbasicsworkshop.weebly.com                                      ### 
+### EXERCISE 8-4: Flow control                                               ### 
+###                                                                                                                                                   ###
+### Unida de Servicios Bioinformáticos                                                                                           ###
+### Instituto Nacional de Medicina Genómica                                                                                 ###
+### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
 ################################################################################
 
 ## OBJECTIVE:

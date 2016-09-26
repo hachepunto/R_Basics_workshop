@@ -1,10 +1,10 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### PRESENTATION 10: ESCRIBIR TUS PROPIAS FUNCIONES                          ### 
-###                                                                          ###
-### Center for Conservation and Sustainable Development                      ###
-### Missouri Botanical Garden                                                ###
-### Website: rbasicsworkshop.weebly.com                                      ### 
+### PRESENTATION 9-1: ESCRIBIR TUS PROPIAS FUNCIONES                          ### 
+###                                                                                                                                                   ###
+### Unida de Servicios Bioinformáticos                                                                                           ###
+### Instituto Nacional de Medicina Genómica                                                                                 ###
+### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
 ################################################################################
 
 # Además de utilizar las funciones en los paquetes que están disponibles en R,

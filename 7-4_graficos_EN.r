@@ -1,6 +1,6 @@
 ################################################################################
 ### R BASICS WORKSHOP                                       				                     ###
-### EXERCISE 8-4: Graphics                                                   ### 
+### EXERCISE 7-4: Graphics                                                   ### 
 ###                                                                          ###
 ### Center for Conservation and Sustainable Development                      ###
 ### Missouri Botanical Garden                                                ###

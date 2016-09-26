@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                                                    ###
-### EJERCICIO 9-3: Control de flujo                                          ###
-###                                                                                                 ###
-### Unida de Servicios Bioinformáticos                                      ###
-### Instituto Nacional de Medicina Genómica                                                               ###
-### Website: github.com/hachepunto/R_Basics_workshop                                         ### 
+### R BASICS WORKSHOP                                                                                                            ###
+### EJERCICIO 8-3: Control de flujo                                                                                              ###
+###                                                                                                                                                   ###
+### Unida de Servicios Bioinformáticos                                                                                           ###
+### Instituto Nacional de Medicina Genómica                                                                                 ###
+### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
 ################################################################################
 
 ## OBJETIVO:

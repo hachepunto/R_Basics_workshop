@@ -1,6 +1,6 @@
 ################################################################################
 ### R BASICS WORKSHOP                                       				                     ###
-### EJERCICIO 9-2: Control de Flujo                                          ###
+### EJERCICIO 8-2: Control de Flujo                                          ###
 ###                                                               						                      ###
 ### Unida de Servicios Bioinformáticos    						                      ###
 ### Instituto Nacional de Medicina Genómica                                               			          ###
