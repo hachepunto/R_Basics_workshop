@@ -64,19 +64,20 @@ path.to.files <- "/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics
 
 dir(path.to.files)
 
-exam.expr.mt <- read.table(file=paste(path.to.files, "Example_expression_set.txt", 
+expr.data <- read.table(file=paste(path.to.files, "Example_expression_set.txt", 
     sep=""), header=TRUE, sep="\t")
-exam.expr.mt <- read.table(file="/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/Example_expression_set.txt", header=TRUE, sep="\t")
+expr.data <- read.table(file="/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/Example_expression_set.txt", header=TRUE, sep="\t")
 # Alternativamente, se puede utilizar la función *file.choose* para buscar el
 # archivo en la computadora:
-exam.expr.mt <- read.table(file=file.choose(), header=TRUE, sep="\t")
+expr.data <- read.table(file=file.choose(), header=TRUE, sep="\t")
 
 ## IMPORTANTE: *read.table* siempre abre datos como un marco de datos
-class(exam.expr.mt)
-names(exam.expr.mt)
+class(expr.data)
+names(expr.data)
 
-summary(exam.expr.mt)
+summary(expr.data)
 
+expr.data <- exam.expr.mt
 
 ### D. GUARDAR UNA TABLA DE DATOS ##############################################
 
