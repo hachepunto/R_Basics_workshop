@@ -58,26 +58,17 @@ help(read.table)
 #    o ",". 
 
 
-# Esto crea un objeto con nombre *path.to.files* que tiene un carácter con la 
-# dirección a una carpeta que tiene los archivos de datos para el taller.
-path.to.files <- "/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/"
-
-dir(path.to.files)
-
-expr.data <- read.table(file=paste(path.to.files, "Example_expression_set.txt", 
-    sep=""), header=TRUE, sep="\t")
-expr.data <- read.table(file="/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/Example_expression_set.txt", header=TRUE, sep="\t")
+expr.data <- read.table(file = "Datasets/Example_expression_set.txt", header = TRUE, sep = "\t")
+expr.data <- read.table(file = "/Users/hachepunto/Google Drive/bioinfotmatics_INMEGEN/R_Basics_workshop/Datasets/Example_expression_set.txt", header = TRUE, sep = "\t")
 # Alternativamente, se puede utilizar la función *file.choose* para buscar el
 # archivo en la computadora:
-expr.data <- read.table(file=file.choose(), header=TRUE, sep="\t")
+expr.data <- read.table(file = file.choose(), header = TRUE, sep = "\t")
 
 ## IMPORTANTE: *read.table* siempre abre datos como un marco de datos
 class(expr.data)
 names(expr.data)
 
 summary(expr.data)
-
-expr.data <- exam.expr.mt
 
 ### D. GUARDAR UNA TABLA DE DATOS ##############################################
 
@@ -95,15 +86,13 @@ expr.data # Este es el marco de datos que habíamos creado
 list.files(path.to.files) # La lista de archivos en el directorio especificado
                           # en *path.to.files*
 
-write.table(x=expr.data, file=paste(path.to.files, "expr_data.txt", 
-    sep=""), sep="\t")
+write.table(x = expr.data, file = "Datasets/expr_data.txt", row.names = FALSE, sep = "\t")
 
-list.files(path.to.files) # La lista actualizada de archivos en el directorio 
+list.files("Datasets/") # La lista actualizada de archivos en el directorio 
 
 
 # Podemos volver a abrir el archivo que creamos:
-expr.data2 <- read.table(file=paste(path.to.files, "expr_data.txt", 
-    sep=""), header=TRUE, sep="\t")
+expr.data2 <- read.table(file = "Datasets/expr_data.txt", header = TRUE, sep = "\t")
        
 identical(expr.data, expr.data2)
     
