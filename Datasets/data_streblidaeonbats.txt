@@ -1,0 +1,140 @@
+No QCAZ	ForeArm	Sex	Weight	Elevation	Sice_Code	SiteName	Habitat	Streblidae	T_joblingi	S_ambigua	S_guajiro	Richness
+5257	44.82	m	21.5	1250	15	Cuevas de Mera	Bosque primario alrededor de cuevas	3	2	0	1	2
+5261	43.81	m	17.5	1250	15	Cuevas de Mera	Bosque primario alrededor de cuevas	2	0	0	2	1
+5272	47.31	h	20.5	1050	16	Puyo	Platanera junto a carretera	7	6	0	1	2
+5273	45.77	h	21.5	1250	15	Cuevas de Mera	Bosque primario alrededor de cuevas	2	0	0	2	1
+5274	43.52	m	17	1050	16	Puyo	Platanera junto a carretera	0	0	0	0	0
+5275	43.2	h	17	1050	16	Puyo	Platanera junto a carretera	2	0	0	2	1
+5276	43.94	m	17	1050	16	Puyo	Platanera junto a carretera	1	1	0	0	1
+5277	41.09	h	18.5	1050	16	Puyo	Platanera junto a carretera	4	3	0	1	2
+5451	40.49	m	20	886	4	Otongachi	Bosque primario	1	1	0	0	1
+5454	39.95	m	18.5	886	4	Otongachi	Bosque primario	2	2	0	0	1
+5460	41.2	m	20.75	886	4	Otongachi	Bosque primario	3	3	0	0	1
+5480	41.64	m	19	275	18	Parque Nacional Yasuní	Bosque primario junto a carretera	0	0	0	0	0
+5485	41.03	h	19	275	18	Parque Nacional Yasuní	Bosque primario junto a carretera	4	3	1	0	2
+5488	43.59	m	20.5	275	18	Parque Nacional Yasuní	Bosque primario junto a carretera	0	0	0	0	0
+5599	42.46	h	18.25	1172	6	Santa Rosa	Bosque secundario junto a pastizal	2	2	0	0	1
+5600	42.57	m	21.25	1172	6	Santa Rosa	Bosque secundario junto a pastizal	1	0	0	1	1
+5601	41.46	h	20.25	1172	6	Santa Rosa	Bosque secundario junto a pastizal	1	0	1	0	1
+5602	40.77	m	17	1172	6	Santa Rosa	Bosque secundario junto a pastizal	4	0	3	1	2
+5604	41.39	m	19.6	1172	6	Santa Rosa	Bosque secundario junto a pastizal	0	0	0	0	0
+5605	43.67	m	16.5	1172	6	Santa Rosa	Bosque secundario junto a pastizal	1	1	0	0	1
+5607	43.3	m	27.5	1172	6	Santa Rosa	Bosque secundario junto a pastizal	4	3	0	1	2
+5614	40.48	m	18	1172	6	Santa Rosa	Bosque secundario junto a pastizal	4	4	0	0	1
+5669	43.65	m	20	1185	10	"Macas, Bosque Domono"	"Bosque secundario junto a un camino vecinal, no construcciones cerca"	0	0	0	0	0
+5674	42	h	18.5	1185	10	"Macas, Bosque Domono"	"Bosque secundario junto a un camino vecinal, no construcciones cerca"	0	0	0	0	0
+5681	43.9	h	20	1185	10	"Macas, Bosque Domono"	"Bosque secundario junto a un camino vecinal, no construcciones cerca"	0	0	0	0	0
+5682	44.1	h	21.5	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	3	2	1	0	2
+5685	42.6	h	17.75	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	4	3	0	1	2
+5686	43.1	h	18.5	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	4	3	0	1	2
+5689	42.2	h	19	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	0	0	0	0	0
+5690	43.2	m	21	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	0	0	0	0	0
+5692	41.15	m	18.5	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	2	1	0	1	2
+5693	40.1	h	18.75	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	2	2	0	0	1
+5694	43.5	h	19	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	0	0	0	0	0
+5695	39.6	m	20.75	1050	11	"Macas, Platanera cerca de la ciudad"	"Platanera junto a construcciones, sin bosque cerca"	0	0	0	0	0
+5699	44	m	21	858	8	"Sucua, Platanera"	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	7	7	0	0	1
+5700	43	h	21	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	12	9	0	3	2
+5701	42.8	m	21.5	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	0	0	0	0	0
+5703	42.25	m	19	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	10	5	0	5	2
+5704	43.16	m	17.5	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	0	0	0	0	0
+5705	42.9	h	17.5	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	7	5	0	2	2
+5706	41.33	m	18	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	7	6	0	1	2
+5891	42.3	m	19.5	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	4	4	0	0	1
+5892	43.1	m	21.5	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	5	3	2	0	2
+5894	42	h	18.5	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	4	3	0	1	2
+5897	43.2	h	19.5	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	3	3	0	0	1
+5898	40.7	h	19	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	9	7	1	1	3
+6059	41.5	h	21	50	1	Quingue	Bosque secundario cerca a una playa.	3	2	1	0	2
+6064	44.2	m	24.5	50	1	Quingue	Bosque secundario cerca a una playa.	3	3	0	0	1
+6077	41.42	m	21	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	4	3	1	0	2
+6079	43.14	h	25.5	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	10	5	4	1	3
+6083	42.1	h	28	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	6	6	0	0	1
+6084	44	h	25.5	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	2	2	0	0	1
+6085	39.1	m	18.75	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	5	3	1	1	3
+6087	43.4	h	24	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	7	4	2	1	3
+6090	42.1	h	20	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	2	0	2	0	1
+6091	43.7	h	29.8	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	4	2	1	1	3
+6101	42.6	h	20	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	13	9	4	0	2
+6102	42.1	m	21.25	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	1	0	0	1	1
+6103	43.9	h	28.5	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	3	3	0	0	1
+6105	44.8	h	29	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	2	1	0	1	2
+6106	42.7	m	23	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	8	7	0	1	2
+6107	43.7	m	27.5	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	4	4	0	0	1
+6113	42.6	m	22	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	3	3	0	0	1
+6114	43.8	h	23	149	2	Quingue	Bosque secundario mezclado con algunas plantas de plátano.	3	3	0	0	1
+6117	41.3	m	20.5	1185	10	"Macas, Bosque Domono"	"Bosque secundario junto a un camino vecinal, no construcciones cerca"	0	0	0	0	0
+6118	40.25	m	24.5	850	4	Unión del Toachi	"Bosque secundario, cerca de carreteras"	3	3	0	0	1
+6119	41.3	h	24.5	850	4	Unión del Toachi	"Bosque secundario, cerca de carreteras"	4	2	1	1	3
+6121	41.68	m	19.59	850	4	Unión del Toachi	"Bosque secundario, cerca de carreteras"	3	3	0	0	1
+6123	39.41	m	18.85	850	4	Unión del Toachi	"Bosque secundario, cerca de carreteras"	1	0	0	1	1
+6128	41.7	m	20	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	13	11	0	2	2
+6129	43.8	h	20	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	13	11	1	1	3
+6130	43.2	h	18	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	12	6	0	6	2
+6132	41	m	21	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	2	1	0	1	2
+6134	42	h	18	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	5	2	0	3	2
+6136	43.9	h	18.75	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	1	1	0	0	1
+6137	43.7	m	19.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	1	1	0	0	1
+6138	43.5	m	18.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	0	0	0	0	0
+6139	44.4	h	22	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	0	0	0	0	0
+6140	43.8	m	19	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	2	2	0	0	1
+6141	43.7	h	22.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	0	0	0	0	0
+6142	42	h	19.75	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	2	1	0	1	2
+6143	44.7	h	18.75	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	4	3	0	1	2
+6144	42.2	h	21	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	10	7	0	3	2
+6145	42.2	h	22.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	8	6	0	2	2
+6146	43.6	h	21.25	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	7	3	0	4	2
+6147	42.4	h	21.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	0	0	0	0	0
+6148	42.8	h	20.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	3	3	0	0	1
+6149	42.5	h	20	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	8	6	0	2	2
+6150	44.6	m	25.5	662	17	Punte del Río Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un río"	0	0	0	0	0
+6156	44	m	21.5	662	17	Punte del Río Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un río"	2	2	0	0	1
+6157	43	m	21	662	17	Punte del Río Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un río"	1	0	0	1	1
+6163	42.5	h	17	662	17	Punte del Río Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un río"	1	0	0	1	1
+6164	42.3	h	22.5	662	17	Punte del Río Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un río"	0	0	0	0	0
+6165	42.4	h	19	662	17	Punte del Río Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un río"	0	0	0	0	0
+6169	40.6	m	19	662	17	Punte del Río Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un río"	0	0	0	0	0
+6175	42	h	18.25	1433	9	"Antenas, Macas"	Bosque secundario	1	0	0	1	1
+6176	44.5	h	19.75	1433	9	"Antenas, Macas"	Bosque secundario	2	0	0	2	1
+6185	44	h	17.25	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	13	9	0	4	2
+6186	44.15	m	21.75	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	4	3	0	0	1
+6187	43.4	m	22.25	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	24	12	0	12	2
+6188	41.4	h	19	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	11	8	0	2	2
+6200	40.53	m	14.94	850	4	Unión del Toachi	"Bosque secundario, cerca de carreteras"	8	3	4	1	3
+6202	43.55	h	20.96	850	4	Unión del Toachi	"Bosque secundario, cerca de carreteras"	4	2	1	1	3
+6203	41.42	m	19	1331	7	"Mariposario, Mindo"	"Plantaciones de plátanos, heliconias con piperaceae y solanaceae"	2	2	0	0	1
+6205	40.31	m	17.5	1331	7	"Mariposario, Mindo"	"Plantaciones de plátanos, heliconias con piperaceae y solanaceae"	1	1	0	0	1
+6206	42.32	m	19	1331	7	"Mariposario, Mindo"	"Plantaciones de plátanos, heliconias con piperaceae y solanaceae"	1	1	0	0	1
+6210	40.72	m	20.25	180	3	Pto. Quito	Platanera junto a jardines y construcciones	3	1	2	0	2
+6557	41.67	m	22	180	3	Pto. Quito	Platanera junto a jardines y construcciones	5	4	0	1	2
+6558	42.66	m	21.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6559	41.85	m	19.25	180	3	Pto. Quito	Platanera junto a jardines y construcciones	7	5	0	2	2
+6560	42.59	m	22.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6562	41.75	m	21.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6563	43.53	m	22	180	3	Pto. Quito	Platanera junto a jardines y construcciones	4	4	0	0	1
+6564	42.34	m	21.75	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6565	41.62	m	21	180	3	Pto. Quito	Platanera junto a jardines y construcciones	2	2	0	0	1
+6566	41.87	m	22.25	180	3	Pto. Quito	Platanera junto a jardines y construcciones	7	5	2	0	2
+6568	41.63	m	21	180	3	Pto. Quito	Platanera junto a jardines y construcciones	9	7	2	0	2
+6569	43.46	m	25	180	3	Pto. Quito	Platanera junto a jardines y construcciones	2	2	0	0	1
+6570	42.14	m	21	180	3	Pto. Quito	Platanera junto a jardines y construcciones	1	1	0	0	1
+6571	43.26	m	22	180	3	Pto. Quito	Platanera junto a jardines y construcciones	1	1	0	0	1
+6572	43.92	m	20.75	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6573	43.24	m	20	180	3	Pto. Quito	Platanera junto a jardines y construcciones	1	1	0	0	1
+6574	40.14	m	18	180	3	Pto. Quito	Platanera junto a jardines y construcciones	5	4	1	0	2
+6575	41.1	h	23	180	3	Pto. Quito	Platanera junto a jardines y construcciones	12	8	1	3	3
+6576	44.59	m	24.75	180	3	Pto. Quito	Platanera junto a jardines y construcciones	2	0	0	2	1
+6577	43.37	m	21	180	3	Pto. Quito	Platanera junto a jardines y construcciones	6	5	1	0	2
+6578	44.3	h	21.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	9	9	0	0	1
+6579	41.13	m	21.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6580	44.77	m	23	180	3	Pto. Quito	Platanera junto a jardines y construcciones	14	12	0	2	2
+6581	42.26	m	20.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	3	3	0	0	1
+6582	42.6	h	19.25	180	3	Pto. Quito	Platanera junto a jardines y construcciones	10	7	2	1	3
+6583	41.09	h	21	180	3	Pto. Quito	Platanera junto a jardines y construcciones	11	7	2	2	3
+6584	40.81	m	20.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	11	11	0	0	1
+6585	42.55	m	21	180	3	Pto. Quito	Platanera junto a jardines y construcciones	1	1	0	0	1
+6586	41.55	m	20.25	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6587	42.38	m	26.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0
+6588	42.44	m	20.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	3	3	0	0	1
+6589	41.58	h	18.75	180	3	Pto. Quito	Platanera junto a jardines y construcciones	5	5	0	0	1
+6590	43.54	h	19.75	180	3	Pto. Quito	Platanera junto a jardines y construcciones	6	6	0	0	1
