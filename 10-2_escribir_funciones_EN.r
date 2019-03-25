@@ -1,6 +1,6 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### EXERCISE 9-2: Writing your own functions                                ### 
+### EXERCISE 10-2: Writing your own functions                                ### 
 ###                                                                                                                                                   ###
 ### Unida de Servicios Bioinformáticos                                                                                           ###
 ### Instituto Nacional de Medicina Genómica                                                                                 ###

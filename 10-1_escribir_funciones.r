@@ -1,6 +1,6 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### PRESENTATION 9-1: ESCRIBIR TUS PROPIAS FUNCIONES                          ### 
+### PRESENTATION 10-1: ESCRIBIR TUS PROPIAS FUNCIONES                          ### 
 ###                                                                                                                                                   ###
 ### Unida de Servicios Bioinformáticos                                                                                           ###
 ### Instituto Nacional de Medicina Genómica                                                                                 ###
