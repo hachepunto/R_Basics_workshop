@@ -41,7 +41,7 @@ Basado en el [curso](http://rbasicsworkshop.weebly.com/) de [J. Sebastián Tello
 [SublimeText](https://www.sublimetext.com/) ($70 USD)
 
 #### Mac
-[TextWrangler](http://www.barebones.com/products/textwrangler/)
+[BBEdit](http://www.barebones.com/products/bbedit/)
 
 #### Windows
 [Notepad++](https://notepad-plus-plus.org/)
