@@ -15,7 +15,7 @@ Basado en el [curso](http://rbasicsworkshop.weebly.com/) de [J. Sebastián Tello
 
 [Guía de estilo de R](https://google.github.io/styleguide/Rguide.xml)
 
-### Cursos de R
+### Cursos de R
 
 <https://www.codeschool.com/courses/try-r>
 
