@@ -29,7 +29,8 @@ Basado en el [curso](http://rbasicsworkshop.weebly.com/) de [J. Sebastián Tello
 
 <http://swirlstats.com> (aprende R en R)
 
-### Editores de texto y entornos de desarrollo integrado (integrated development environment, IDE)
+### Editores de texto y entornos de desarrollo integrado 
+#### (integrated development environment, IDE)
 
 #### Multiplataforma:
 [RStudio](https://www.rstudio.com/) (IDE)
