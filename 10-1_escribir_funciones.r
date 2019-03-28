@@ -28,8 +28,7 @@ help("function")
 my.fun # Todavía no existe una función con este nombre
 
 
-my.fun <- function(x) 
-{
+my.fun <- function(x){
     resultado <- x + 10
     
     resultado
@@ -109,8 +108,7 @@ lm
 # "time": es el número total de unidades de tiempo sobre las que la población 
 #         va a ser simulada. 
 
-my.ricker.fun <- function(nzero, r, K, time)
-{
+my.ricker.fun <- function(nzero, r, K, time){
 	N <- numeric(time+1)
 	
 	N[1] <- nzero
