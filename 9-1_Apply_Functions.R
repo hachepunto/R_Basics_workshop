@@ -15,7 +15,7 @@
 # poca líneas de código y es una de las características distintivas de R como 
 # lenguaje de programación.
 
-Las funciones de la familia apply son:
+# Las funciones de la familia apply son:
 
 #		• apply
 #		• lapply
@@ -75,23 +75,22 @@ apply(X = matriz, MARGIN = 2, FUN = sum)
 # ENSEMBLE de Drosophila Los renglones son genes y hay información de cuatro 
 # tiempos (2, 6, 8 y 10 hrs) y otros metadatos.
 
-data <- read.table("Datasets/rpkm_clase.tab", header=T, sep="\t")
+data <- read.table("Datasets/rpkm_clase.tab", header = TRUE, sep="\t")
 
 head(data)
 
 # Filtramos los datos para quedarnos solo con los genes que tienen un RPKM mayor
 # a 10 y luego generamos una matriz con los datos de expresión únicamente.
 
-expressed <- subset(data, (rpkm2 >10 & rpkm6 >10 & rpkm8 >10 &rpkm10 >10))
+expressed <- subset(data, (rpkm2 > 10 & rpkm6 > 10 & rpkm8 > 10 & rpkm10 > 10))
 #expressed$chr <- as.character(expressed$chr)
 head(expressed)
 
 
 rpkm <- cbind(expressed$rpkm2, expressed$rpkm6, expressed$rpkm8, expressed$rpkm10)
-is.matrix(rpkm)
 
 head(rpkm)
-class(rpkm)
+is.matrix(rpkm)
 
 
 # Para obtener la media de la expresion para cada gene, a traves de los cuatro 
@@ -114,7 +113,7 @@ hist( apply(rpkm, 1, mean),
 	main = "Distribucion de la expresion promedio",
 	breaks=seq(min(apply(rpkm, 1, mean)), 
 				max(apply(rpkm, 1, mean)), 
-			length.out = 50)
+				length.out = 50)
 	)
 
 
@@ -129,7 +128,7 @@ hist( apply(rpkm, 1, mean),
 
 # Uso:
 #
-#	lapply(X, FUN)
+#	lapply(X, FUN, ...)
 #
 # Argumentos:
 # -X: Un vector o un objeto (Lista o Data frame)
@@ -137,7 +136,7 @@ hist( apply(rpkm, 1, mean),
 
 ### Ejemplo sencillo 1:
 
-movies <- c("SPYDERMAN","BATMAN","VERTIGO","CHINATOWN")
+movies <- c("SPACE_ODYSSEY","BATMAN","VERTIGO","BRAZIL")
 movies_lower <-lapply(movies, tolower)
 str(movies_lower)
 
@@ -158,7 +157,7 @@ class(arboles)
 ### Caso con matriz
 
 matriz <- matrix(1:9, ncol = 3)
-lapply(matriz, quantile, probs = .8)
+lapply(matriz, quantile, probs = 0.8)
 
 dataFrame <- as.data.frame(matriz)
 lapply(dataFrame, quantile, probs = .8)
@@ -173,7 +172,9 @@ matriz[1]
 
 rpkm.df <- as.data.frame(rpkm)
 names(rpkm.df) <- c("t2", "t6", "t8", "t10")
+head(rpkm.df)
 
+# Podemos usar una función definida por nosotros dentro de las funciones *apply*.
 # Quiero agregarle 5 al valor de expresion de todos los genes del tiempo 2
 head(rpkm.df$t2)
 lapply(head(rpkm.df$t2), function(x){x+5} )
@@ -186,7 +187,7 @@ lapply(head(rpkm.df$t2), function(x){x+5} )
 
 # Uso:
 #
-#		sapply(X, FUN)
+#		sapply(X, FUN, ...)
 #
 # Arguments:
 # -X: un vector o un objeto
@@ -202,7 +203,6 @@ smn_cars <- sapply(dt, min)
 lmn_cars
 smn_cars
 
-# Podemos usar una función definida por nosotros dentro *lapply* o *sapply*.
 # Creamos una función llamada *avg* que calcule el promedio de entre el máximo
 # y el mínimo de un vector:
 
@@ -228,6 +228,8 @@ sapply(data$flybase_id, function(x){ sub("FB", "", x) }, simplify = FALSE)
 # Queremos obtener la expresion promedio de los genes por cromosoma para cada
 # uno de los tiempos.
 
+head(data)
+
 # Necesitamos:
 # 1. Obtener todos los genes de un cromosoma especifico.
 # 2. Obtener el promedio de la expresion para esos genes en el tiempo 1 (2 hrs)
@@ -251,6 +253,7 @@ head(tiempos)
 # Para obtener la exprsion promedio por columna.
 
 mean.expr <- apply(X = tiempos, MARGIN = 2, FUN = mean)
+mean.expr
 
 # Creemos una funcion con las instrucciones que acabamos de escribir
 
@@ -261,13 +264,16 @@ gene_mean_expr <- function(x, data){
 	return(mean.expr)
 }
 
+gene_mean_expr("chr4", data)
+
 # Hagamoslo para todos los cromosomas utilizando un apply
 
 cromosomas <- as.character(unique(data$chr))
 
-lapply(cromosomas, gene_mean_expr, data=data)
-sapply(cromosomas, gene_mean_expr, data=data)
+lapply(cromosomas, gene_mean_expr, data = data)
+sapply(cromosomas, gene_mean_expr, data = data)
 
+class(sapply(cromosomas, gene_mean_expr, data = data))
 
 
 ######################## tapply ########################
@@ -277,7 +283,7 @@ sapply(cromosomas, gene_mean_expr, data=data)
 
 # Uso:
 #
-#	tapply(X, INDEX, FUN = NULL)
+#	tapply(X, INDEX, FUN = NULL, ...)
 #
 # Argumentos:
 # -X: Un objeto, usualmente un vector.
