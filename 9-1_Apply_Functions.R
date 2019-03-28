@@ -1,60 +1,59 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### PRESENTATION 9-1: Las Funciones apply de R                               ###
+### PRESENTATION 9-1: Las funciones apply de R                               ###
 ###                                                                          ###
 ### Unida de Servicios Bioinformáticos                                       ###
 ### Instituto Nacional de Medicina Genómica                                  ###
 ### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
-# La familia de funciones apply es usada para aplicar una función a cada 
+# La familia de funciones *apply* es usada para aplicar una función a cada 
 # elemento de una estructura de datos. En particular, es usada para aplicar 
 # funciones en matrices, data frames, arrays y listas.
+
 # Con esta familia de funciones podemos automatizar tareas complejas usando 
 # poca líneas de código y es una de las características distintivas de R como 
 # lenguaje de programación.
 
 Las funciones de la familia apply son:
 
-#		apply
-#		lapply
-#		sapply
-#		tapply
-#		vapply
-#		eapply
-#		mapply
-#		rapply
+#		• apply
+#		• lapply
+#		• sapply
+#		• tapply
+#		• vapply
+#		• eapply
+#		• mapply
+#		• rapply
 
 # Aquí solo veremos las primeras cuatro por ser las básicas.
 
 ######################## apply ########################
 
-# Se utiliza la función *apply* sobre matricez. Esta funión toma cinco 
+# La funcion apply ejecuta la funcion "FUN", sobre todos las columnas 
+# (MARGIN =2) o renglones (MARGIN = 1) de una matriz.
 
 # Uso:
 #
 #	apply(X, MARGIN, FUN, ...)
 #
 # Argumentos:
-# -X: una matriz o cualquier otro objeto que sea posible coercionar a una matriz
+# -X: una matriz o cualquier otro objeto que sea posible convertir en una matriz
 # -MARGIN: Define sobre qué se va ejecutar la función y toma valores entre 1 y 2:
-#	-MARGIN=1`: La manipulación se hace por renglón
-#	-MARGIN=2`: La manipulación se hace por columnas
-#	-MARGIN=c(1,2)`: La manipulación se hace por rengloes y columnas
+#	-MARGIN=1`: La manipulación se hace por renglón.
+#	-MARGIN=2`: La manipulación se hace por columnas.
+#	-MARGIN=c(1,2)`: La manipulación se hace por renglones y columnas.
 # -FUN: Indica que función se aplicará. Se puede usar funciones integradas como 
 #       mean, median, sum, min, max e incluso funciones definidas por el usuario.
-
-# La funcion apply ejecuta la funcion "FUN", sobre todos las columnas 
-# (MARGIN =2) o renglones (MARGIN = 1) de una matriz.
 
 ### Ejemplo sencillo
 
 # Creamos una matriz de cuatro renglones
 matriz <- matrix(1:16, nrow = 4)
 
-# Aplicamos *apply*, dando la función *sum* el argumento FUN, nota que 
-# sólo necesitamos el nombre de la función, sin paréntesis.
-# Por último, damos el argumento MARGIN = 1, para aplicar la función por renglón.
+# Aplicamos *apply*, dando la función *sum* el argumento FUN. Nota que solo
+# necesitamos el nombre de la función, sin paréntesis. Por último, damos el
+# argumento MARGIN = 1, para aplicar la función por renglón.
 
 apply(X = matriz, MARGIN = 1, FUN = sum)
 
