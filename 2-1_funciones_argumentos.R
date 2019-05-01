@@ -268,13 +268,14 @@ library("ctv")
 # luego el conjunto de paquetes específicos que necesitemos.
 
 # instalar Bioconductor:
-source("https://bioconductor.org/biocLite.R")
-biocLite()
+if (!requireNamespace("BiocManager"))
+    install.packages("BiocManager")
+BiocManager::install()
 
 # instalar un paquete:
-source("https://bioconductor.org/biocLite.R") # opcional si no lo hemos hecho en la sesión
-biocLite("affy")
-
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("affy")
 
 ## Bonus:
 

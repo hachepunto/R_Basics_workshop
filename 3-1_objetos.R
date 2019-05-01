@@ -30,10 +30,10 @@ x
 
 
 # Otra manera de crear un objeto es con la función *assign*
-assign(x="x2", value=c(10, 5, 2))
+assign(x = "x2", value = c(10, 5, 2))
 x2
 
-identical(x=x, y=x2)
+identical(x = x, y = x2)
 # Equivalente:
 identical(x, x2)
 
@@ -138,11 +138,11 @@ length(x=logFCh)
 length(x=genes)
 length(x=increm)
 
-# NOMBRES es otro atributo importante de un vector
+# NOMBRES es otro atributo de un vector
 names(x=logFCh)
 
 # Para crear nombres en este vector:
-names(x=logFCh) <- paste("gene", seq(1:length(logFCh)), sep="_")
+names(x=logFCh) <- paste("gene", seq(1,length(logFCh)), sep = "_")
 names(x=logFCh)
 logFCh
 
@@ -197,6 +197,8 @@ identical(diff, diff2)
 # Un atributo importante de factores es sus NIVELES (LEVELS)
 levels(diff2)
 
+
+
 # IMPORTANTE: la clase frecuentemente afecta como funciones procesan objetos.
 # Por ejemplo:
 
@@ -212,7 +214,7 @@ plot(diff2)
 # Supongamos que tenemos los niveles de expresión de 5 genes (filas) en 
 # muestras distintas (columnas):
 
-expr.M<- matrix(1:(5*4), nrow=5, ncol=4)
+expr.M <- matrix(1:(5*4), nrow = 5, ncol = 4)
 expr.M
 
 class(expr.M)
@@ -220,7 +222,7 @@ class(expr.M)
 
 # la función *matrix* tiene otro argumento *byrow* con el valor pre-determinado
 # de *FALSE*. ¿Qué pasa si lo cambiamos a *TRUE*?
-expr.M2 <- matrix(1:(5*4), nrow=5, ncol=4, byrow=TRUE)
+expr.M2 <- matrix(1:(5*4), nrow=5, ncol = 4, byrow = TRUE)
 expr.M2
 
 ?matrix
@@ -243,7 +245,7 @@ ncol(expr.M)
 
 # Cada observación en una matriz puede tener NOMBRES
 names(expr.M)
-names(expr.M) <- paste("obs_", 1:length(expr.M), sep="")
+names(expr.M) <- paste("obs_", 1:length(expr.M), sep = "")
 expr.M
 
 # Más frecuentemente, se utilizan nombres solamente para columnas y filas
@@ -305,9 +307,7 @@ logFCh.A
 # TIPOS DISTINTOS (numéricos, caracteres, lógicos o factores).
 
 genes
-
 expr.M
-
 increm
 
 genes.code <- 1:length(genes)
@@ -418,6 +418,8 @@ str(lm.res)
 
 class(lm.res)
 
+
+
 # Sin embargo, el hecho de ser de clase *lm* hace que ciertas funciones manejen
 # este objeto de maneras específicas a su clase.
 
@@ -440,7 +442,7 @@ plot(chiroptera, show.tip.label=FALSE)
 
 
 
-
+¡Al fin pude escuchar el capítulo! Muy bueno la súper invitada de la imagen del hoyo negro. Y luego ¡lo del cerebro! El cerebro es uno de los objetos más apasionantes del universo ¿o no? Casi como los hoyos negros. La noticia me recordó un cuento de mi escritor favorito Stanislaw Lem, el cuento en la primera de las “Memorias de Ijon Tichy” de su libreo “Diario de las estrellas: vajes y memorias”. ¡Se los recomiendo!
 
 
 
