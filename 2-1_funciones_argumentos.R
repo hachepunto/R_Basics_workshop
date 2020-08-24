@@ -107,9 +107,9 @@ Seq(from = 5, to = 20, by = 0.5)
 
 seq(from=5, to=20, by=0.5)
 
-seq(from     =     5,      to     =     20,      by     =     0.5)
+seq     (from     =     5,      to     =     20,      by     =     0.5)
 
-
+https://google.github.io/styleguide/Rguide.xml
 
 ### D. UNOS EJEMPLOS ADICIONALES DE FUNCIONES Y ARGUMENTOS #####################
 
@@ -124,10 +124,9 @@ rnorm(n=10)
 rnorm(n=100, mean=10, sd=5)
 
 
-paste("R", "Basics", "Workshop", sep="_")
+paste("R", "Basics", "Workshop", sep = "_")
 
 paste("R", "Basics", "Workshop", sep=" ")
-
 
 c(19, 4, 2, 6, 2)
 
@@ -236,27 +235,11 @@ install.packages("gProfileR")
 # Después, cada vez que va a ser usado, el paquete necesita ser cargado con *library*
 library(gProfileR)
 
-help("gProfileR")
+??gProfileR
 
 # Los paquetes pueden ser actualizados con *update.packages*
 update.packages("gProfileR")
 
-
-
-# los TASK VIEWS son colecciones de paquetes necesarios para tipos de análisis en específico
-# (p.e. análisis espaciales o filogenéticos)
-
-# Los Task views pueden ser consutlados en: http://cran.r-project.org/web/views/
-
-
-# Todos los paquetes de un task view pueden ser instalados con *install.views*.
-
-# la función *install.views* está en el paquete *ctv* el cual es necesario instalar y cargar
-
-install.packages("ctv")
-library("ctv")
-
-#install.views("Genetics") # Installing task views can take a long time
 
 ### J BIOCONDUCTOR  ########################################################
 
@@ -268,30 +251,12 @@ library("ctv")
 # luego el conjunto de paquetes específicos que necesitemos.
 
 # instalar Bioconductor:
-if (!requireNamespace("BiocManager"))
+if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install()
+BiocManager::install(version = "3.11")
 
 # instalar un paquete:
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("affy")
 
-## Bonus:
-
-### MANTENER PAQUETES
-
-# En terminal
-mkdir ~/.local/Rlibs
-nano ~/.Renviron
-
-# escribir:
-R_LIBS=~/.local/Rlibs
-R_LIBS_USER=~/.local/Rlibs
-
-# actualizar todos los paquetes:
-update.packages()
-
-# actualizar Bioconductor:
-source("http://bioconductor.org/biocLite.R")
-biocLite()

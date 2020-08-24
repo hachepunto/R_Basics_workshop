@@ -142,6 +142,8 @@ length(x=increm)
 names(x=logFCh)
 
 # Para crear nombres en este vector:
+logFCh <- c(1, 0, 0, 6, 2)
+
 names(x=logFCh) <- paste("gene", seq(1,length(logFCh)), sep = "_")
 names(x=logFCh)
 logFCh
@@ -205,6 +207,8 @@ levels(diff2)
 plot(diff)
 plot(diff2)
 
+
+levels(diff2) <- c("equal", "up", "down")
 
 
 ### G. MATRICES ################################################################
@@ -317,6 +321,7 @@ expr.data
 
 class(expr.data)
 
+mode(expr.data$genes)
 
 # IMPORTANTE: matrices y marcos de datos funcionan distinto!
 expr.data2 <- as.matrix(expr.data)
@@ -439,10 +444,5 @@ str(chiroptera)
 
 # La función *plot* sabe que hacer cuando se le da un árbol filogenético
 plot(chiroptera, show.tip.label=FALSE)
-
-
-
-¡Al fin pude escuchar el capítulo! Muy bueno la súper invitada de la imagen del hoyo negro. Y luego ¡lo del cerebro! El cerebro es uno de los objetos más apasionantes del universo ¿o no? Casi como los hoyos negros. La noticia me recordó un cuento de mi escritor favorito Stanislaw Lem, el cuento en la primera de las “Memorias de Ijon Tichy” de su libreo “Diario de las estrellas: vajes y memorias”. ¡Se los recomiendo!
-
 
 
