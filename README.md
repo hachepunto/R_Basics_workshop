@@ -39,7 +39,7 @@ Basado en el [curso](http://rbasicsworkshop.weebly.com/) de [J. Sebastián Tello
 
 [Gedit](https://wiki.gnome.org/Apps/Gedit)
 
-[SublimeText](https://www.sublimetext.com/) ($70 USD)
+[SublimeText](https://www.sublimetext.com/)
 
 #### Mac
 [BBEdit](http://www.barebones.com/products/bbedit/)
