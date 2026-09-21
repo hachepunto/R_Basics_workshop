@@ -1,18 +1,20 @@
 ################################################################################
-### R BASICS WORKSHOP                                                                                                            ###
-### PRESENTATION 7-1: GRÁFICOS                                                                                              ### 
-###                                                                                                                                                     ###
-### Unida de Servicios Bioinformáticos                                                                                             ###
-### Instituto Nacional de Medicina Genómica                                                                                   ###
-### Website: github.com/hachepunto/R_Basics_workshop                                                                ### 
+### R BASICS WORKSHOP                                                        ###
+### CLASE 7-1: Gráficos                                                      ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 
 ### INTRODUCCIÓN ###############################################################
 
-# R ofrece una variedad increíble de opciones para construir gráficos. Escribe 
-# este código en la consola para ver unas pocas opciones que son posibles:
-demo(graphics)
+# R ofrece una variedad increíble de opciones para construir gráficos. Escribe
+# este código EN LA CONSOLA para ver unas pocas de las opciones posibles. Va
+# comentado porque la demo se detiene a esperar que presiones Enter entre una
+# figura y otra, y eso impide correr el archivo completo de un jalón:
+# demo(graphics)
 
 
 # Una mejor versión del grafico del volcán (de la ayuda de la función *image*):
@@ -84,8 +86,8 @@ plot(iris$Petal.Length ~ iris$Petal.Width, cex=3)
 plot(iris$Petal.Length ~ iris$Petal.Width, cex=2, pch=21, col="black", bg="grey")
 
 plot(iris$Petal.Length ~ iris$Petal.Width, cex=3, pch=21, col="black", bg="grey",
-    main="Plot of Petal Width vs. Petals Length", xlab="Petal Width", 
-    ylab="Petal Length", cex.lab=1.5, cex.axis=1.5, bty="l", las=1)
+    main="Largo del pétalo contra ancho del pétalo", xlab="Ancho del pétalo", 
+    ylab="Largo del pétalo", cex.lab=1.5, cex.axis=1.5, bty="l", las=1)
 
 
 
@@ -199,19 +201,26 @@ hist(iris$Sepal.Length, breaks=seq(0, 8, 0.5), col="gray70", border="gray40",
 hist(iris$Petal.Length, breaks=seq(0, 8, 0.5), density=30, add=TRUE)
 
 axis(side=1, at=seq(0, 8, 1), cex.axis=2, lwd=2, las=1)
-axis(side=2, at=seq(0, 40, 5), cex.axis=1.5, cex.axis=2, lwd=2, las=1)
+axis(side=2, at=seq(0, 40, 5), cex.axis=2, lwd=2, las=1)
+# OJO: no se puede dar dos veces el mismo argumento en una llamada. Escribir
+# 'cex.axis=1.5, cex.axis=2' produce el error "formal argument matched by
+# multiple actual arguments".
 
-mtext(text="Length (cm)", side=1, line=3, cex=2)
-mtext(text="Specimens", side=2, line=3.5, cex=2)
+mtext(text="Longitud (cm)", side=1, line=3, cex=2)
+mtext(text="Especímenes", side=2, line=3.5, cex=2)
 
-legend(x="topright", legend=c("Sepals", "Petals"), fill=c("gray70", "black"), 
+legend(x="topright", legend=c("Sépalos", "Pétalos"), fill=c("gray70", "black"), 
     density=c(NA, 30), pt.cex=2, border=c("gray40", "black"), cex=2)
     
     
-# En esta primera versión hay un obvio problema con el titulo en el eje de
-# las y. Para corregirlo podemos utilizar el argumento *mar* en la función *par*.
+# En esta primera versión hay un problema evidente con el título del eje de las
+# y: se sale de la figura. Para corregirlo usamos el argumento *mar* de *par*,
+# que define el ancho de los cuatro márgenes.
 
 # Segunda versión:
+par.viejo <- par(no.readonly = TRUE) # Guarda los parámetros actuales para
+                                     # poder restaurarlos después
+
 par(mar = c(5, 5, 4, 2), family="mono") # Esta es la única línea que es diferente
 
 hist(iris$Sepal.Length, breaks=seq(0, 8, 0.5), col="gray70", border="gray40", 
@@ -225,21 +234,34 @@ axis(side=2, at=seq(0, 40, 5), cex.axis=1.5, cex.axis=2, lwd=2, las=1)
 mtext(text="Length (cm)", side=1, line=3, cex=2)
 mtext(text="Specimens", side=2, line=3.5, cex=2)
 
-legend(x="topright", legend=c("Sepals", "Petals"), fill=c("gray70", "black"), 
+axis(side=1, at=seq(0, 8, 1), cex.axis=2, lwd=2, las=1)
+axis(side=2, at=seq(0, 40, 5), cex.axis=2, lwd=2, las=1)
+
+mtext(text="Longitud (cm)", side=1, line=3, cex=2)
+mtext(text="Especímenes", side=2, line=3.5, cex=2)
+
+legend(x="topright", legend=c("Sépalos", "Pétalos"), fill=c("gray70", "black"), 
     density=c(NA, 30), pt.cex=2, border=c("gray40", "black"), cex=2)
 
+par(par.viejo) # Restaura los parámetros gráficos originales. Conviene hacerlo
+               # siempre que se modifican con *par*, porque los cambios se
+               # quedan pegados para TODAS las figuras siguientes.
 
 
 ### D. Abrir múltiples ventanas y partir una ventana gráfica ###################
 
-## 1. Como abril múltiples ventanas ##
+## 1. Cómo abrir múltiples ventanas ##
 
 # Si no hay una ventana gráfica activa (graphical device), una función gráfica
 # crea una ventana antes de hacer un grafico. 
 plot(iris$Petal.Length ~ iris$Petal.Width, pch=19)
 
-# Para abrir más de una ventana gráfica se puede utilizar la función *X11*
-X11()
+# Para abrir más de una ventana gráfica se usa una función que depende del
+# sistema: *X11()* en Linux, *quartz()* en Mac y *windows()* en Windows. La
+# función *dev.new()* elige sola la que corresponda, y es la más portable.
+# Va comentado porque no hace nada útil al correr el archivo por lotes:
+
+# dev.new()
 plot(iris$Sepal.Length, iris$Sepal.Width, pch=19, col="red")
 
 
@@ -254,6 +276,8 @@ plot(iris$Sepal.Length, iris$Sepal.Width, pch=19, col="red")
 par(mfrow=c(2,1))
 plot(iris$Petal.Length ~ iris$Petal.Width, pch=19)
 plot(iris$Sepal.Length, iris$Sepal.Width, pch=19, col="red")
+
+par(mfrow=c(1,1)) # Regresa a un solo panel
 
 
 ## 3. Crear una ventana con múltiples paneles con *layout* ##
@@ -276,7 +300,7 @@ plot(iris$Sepal.Length, iris$Petal.Length, pch=19, cex.lab=1.5, cex.axis=1.5,
     xlab="Sepal length (cm)", ylab="Petal length (cm)")
 plot(iris$Sepal.Length, iris$Petal.Width, pch=19, cex.lab=1.5, cex.axis=1.5, 
     xlab="Sepal length (cm)", ylab="Petal width (cm)")
-plot(iris$Sepal.Length, iris$Petal.Width, pch=19, type="n", axes=F, bty="n", 
+plot(iris$Sepal.Length, iris$Petal.Width, pch=19, type="n", axes=FALSE, bty="n", 
     xlab="", ylab="")
     
 
@@ -292,7 +316,7 @@ plot(iris$Sepal.Length, iris$Petal.Length, pch=19, cex.lab=1.5, cex.axis=1.5,
     xlab="Sepal length (cm)", ylab="Petal length (cm)")
 plot(iris$Sepal.Length, iris$Petal.Width, pch=19, cex.lab=1.5, cex.axis=1.5, 
     xlab="Sepal length (cm)", ylab="Petal width (cm)")
-plot(iris$Sepal.Length, iris$Petal.Width, pch=19, type="n", axes=F, bty="n", 
+plot(iris$Sepal.Length, iris$Petal.Width, pch=19, type="n", axes=FALSE, bty="n", 
     xlab="", ylab="")
 mtext("Sepal length", line=-3, cex=1.5)
 mtext("versus", line=-5, cex=1.5)
@@ -309,7 +333,7 @@ plot(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Petal.Length)
 
 
-# Que tal si queremos hacer que el un panel sea "contenido" por el otro
+# ¿Y si queremos que un panel quede "contenido" por el otro?
 div <- matrix(c(1,1,2,1), nrow=2, ncol=2)
 div
 
@@ -328,6 +352,8 @@ layout.show(2)
 plot(iris$Sepal.Length, iris$Sepal.Width)
 plot(iris$Sepal.Length, iris$Petal.Length)
 
+layout(1) # Regresa a un solo panel
+
 
 
 
@@ -337,47 +363,45 @@ plot(iris$Sepal.Length, iris$Petal.Length)
 # enviar un gráfico a un archivo abierto (ambos son tipos de "graphical devices").
 
 # como *X11()* abre ventanas, hay varias funciones que abren varios tipos de 
-# archivos: *jpeg*, *png*, *tiff*, *bmp*, *pdf*, *postcript*.
+# archivos: *jpeg*, *png*, *tiff*, *bmp*, *pdf*, *postscript*.
 
 
 # Ejemplo utilizando *pdf*
 help(pdf)
 
 
-getwd() # ver cual es el directorio de trabajo
+getwd() # Ver cuál es el directorio de trabajo
 
-# Utilizar *getwd* o las opciones en la barra de R para asignar el directorio
-# de trabajo que se quiere utilizar
+# Los archivos van a la carpeta "salidas", que se crea aquí si no existe:
+dir.create("salidas", showWarnings = FALSE)
 
 
 ## Primera versión ##
 # Paso 1. Abrir el archivo:
-pdf(file="SepalLenght_vs_SepalWidth.pdf", width = 9, height = 7) 
+pdf(file="salidas/petalo_largo_vs_ancho.pdf", width = 9, height = 7) 
 
 # Paso 2. Crear la figura en el archivo
 plot(iris$Petal.Length ~ iris$Petal.Width, cex=3, pch=21, col="black", bg="grey",
-    main="Plot of Petal Length vs. Petals Width", xlab="Petal Width", 
-    ylab="Petal Length", cex.lab=1.5, cex.axis=1.5, bty="l", las=1)
+    main="Largo del pétalo contra ancho del pétalo", xlab="Ancho del pétalo", 
+    ylab="Largo del pétalo", cex.lab=1.5, cex.axis=1.5, bty="l", las=1)
 
-# Paso 3. Cerrar el archivo
+# Paso 3. Cerrar el archivo. Si se te olvida este paso, el archivo queda
+# incompleto y las figuras siguientes se siguen escribiendo en él:
 dev.off() 
 
 
 
 ## Segunda versión ##
-# En esta versión hemos hecho la figura en formato png de tamaño grande y de buena calidad
-png(filename="SepalLenght_vs_SepalWidth.png", width=480*13, height=480*10, 
-    pointsize=12*1.5, res=600) 
+# En esta versión hacemos la figura en formato png, de buena calidad para
+# imprimir. Con *res* se define la resolución en puntos por pulgada, y las
+# dimensiones se dan en pixeles: 7 x 5 pulgadas a 300 ppp son 2100 x 1500.
+png(filename="salidas/petalo_largo_vs_ancho.png", width=7*300, height=5*300, 
+    pointsize=12, res=300) 
 
 plot(iris$Petal.Length ~ iris$Petal.Width, cex=3, pch=21, col="black", bg="grey",
-    main="Plot of Petal Width vs. Petals Length", xlab="Petal Width", 
-    ylab="Petal Length", cex.lab=1.5, cex.axis=1.5, bty="l", las=1)
+    main="Largo del pétalo contra ancho del pétalo", xlab="Ancho del pétalo", 
+    ylab="Largo del pétalo", cex.lab=1.5, cex.axis=1.5, bty="l", las=1)
 
 dev.off() 
 
-
-
-
-
-
-
+list.files("salidas/") # Confirma que los dos archivos se crearon

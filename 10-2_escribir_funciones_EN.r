@@ -1,10 +1,10 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### EXERCISE 10-2: Writing your own functions                                ### 
-###                                                                                                                                                   ###
-### Unida de Servicios Bioinformáticos                                                                                           ###
-### Instituto Nacional de Medicina Genómica                                                                                 ###
-### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
+### EXERCISE 10-2: Writing your own functions                                ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 
@@ -18,35 +18,44 @@ mode(L1)
 length(L1)
 str(L1)
 
-# vist and study the help page for function "lapply"
+# Visit and study the help page for function "lapply"
 ?lapply
 
-# use function "lapply" to determine if each element in L1 is larger than 2.
-# Write a function and use it as argument "FUN" in "lapply". The result
-# should be a list of the same the same length as L1. 
+# Use function "lapply" to determine whether each element in L1 is larger
+# than 2. Write your own function and use it as argument "FUN" in "lapply". The
+# result should be a list of the same length as L1.
 
 
 ## TASK 2 ##
-# Define your working directory using function "setwd". Verify the working 
-# directory using function "getwd".
-setwd("C:/_transfer/R_Basics_Workshop/St_Louis_May_2016/Drafts/Day2") #this is the working directory at Ivan's laptop
+# Define your working directory using function "setwd". Verify it with "getwd".
+# The path is different on every computer, so this line is commented out:
+# setwd("/path/to/your/R_Basics_workshop")
 getwd()
 
-# Use function "read.csv" to create a data frame called "Nicaragua.data" with the 
-# data in file "NicaraguaData.csv" (available in the workshop website). 
-Nicaragua.data <- read.csv("NicaraguaData.csv", sep = ",", header=T)
-#examine some properties of the resulting dataframe 
-head(Nicaragua.data)
-str(Nicaragua.data)
+## NOTE: earlier versions of this exercise used a Nicaragua plant-checklist file
+## that is not part of this repository. It now uses the Drosophila expression
+## table in "Datasets", which has the same shape for this purpose: many rows,
+## each belonging to one of a few groups.
 
-# use function "tapply" to determine the number of species in each genus in Nicaragua.data,
-# write a function and use it as argument "FUN" in "tapply". If you need to, get guidance
-# from EXAMPLE 3 in presentation on "writing your own functions".
+# Your working directory must be the workshop folder (the one that contains
+# "Datasets").
+expr <- read.table("Datasets/rpkm_clase.tab", header = TRUE, sep = "\t")
+
+# examine some properties of the resulting data frame
+head(expr)
+str(expr)
+
+# Use function "tapply" to determine the number of genes on each chromosome in
+# 'expr'. Write your own function and use it as argument "FUN" in "tapply". If
+# you need guidance, look at EXAMPLE 3 in presentation 10-1.
 
 
 ## TASK 3 ##
-# See EXAMPLE 4 in presentation on "writing your own functions". Modify the function
-# "my.twosam" to yield a p-value, in addition to the t-value.
+# See EXAMPLE 2 in presentation 10-1. Modify the function "my.twosam" so that it
+# returns a p-value in addition to the t-value.
+# Hint: a function can only return ONE object, so you will need to put both
+# values into a list or a named vector. The degrees of freedom you need are
+# n1 + n2 - 2, and the function that turns a t-value into a p-value is 'pt'.
 
 
 ## TASK 4 ##
@@ -84,10 +93,13 @@ my.second.ricker.fun <- function(nzero, r, es, K, time)
 }
 
 #use "my.second.ricker.fun"
-for(j in 1:1000)
+# Every call draws a new set of random growth rates, so every run looks
+# different. 1000 runs with a pause of 0.1 s each would take almost two minutes,
+# so we use 20 here and only pause when there is somebody watching.
+for(j in 1:20)
 {
 	my.second.ricker.fun(nzero=1, r=0.1, es=0.5, K=30, time=100)
-	Sys.sleep(0.1)
+	if (interactive()) Sys.sleep(0.1)
 }
 
 
@@ -109,7 +121,7 @@ for(j in 1:1000)
 # dynamics of a population. Write code to determine the number of iterations in 
 # which the population went extinct (i.e., reached population size near zero).
 # Note that the function produces real numbers, which could make sense when measuring
-# population size in certain units (e.g., biomass), but can be arbitraritly small.
+# population size in certain units (e.g., biomass), but can be arbitrarily small.
 # Therefore, you will need to define a population size threshold below which extinction
 # occurs. 
 
@@ -120,137 +132,15 @@ for(j in 1:1000)
 # iterations and plot the population dynamics of each iteration.
 
 
-
 ################################################################################
-################################################################################
-################################################################################
-################################################################################
-### TASK ANSWERS ###############################################################
-################################################################################
-################################################################################
-################################################################################
+### SOLUTIONS ##################################################################
 ################################################################################
 
-## TASK 1 ##
-#sorry, no answer this time
-
-## TASK 2 ##
-#sorry, no answer this time
-
-## TASK 3 ##
-#sorry, no answer this time
-
-## TASK 4 ##
-#you already hav the answer
-
-## TASK 5 ##
-#create "my.second.ricker.fun"
-my.second.ricker.fun <- function(nzero, r, es, K, time)
-{
-	N <- numeric(time+1)
-	N[1] <- nzero
-	r.es <- rnorm(time, r, es)
-	for(i in 1:time)
-	{
-		N[i+1] <- N[i]*exp(r.es[i]*(1 - (N[i]/K)))
-	}
-	Time <- 0:time
-	plot(Time, N, type="l", xlim=c(0, time), ylim=c(0,K+10), cex.axis=1.5, 
-	    cex.lab=1.5, bty="n", lwd=2)
-	abline(h=K, lty=3, col="red")
-	return(N)
-}
-
-
-## TASK 6 ##
-my.results.N <- matrix(NA, 1000,101)
-for(j in 1:1000)
-{
-	my.results.N[j,] <- my.second.ricker.fun(nzero=1, r=0.1, es=0.5, K=30, time=100)
-	#Sys.sleep(0.1)
-}
-#examine the results
-my.results.N[1:5, 1:5]
-
-plot(0:100, my.results.N[1,], type="n", ylim=range(my.results.N), xlab="Time", ylab="Population size", cex.axis=1.5, cex.lab=1.5, bty="n")
-for(i in 1:1000)
-{
-	points(0:100, my.results.N[i,], type="l", ylim=range(my.results.N))
-}
-abline(h=30, lty=3, col="red")
-
-
-## TASK 7 ##
-#define a population size threshold, below which a population is considered extinct,
-#say 0.001
-extinction.threshold <- 0.001
-#create a vector that will capture a value of 1 when a population goes extinct and zero otherwise
-extinct <- rep(NA, times=nrow(my.results.N))
-#use a loop to determine which populations went extinct
-for(i in 1:nrow(my.results.N))
-{
-	extinct[i] <- (sum(my.results.N[i,]<=extinction.threshold))>0
-}
-#examine the results
-summary(extinct)
-sum(extinct)
-#determine the rows of "my.results.N" that correspond to populations that went extinct
-which(extinct)
-#plot the population size through time for the cases in which the population went extinct
-plot(0:100, my.results.N[which(extinct)[1],], type="l", xlab="Time", ylab="Population size", cex.axis=1.5, cex.lab=1.5, bty="n")
-abline(h=extinction.threshold, lty=3, col="red")
-plot(0:100, my.results.N[which(extinct)[2],], type="l", xlab="Time", ylab="Population size", cex.axis=1.5, cex.lab=1.5, bty="n")
-abline(h=extinction.threshold, lty=3, col="red")
-
-
-## TASK 8 ##
-The model we will create includes the following parameters:
-# "nzero" is the initial population size
-# "r" is the mean population growth rate (again, population growth rate is 
-#  assumed to vary according to a normal distribution)
-# "es" is the standard deviation of population growth rate, thus representing 
-#  the magnitude of environmental stochasticity 
-# "K" is the mean of the carrying capacity
-# "Ks" stochastic variation in carrying capacity "K" through time
-# "time" is the is the total number of time units over which the dynamics of the 
-#  population are modeled
-
-#create "my.third.ricker.fun" according to the model above
-my.third.ricker.fun <- function(nzero, r, es, K, Ks, time)
-{
-	N <- numeric(time+1)
-	N[1] <- nzero
-	r.es <- rnorm(time, r, es)
-	K.es <- rnorm(time, K, Ks)
-	for(i in 1:time)
-	{
-		N[i+1] <- N[i]*exp(r.es[i]*(1 - (N[i]/K.es)))
-	}
-	Time <- 0:time
-	plot(Time, N, type="l", xlim=c(0, time), ylim=c(0,K+10), cex.axis=1.5, 
-	    cex.lab=1.5, bty="n", lwd=2)
-	abline(h=K, lty=3, col="red")
-	return(N)
-}
-
-#try out the the function
-my.third.ricker.fun(nzero=1, r=0.1, es=0.5, K=30, Ks=2, time=100)
-
-#run 100 iterations 
-R.N <- matrix(NA, 1000,101)
-for(j in 1:1000)
-{
-	R.N[j,] <- my.third.ricker.fun(nzero=1, r=0.1, es=0.5, K=30, Ks=2, time=100)
-	#Sys.sleep(0.1)
-}
-#examine the results
-R.N[1:5,1:5]
-
-#plot the population dynamics of each iteration
-plot(0:100, R.N[1,], type="n", ylim=range(R.N), xlab="Time", ylab="Population size", cex.axis=1.5, cex.lab=1.5, bty="n")
-for(i in 1:1000)
-{
-	points(0:100, R.N[i,], type="l", ylim=range(my.results.N))
-}
-abline(h=30, lty=3, col="red")
-
+## The solutions to this exercise live in a separate file:
+##
+##     soluciones/10-2_escribir_funciones_EN_solutions.r
+##
+## Try it on your own first and use that file afterwards to check your work. It
+## re-runs this exercise by itself, so you can open it in a clean session:
+##
+##     source("soluciones/10-2_escribir_funciones_EN_solutions.r")

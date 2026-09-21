@@ -1,9 +1,9 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### PRESENTATION 9-1: Las funciones apply de R                               ###
+### CLASE 9-1: Las funciones apply de R                                      ###
 ###                                                                          ###
-### Unida de Servicios Bioinformáticos                                       ###
-### Instituto Nacional de Medicina Genómica                                  ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
 ### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
@@ -12,7 +12,7 @@
 # funciones en matrices, data frames, arrays y listas.
 
 # Con esta familia de funciones podemos automatizar tareas complejas usando 
-# poca líneas de código y es una de las características distintivas de R como 
+# pocas líneas de código; es una de las características distintivas de R como 
 # lenguaje de programación.
 
 # Las funciones de la familia apply son:
@@ -30,8 +30,8 @@
 
 ######################## apply ########################
 
-# La funcion apply ejecuta la funcion "FUN", sobre todos las columnas 
-# (MARGIN =2) o renglones (MARGIN = 1) de una matriz.
+# La función apply ejecuta la función "FUN" sobre todas las columnas 
+# (MARGIN = 2) o los renglones (MARGIN = 1) de una matriz.
 
 # Uso:
 #
@@ -72,49 +72,58 @@ apply(X = matriz, MARGIN = 2, FUN = sum)
 ### Ejemplo datos genómicos
 
 ### PREPARACIÓN DE DATOS: Comencemos por cargar unos datos de expresión de 
-# ENSEMBLE de Drosophila Los renglones son genes y hay información de cuatro 
-# tiempos (2, 6, 8 y 10 hrs) y otros metadatos.
+# Ensembl para Drosophila. Los renglones son genes y hay información de cuatro 
+# tiempos (2, 6, 8 y 10 h) además de otros metadatos.
 
-data <- read.table("Datasets/rpkm_clase.tab", header = TRUE, sep="\t")
+## IMPORTANTE: tu directorio de trabajo debe ser la carpeta del taller, es
+## decir, la que contiene la carpeta "Datasets". Compruébalo con getwd().
 
-head(data)
+# OJO con el nombre: en R ya existe una función que se llama 'data', así que
+# llamarle 'data' a un objeto es mala idea aunque técnicamente funcione. Aquí
+# usamos 'expr' para no pisarla.
+expr <- read.table("Datasets/rpkm_clase.tab", header = TRUE, sep="\t")
+
+head(expr)
+dim(expr)
 
 # Filtramos los datos para quedarnos solo con los genes que tienen un RPKM mayor
 # a 10 y luego generamos una matriz con los datos de expresión únicamente.
 
-expressed <- subset(data, (rpkm2 > 10 & rpkm6 > 10 & rpkm8 > 10 & rpkm10 > 10))
-#expressed$chr <- as.character(expressed$chr)
+expressed <- subset(expr, rpkm2 > 10 & rpkm6 > 10 & rpkm8 > 10 & rpkm10 > 10)
 head(expressed)
+nrow(expressed) # Cuántos genes pasaron el filtro
 
 
-rpkm <- cbind(expressed$rpkm2, expressed$rpkm6, expressed$rpkm8, expressed$rpkm10)
+rpkm <- as.matrix(expressed[, c("rpkm2", "rpkm6", "rpkm8", "rpkm10")])
+colnames(rpkm) <- c("t2", "t6", "t8", "t10")
 
 head(rpkm)
 is.matrix(rpkm)
+dim(rpkm)
 
 
-# Para obtener la media de la expresion para cada gene, a traves de los cuatro 
+# Para obtener la media de la expresión de cada gen a través de los cuatro
 # tiempos:
 
-apply(rpkm, 1, mean) ##per row
+apply(rpkm, 1, mean) ## por renglón (un promedio por gen)
 
-# para obtener la media de la expresion para cada tiempo, sumando la expresion
-# de todos los genes:
+# Para obtener la media de la expresión en cada tiempo, a través de todos los
+# genes:
 
-apply(rpkm, 2, mean) ##per column
+apply(rpkm, 2, mean) ## por columna (un promedio por tiempo)
 
 
-# podemos utilizar estos resultados para hacer una grafica, o visualizar los 
-# datos de alguna manera
+# Podemos usar estos resultados para hacer una gráfica:
 
-hist( apply(rpkm, 1, mean), 
-	xlab = "Nivel de expresion", 
-	ylab = "Numero de genes",
-	main = "Distribucion de la expresion promedio",
-	breaks=seq(min(apply(rpkm, 1, mean)), 
-				max(apply(rpkm, 1, mean)), 
-				length.out = 50)
-	)
+# Conviene calcular una sola vez lo que se va a usar varias veces, en lugar de
+# repetir 'apply(rpkm, 1, mean)' tres veces dentro de la misma llamada:
+media.por.gen <- apply(rpkm, 1, mean)
+
+hist(media.por.gen,
+	xlab = "Nivel de expresión",
+	ylab = "Número de genes",
+	main = "Distribución de la expresión promedio",
+	breaks = seq(min(media.por.gen), max(media.por.gen), length.out = 50))
 
 
 ######################## lapply ########################
@@ -171,11 +180,10 @@ matriz[1]
 ### Ejemplo con datos genómicos
 
 rpkm.df <- as.data.frame(rpkm)
-names(rpkm.df) <- c("t2", "t6", "t8", "t10")
 head(rpkm.df)
 
 # Podemos usar una función definida por nosotros dentro de las funciones *apply*.
-# Quiero agregarle 5 al valor de expresion de todos los genes del tiempo 2
+# Quiero sumarle 5 al valor de expresión de todos los genes del tiempo 2:
 head(rpkm.df$t2)
 lapply(head(rpkm.df$t2), function(x){x+5} )
 
@@ -189,7 +197,7 @@ lapply(head(rpkm.df$t2), function(x){x+5} )
 #
 #		sapply(X, FUN, ...)
 #
-# Arguments:
+# Argumentos:
 # -X: un vector o un objeto
 # -FUN: Función que se va a aplicar a cada elemento de X
 
@@ -215,65 +223,80 @@ fcars
 
 ### Ejemplo con datos genómicos 1:
 
-# Quiero eliminar el prefijo "FB" del id de flybase para cada uno de los genes.
+# Quiero eliminar el prefijo "FB" del id de FlyBase de cada gen.
 
-lapply(data$flybase_id, function(x){ sub("FB", "", x) })
+# Son casi 15,000 genes, así que nos quedamos con los primeros 6 para no llenar
+# la pantalla. Quita el 'head' cuando quieras verlo completo.
+ids <- head(expr$flybase_id)
+ids
 
-sapply(data$flybase_id, function(x){ sub("FB", "", x) })
+lapply(ids, function(x){ sub("FB", "", x) })   # devuelve una LISTA
 
-sapply(data$flybase_id, function(x){ sub("FB", "", x) }, simplify = FALSE)
+sapply(ids, function(x){ sub("FB", "", x) })   # devuelve un VECTOR con nombres
+
+sapply(ids, function(x){ sub("FB", "", x) }, simplify = FALSE) # como lapply
+
+# Para este caso concreto no hacía falta ningún apply: 'sub' ya está
+# vectorizada y opera sobre todo el vector de un golpe. Suele ser más rápida y
+# más clara:
+head(sub("FB", "", expr$flybase_id))
 
 ### Ejemplo con datos genómicos 2:
 
-# Queremos obtener la expresion promedio de los genes por cromosoma para cada
+# Queremos obtener la expresión promedio de los genes por cromosoma, para cada
 # uno de los tiempos.
 
-head(data)
+head(expr)
 
 # Necesitamos:
-# 1. Obtener todos los genes de un cromosoma especifico.
-# 2. Obtener el promedio de la expresion para esos genes en el tiempo 1 (2 hrs)
-# 3. Obtener el promedio de la expresion para esos genes en el tiempo 2 (6 hrs)
-# 4. Obtener el promedio de la expresion para esos genes en el tiempo 3 (8 hrs)
-# 5. Obtener el promedio de la expresion para esos genes en el tiempo 4 (10 hrs)
+# 1. Obtener todos los genes de un cromosoma específico.
+# 2. Obtener el promedio de expresión de esos genes en el tiempo 1 (2 h)
+# 3. Obtener el promedio de expresión de esos genes en el tiempo 2 (6 h)
+# 4. Obtener el promedio de expresión de esos genes en el tiempo 3 (8 h)
+# 5. Obtener el promedio de expresión de esos genes en el tiempo 4 (10 h)
 # Repetir de 1 a 5 para todos los cromosomas.
 
-# Primero vamos a generar una funcion que obtenga el promedio de expresión por
+# Primero vamos a generar una función que obtenga el promedio de expresión por
 # cromosoma.
 
 cromosoma <- "chr4"
-genes.cromosoma <- subset(data, chr == cromosoma)
-tiempos <- as.matrix(cbind(genes.cromosoma$rpkm2, genes.cromosoma$rpkm6, genes.cromosoma$rpkm8, genes.cromosoma$rpkm10))
+genes.cromosoma <- subset(expr, chr == cromosoma)
+tiempos <- as.matrix(genes.cromosoma[, c("rpkm2", "rpkm6", "rpkm8", "rpkm10")])
 
 
 dim(tiempos)
 head(tiempos)
 
 
-# Para obtener la exprsion promedio por columna.
+# Para obtener la expresión promedio por columna:
 
 mean.expr <- apply(X = tiempos, MARGIN = 2, FUN = mean)
 mean.expr
 
-# Creemos una funcion con las instrucciones que acabamos de escribir
+# Creemos una función con las instrucciones que acabamos de escribir:
 
-gene_mean_expr <- function(x, data){
-	genes.cromosoma <- subset(data, chr == x)
-	tiempos <- as.matrix(cbind(genes.cromosoma$rpkm2, genes.cromosoma$rpkm6, genes.cromosoma$rpkm8, genes.cromosoma$rpkm10))
+gene_mean_expr <- function(x, datos){
+	genes.cromosoma <- subset(datos, chr == x)
+	tiempos <- as.matrix(genes.cromosoma[, c("rpkm2", "rpkm6", "rpkm8", "rpkm10")])
 	mean.expr <- apply(X = tiempos, MARGIN = 2, FUN = mean)
 	return(mean.expr)
 }
 
-gene_mean_expr("chr4", data)
+gene_mean_expr("chr4", expr)
 
-# Hagamoslo para todos los cromosomas utilizando un apply
+# Hagámoslo para todos los cromosomas utilizando un apply
 
-cromosomas <- as.character(unique(data$chr))
+cromosomas <- unique(expr$chr)
+cromosomas
 
-lapply(cromosomas, gene_mean_expr, data = data)
-sapply(cromosomas, gene_mean_expr, data = data)
+lapply(cromosomas, gene_mean_expr, datos = expr) # una lista
+sapply(cromosomas, gene_mean_expr, datos = expr) # una matriz
 
-class(sapply(cromosomas, gene_mean_expr, data = data))
+# Nota la diferencia: 'sapply' pudo simplificar el resultado a una matriz
+# porque todos los elementos de la lista tienen la misma longitud (4). Si no la
+# tuvieran, 'sapply' devolvería la lista sin simplificar.
+class(lapply(cromosomas, gene_mean_expr, datos = expr))
+class(sapply(cromosomas, gene_mean_expr, datos = expr))
 
 
 ######################## tapply ########################
@@ -305,4 +328,3 @@ tapply(expressed$rpkm2, expressed$chr, mean)
 
 tapply(expressed$flybase_id, list(expressed$chr, expressed$strand), length)
 tapply(expressed$rpkm2, list(expressed$chr, expressed$strand), mean)
-

@@ -1,85 +1,98 @@
 ################################################################################
-### R BASICS WORKSHOP                                                					          ###
-### EJERCICIO 4-2: ABRIR Y GUARDAR ARCHIVOS                    		                      ###
-###                                                               						                      ###
-### Unida de Servicios Bioinform·ticos    						                      ###
-### Instituto Nacional de Medicina GenÛmica                                               			          ###
-### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
+### R BASICS WORKSHOP                                                        ###
+### EJERCICIO 4-2: Abrir y guardar archivos                                  ###
+###                                                                          ###
+### M√©todos de biolog√≠a computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ## OBJETIVO:
-## En este ejercicio, vamos a practicar tablas de datos en R y como guardar 
-## en archivos.
+## Practicar c√≥mo abrir tablas de datos en R y c√≥mo guardarlas en archivos.
+
+## DIRECTORIO DE TRABAJO:
+## Este ejercicio lee archivos de la carpeta "Datasets". Tu directorio de
+## trabajo debe ser la carpeta del taller (la que contiene "Datasets").
 
 
 getwd()
 # Con este comando, identificamos el directorio de trabajo actual. Esta es la
 # carpeta en el ordenador que R utiliza por defecto para leer y escribir archivos.
-# Esto significa que si no proporcionas una direcciÛn a una carpeta distinta 
-# al abrir/guardar archivos, R usar· el directorio de trabajo.
+# Esto significa que si no proporcionas una direcci√≥n a una carpeta distinta 
+# al abrir/guardar archivos, R usar√° el directorio de trabajo.
 
 
-# Para cambiar el directorio de trabajo, se puede usar el men˙ "Misc" en Mac, la pestaÒa de "archivo" 
-# en una PC, o la pestaÒa "sesiÛn" en Rstudio.
+# Para cambiar el directorio de trabajo, se puede usar el men√∫ "Misc" en Mac, la pesta√±a de "archivo" 
+# en una PC, o la pesta√±a "sesi√≥n" en Rstudio.
 
-# Alternativamente, puede utilizar la funciÛn 'setwd'. Para dar una direcciÛn a 
+# Alternativamente, puede utilizar la funci√≥n 'setwd'. Para dar una direcci√≥n a 
 # esta (y otras funciones), debe proporcionar una cadena de caracteres (texto) 
 # similar a esto: "Carpeta1/carpeta2/carpeta3/"
 
 ## TAREA 1 ## 
-## Cambia el directorio de trabajo en su sesiÛn de R a una carpeta que desees
+## Cambia el directorio de trabajo en su sesi√≥n de R a una carpeta que desees
 ## usar.
 
 
-# La funciÛn principal para abrir una tabla de datos en R es "read.table". Los 
-# archivos que pueden ser abiertos por esta funciÛn son archivos de texto, por 
+# La funci√≥n principal para abrir una tabla de datos en R es "read.table". Los 
+# archivos que pueden ser abiertos por esta funci√≥n son archivos de texto, por 
 # lo general con extensiones '.txt', '.csv' o '.dat'.
 
-## TAREA 2 ## 
-## Use de la funciÛn "read.table", abrir los archivos 
-## 'data_neotropicooccidente_col.txt' y 'data_neotropicooccidente_igm2.txt'.
-## nombre de los objetos resultantes como "col" y "igm2". tenga en cuenta que 
-## estos son archivos de texto separados por comas, y que la primera fila 
-# representa los nombres de columnas.
+# La funci√≥n principal para abrir una tabla de datos es "read.table". Estos dos
+# archivos son de texto SEPARADOS POR COMAS y su primera fila trae los nombres
+# de las columnas, as√≠ que hay que dec√≠rselo con 'sep' y 'header':
 
-## TAREA 3 ## 
-## Compruebe el n˙mero de columnas y filas de los objetos que acaba de crear al
-## abrir los archivos. Adem·s, compruebe quÈ tipo de objeto son "col" y "igm2".
+col  <- read.table("Datasets/data_neotropicooccidente_col.txt",
+                   header = TRUE, sep = ",")
+igm2 <- read.table("Datasets/data_neotropicooccidente_igm2.txt",
+                   header = TRUE, sep = ",")
 
-## Si ve que hay sÛlo una columna, eso quiere decir que abriÛ el archivo 
-## incorrectamente.
+## TAREA 2 ##
+## Compruebe el n√∫mero de columnas y filas de los objetos que acaba de abrir, y
+## qu√© tipo de objeto son "col" y "igm2". Use 'dim' y 'class'.
+## Si ve que hay s√≥lo UNA columna, es que el archivo se abri√≥ mal: casi siempre
+## es porque falta el argumento 'sep' o porque tiene el valor equivocado.
+
+## TAREA 3 ##
+## Compare estas dos l√≠neas y explique la diferencia. La segunda es la correcta.
+try(head(read.table("Datasets/data_neotropicooccidente_igm2.txt", header = TRUE)))
+head(igm2)
 
 
 plot(igm2$PETmin, igm2$TOPOG)
-# Ahora que los archivos est·n abiertos, se pueden hacer cosas con ellos. Por 
-# ejemplo, este cÛgido hace una figura de la evapotranspiraciÛn potencial mÌnima 
-# (PETmin) contra la topografÌa en el NeotrÛpico.
+# Ahora que los archivos est√°n abiertos, se pueden hacer cosas con ellos. Por 
+# ejemplo, este c√≥gido hace una figura de la evapotranspiraci√≥n potencial m√≠nima 
+# (PETmin) contra la topograf√≠a en el Neotr√≥pico.
 
+# Esta figura, en cambio, muestra la variaci√≥n latitudinal en PETmin.
 plot(igm2$Lat, igm2$PETmin)
-# Esta figura, en cambio, muestra la variaciÛn latitudinal en PETmin.
 
 
-# Ahora, vamos a suponer que desea extraer los residuos de una regresiÛn
+# Ahora, vamos a suponer que desea extraer los residuos de una regresi√≥n
 # Entre PETmin y latitud, y guardarlos en un archivo.
 
+# Esto ejecuta una regresi√≥n polinomial, y luego extrae los residuos en un
+# objeto llamado "lm.residuals"
 lm.results <- lm(igm2$PETmin ~ igm2$Lat + I(igm2$Lat^2))
 lm.residuals <- residuals(lm.results)
-# Esto ejecuta una regresiÛn polinomial, y luego extrae los residuos en un
-# objeto llamado "lm.residuals"
 
 
 ## TAREA 4 ##
-## Utilice la funciÛn 'write.table' para guardar el objeto "lm.residuals"
-## en un archivo de texto separado por tabulaciones en el directorio de trabajo. 
-## Nombre del archivo "regressionresiduals.txt".
+## Utilice la funci√≥n 'write.table' para guardar el objeto "lm.residuals"
+## en un archivo de texto separado por tabuladores, dentro de la carpeta
+## "salidas". Nombre del archivo "regressionresiduals.txt".
 
 
 ## TAREA 5 ## 
-## Abra el archivo 'data_adultliteracy.xslx'. Guardar el contenido del archivo
-## en un objeto de cualquier nombre. Tenga en cuenta aquÌ que el archivo
-## original es un archivo de Excel. Esto significa que primero tiene que 
-## abrirlo con Excel, luego guardar una compia como un archivo de texto, y 
-## finalmente utilizar 'read.table' para abrir el archivo en R.
+## Abra el archivo 'Datasets/data_adultliteracy.xlsx' y guarde su contenido en
+## un objeto de cualquier nombre. Tenga en cuenta que el original es un archivo
+## de Excel; hay dos caminos:
+##  a) Abrirlo con Excel o LibreOffice, guardar una copia como texto separado
+##     por tabuladores o comas, y luego usar 'read.table'.
+##  b) Instalar un paquete que lea .xlsx directamente, por ejemplo:
+##     install.packages("readxl")
+##     library(readxl)
+##     alfab <- read_excel("Datasets/data_adultliteracy.xlsx")
 
 
 ## TAREA 6 ## 
@@ -87,74 +100,16 @@ lm.residuals <- residuals(lm.results)
 ## con sus propios datos.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ################################################################################
-### SOLUCIONES PARA TAREAS #####################################################
+### SOLUCIONES #################################################################
 ################################################################################
 
-## TAREA 1 ##
-setwd('La/DirecciÛn/Va/AquÌ') # Vector numÈrico
-
-
-## TAREA 2 ##
-## Hay tres maneras principales de hacer esto:
-
-## 1
-col <- read.table(file="Data_NeotropicoOccidente_COL.txt", header=TRUE, sep=",")
-igm2 <- read.table(file="Data_NeotropicoOccidente_IGM2.txt", header=TRUE, sep=",")
-
-## 2
-col <- read.table(file=file.choose(), header=TRUE, sep=",")
-igm2 <- read.table(file=file.choose(), header=TRUE, sep=",")
-
-## 3 # Utilizando la direcciÛn de una carpeta en su computadora
-col <- read.table(file="carpeta1/carpeta2/carpeta3/Data_NeotropicoOccidente_COL.txt",
-  header=TRUE, sep=",")
-igm2 <- read.table(file="carpeta1/carpeta2/carpeta3/Data_NeotropicoOccidente_IGM2.txt",
-  header=TRUE, sep=",")
-
-
-## TAREA 3 ##
-dim(col)
-dim(igm2)
-
-class(col)
-class(igm2)
-
-
-## TAREA 4 ##
-## Hay dos maneras principales para hacer esto:
-
-## 1
-write.table(x=lm.residuals, file="RegressionResiduals.txt", sep="\t")
-
-## 2
-write.table(x=lm.residuals, file="folder1/folder2/RegressionResiduals.txt", sep="\t")
-
-
-## TAREA 5 ##
-## No hay soluciones aquÌ, lo siento! :)
-
-
-## TAREA 6 ##
-## No hay soluciones aquÌ, lo siento! :)
+## Las soluciones de este ejercicio est√°n en un archivo aparte:
+##
+##     soluciones/4-2_abrir_guardar_soluciones.r
+##
+## Int√©ntalo t√∫ primero y cons√∫ltalo despu√©s para autoevaluarte. Ese archivo
+## vuelve a correr este ejercicio por su cuenta, as√≠ que puedes abrirlo en una
+## sesi√≥n limpia:
+##
+##     source("soluciones/4-2_abrir_guardar_soluciones.r")

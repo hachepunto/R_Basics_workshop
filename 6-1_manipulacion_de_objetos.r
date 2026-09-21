@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                                                                                            ###
-### PRESENTATION 7-1: MANIPULACIÓN DE OBJETOS - INDEXACIÓN                                   ### 
-###                                                                                                                                                     ###
-### Unida de Servicios Bioinformáticos                                                                                            ###
-### Instituto Nacional de Medicina Genómica                                                                                  ###
-### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
+### R BASICS WORKSHOP                                                        ###
+### CLASE 6-1: Manipulación de objetos: indexación                           ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 
@@ -113,7 +113,7 @@ expression[expression<15 | expression>25]
 
 
 ### C. INDEXACIÓN UTILIZANDO *which* ###########################################
-# Esta función da la posicion de los elementos que cumplen una cierta condición
+# Esta función da la POSICIÓN de los elementos que cumplen una cierta condición
 
 # En que elementos de *expression* el valor es mayor que 15?
 which(expression>15) # IMPORTANTE: Estos no son los elementos de expression sino sus posiciones!
@@ -185,10 +185,15 @@ genes
 
 ### G. INDEXACIÓN DE MATRICES ##################################################
 
-# Abramos un archivo de datos (data_carbondioxideyearlyemissions.txt) para 
-# practicar indexación de matrices. Esto contiene datos de emisiones de CO2
-# por país (columnas) por año (filas).
-CO2 <- read.table(file=file.choose(), header=TRUE, row.names=1, sep="\t")
+# Abramos un archivo de datos (Datasets/data_carbondioxideyearlyemissions.txt)
+# para practicar indexación de matrices. Contiene datos de emisiones de CO2 por
+# país (columnas) por año (filas).
+## IMPORTANTE: tu directorio de trabajo debe ser la carpeta del taller, es
+## decir, la que contiene la carpeta "Datasets". Compruébalo con getwd().
+# Nota: 'row.names=1' le dice a R que la primera columna del archivo no son
+# datos sino los nombres de las filas (aquí, los años).
+CO2 <- read.table(file="Datasets/data_carbondioxideyearlyemissions.txt",
+                  header=TRUE, row.names=1, sep="\t")
 
 dim(CO2)
 class(CO2) # La función *read.table* siempre produce un marco de datos
@@ -229,7 +234,8 @@ CO2[, -100]
 # Las matrices también se pueden indexar por los nombres de las filas o las 
 # columnas
 
-CO2[2010, ] # Esto genera un error porque no hay 2010 filas
+try(CO2[2010, ]) # Error A PROPÓSITO: la matriz no tiene 2010 filas, así que
+                 # R devuelve una fila de NAs o se queja, según el caso.
 CO2["2010", ] # Esto NO genera un error porque estamos haciendo una 
               # indexación de la fila llamada "2010" 
                  
@@ -269,7 +275,7 @@ M
 class(M)
 dim(M)
 
-# Estos pares comandos extraen el mismo elemento
+# Estos pares de comandos extraen el mismo elemento
 M[2, 2] 
 M[7]
 
@@ -294,7 +300,9 @@ M[7]
 
 class(M.df)
 M.df[2,2]
-M.df[7]
+try(M.df[7]) # Error A PROPÓSITO: un marco de datos no se puede indexar por
+             # número de elemento; M.df[7] se interpreta como "la columna 7",
+             # que no existe.
 
 
 # 2. Las columnas (variables) en un marco de datos también se pueden indexar
@@ -307,7 +315,8 @@ M.df[,"var_2"]
 M.df$var_2
 
 M[,"var_2"]
-M$var_2
+try(M$var_2) # Error A PROPÓSITO: *$* no funciona en matrices, solo en marcos
+             # de datos y listas.
 
 
 
@@ -332,9 +341,11 @@ species <- iris$Species
 class(species)
 levels(species)
 
-species <- as.vector(species)
+# Para convertir un factor a texto, 'as.character' es lo idiomático
+# ('as.vector' también funciona, pero dice menos sobre lo que se pretende):
+species <- as.character(species)
 class(species)
-unique(species) # Crea una lista de valores únicos
+unique(species) # Da los valores únicos (sin repeticiones)
 table(species)
 
 # Grafico de la longitud del sépalo y longitud del pétalo de I. setosa y 
@@ -410,21 +421,24 @@ L1[[2]] [L1[[2]]<1]
 
 ### J. INDEXACIÓN DE UN OBJETO 'LM' ############################################
 
-# Abramos un archivo de datos (data_batsenviroamerica.txt) para crear un modelo 
+# Abramos un archivo de datos (Datasets/data_batsenviroamerica.txt) para crear un modelo 
 # lineal y practicar indexación. Este archivo contiene datos de riqueza de 
 # especies de murciélagos en el Nuevo Mundo así como de varias variables 
 # ambientales en celdas de 100 x 100 km.
 
-bat.data <- read.table(file=file.choose(), header=TRUE, sep="\t")
+bat.data <- read.table(file="Datasets/data_batsenviroamerica.txt",
+                       header=TRUE, sep="\t")
 dim(bat.data)
 class(bat.data) 
 
 colnames(bat.data)
 
-length(which(bat.data$richness == 0)) # Haciendo indexación podemos saber 
-                                      # cuantos 0s hay en los datos
-sum(bat.data$richness == 0)
-length(which(bat.data$richness > 0))
+# Estas dos líneas cuentan lo mismo: cuántos ceros hay en los datos.
+length(which(bat.data$richness == 0)) # 'which' da las posiciones, 'length' las cuenta
+sum(bat.data$richness == 0)           # más corto: suma directamente los TRUE
+
+# La segunda forma es la que conviene acostumbrarse a usar.
+sum(bat.data$richness > 0)
 
 
 # Para el resto de análisis vamos a eliminar todas las celdas que tienen 
@@ -466,11 +480,19 @@ model.1$fitted.values[1:10]
 plot(log(bat.data$richness) ~ bat.data$temp_AVG )                   
 points(model.1$fitted.values ~ bat.data$temp_AVG, col="red")                   
 
-install.packages("car") #instala el paquete *car*
-library(car) # Abre el paquete *car*
-avPlots(model=model.1) # Esto produce un grafico de "variables añadidas" o de 
-                       # "residuos parciales" mostrando el efecto de cada variable
+# Para instalar el paquete *car* (solo hace falta una vez):
+# install.packages("car")
 
-?avPlots
+# Este bloque solo corre si *car* ya está instalado, para que el archivo
+# completo pueda ejecutarse aunque falte el paquete:
+if (requireNamespace("car", quietly = TRUE)) {
+  library(car) # Abre el paquete *car*
+  # Esto produce un gráfico de "variables añadidas" o de "residuos parciales",
+  # que muestra el efecto de cada variable controlando por las demás:
+  car::avPlots(model = model.1)
+  # ?avPlots
+} else {
+  message("El paquete 'car' no está instalado; se omite avPlots().")
+}
 
-
+par(mfrow = c(1, 1)) # Deja el dispositivo gráfico como estaba

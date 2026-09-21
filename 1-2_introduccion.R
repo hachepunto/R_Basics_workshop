@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                                					          ###
-### EJERCISIO 1.1: Una muestra de una sesión de R                           			         ###
-###                                                               						                      ###
-### Unida de Servicios Bioinformáticos    						                      ###
-### Instituto Nacional de Medicina Genómica                                               			          ###
-### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
+### R BASICS WORKSHOP                                                        ###
+### EJERCICIO 1-2: Una muestra de una sesión de R                            ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ## OBJECTIVE:
@@ -18,7 +18,7 @@
 
 
 # Para buscar en los manuales en linea, las referencias y otros materiales puedes usar
-help.start()
+# help.start()   # Descomenta esta linea: abre la ayuda de R en tu navegador.
 
 
 # el símbolo '<-' se usa para indicar asignación. También se usa para guardar información
@@ -84,10 +84,9 @@ x*2
 
 # Tambien podemos escribir una sola linea de código que haga múltiples acciones y 
 # guarde la salida. Por ejemplo:
+# Esto crea 50 valores al azar de una distribución normal, luego multiplica cada
+# valor por 2 y finalmente guarda el resultado en un objeto llamado 'y'.
 y <- rnorm(50)*2
-
-# Esto crea 50 valores al azar de una distribución normal, Luego multiplica cada valor
-# por 2 y finalmente guarda el resultado en un objeto llamado 'y'.
 
 # Podemos crear también secuencias de acciones más complicadas, por ejemplo:
 y <- 0.5 + 1.5*x + rnorm(50)
@@ -134,7 +133,6 @@ ls()
 # Para hacer varias gráficas del sin(theta):
 theta <- seq(0, 2*pi, length=100)
 plot(theta, sin(theta))
-par(new=TRUE)
 plot(theta, sin(theta), type="h")
 plot(theta, sin(theta), type="l")
 plot(theta, sin(theta), type="s")
@@ -146,7 +144,7 @@ help(plot)
 
 
 # Para hacer simple aritmética y repetir secuencias escribe:
-c(1:25)
+1:25
 seq(1, 25)
 seq(25, 1, -1)
 seq(1, 25, 2)
@@ -157,7 +155,7 @@ rep(1, 25)
 
 
 # Genera un vector de enteros del 1 al 25:
-n <- c(1:25)
+n <- 1:25
 
 
 # Haz una columna de vectores igual a la raíz cuadrada de n:
@@ -165,7 +163,7 @@ w <- sqrt(n)
 
 
 # Simula alguna respuesta de variables, y despliégalas en una tabla:
-r <- n + rnorm(n) * w
+r <- n + rnorm(length(n)) * w
 data.frame(n, r)
 
 # Ejecuta una regresión lineal, despliega los resultados, crea un scatterplot, y dibuja 
@@ -189,18 +187,19 @@ x <- rbinom(100,1,0.5)
 x
 
 # Luego, guarda el total acumulado de número de caras, grafica los resultados 
-# con pasos (type = "s"):
-c <- cumsum(x)
-plot(c, type="s")
+# con pasos (type = "s"). OJO: no le pongas 'c' de nombre a un objeto; 'c' ya es
+# el nombre de una función de R y confunde a quien lea tu código:
+caras.acum <- cumsum(x)
+plot(caras.acum, type="s")
 
 
 # Tira un dado 1000 veces y mira un resumen:
-fair <- sample(c(1:6), 1000, replace=TRUE)
+fair <- sample(1:6, 1000, replace=TRUE)
 summary(fair)
 
 
 # Tira un dado sesgado 1000 veces y ver un resumen:
-biased <- sample(c(1:6), 1000, replace=TRUE, prob=c(1/12,1/12,1/12,1/4,1/4,1/4))
+biased <- sample(1:6, 1000, replace=TRUE, prob=c(1/12,1/12,1/12,1/4,1/4,1/4))
 summary(biased)
 
 
@@ -232,7 +231,7 @@ plot(x, x^3-3*x, type="l")
 curve(dnorm(x), -3, 3)
 
 # Checa la función de masa de probabilidad de una distribución binomial:
-x <- c(0:100)
+x <- 0:100
 prob <- dbinom(x, 100, 0.5)
 plot(x, prob, type="h")
 
@@ -259,5 +258,3 @@ persp(x,y,f,col="orange")
 
 # Para cambiar el ángulo de visión:
 persp(x, y, f, col="orange", theta=-30, phi=45)
-
-

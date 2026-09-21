@@ -1,16 +1,16 @@
 ################################################################################
-### R BASICS WORKSHOP                                                                    ###
-### PRESENTATION 8-1: CONTROL DE FLUJO                                         ### 
-###                                                                                                 ###
-### Unida de Servicios Bioinform·ticos                                      ###
-### Instituto Nacional de Medicina GenÛmica                                                               ###
-### Website: github.com/hachepunto/R_Basics_workshop                                         ### 
+### R BASICS WORKSHOP                                                        ###
+### CLASE 8-1: Control de flujo                                              ###
+###                                                                          ###
+### M√©todos de biolog√≠a computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ### INTRODUCCION ###############################################################
 
 # En R hay una serie de elementos que te permiten controlar el flujo del c√≥digo.
-# Hay 4 tipos principales maneras de controlar flujo:
+# Hay 4 maneras principales de controlar el flujo:
 
 # 1. Bucles (loops) *for*
 # 2. Bucles (loops) *while*
@@ -24,45 +24,59 @@ help(Control)
 
 
 #########################
-## Un ejemplo pr·ctico ##
+## Un ejemplo pr√°ctico ##
 #########################
 
-# El objetivo del ejemplo es crear un mapa que muestra la distribuciÛn de 
-# especies de ·rboles a travÈs de una parcela de bosque. Cada individuo se 
+# El objetivo del ejemplo es crear un mapa que muestra la distribuci√≥n de 
+# especies de √°rboles a trav√©s de una parcela de bosque. Cada individuo se 
 # representa por un punto, y cada especie por un color diferente.
 
-# Abra una versiÛn de los datos de la Parcela De Din·micas Forestales de Tyson. 
-# Este conjunto de datos contiene informaciÛn sobre la identidad y distribuciÛn 
-# de individuos de ·rboles a travÈs de un ·rea de 25 hect·reas en el Centro de 
-# InvestigaciÛn Tyson cerca de St. Louis, MO. (Los datos han sido algo 
+# Abra una versi√≥n de los datos de la Parcela De Din√°micas Forestales de Tyson. 
+# Este conjunto de datos contiene informaci√≥n sobre la identidad y distribuci√≥n 
+# de individuos de √°rboles a trav√©s de un √°rea de 25 hect√°reas en el Centro de 
+# Investigaci√≥n Tyson cerca de St. Louis, MO. (Los datos han sido algo 
 # aleatorizados. Gracias a Jonathan A. Myers por los datos).
 
-tyson <- read.table(file=file.choose(), header=TRUE, sep="\t")
+## IMPORTANTE: tu directorio de trabajo debe ser la carpeta del taller, es
+## decir, la que contiene la carpeta "Datasets". Compru√©balo con getwd().
 
-# Compruebe que los datos estÈn bien abiertos
+tyson <- read.table(file="Datasets/randomizedtysonforestplotcensus.txt",
+                    header=TRUE, sep="\t")
+
+# Las figuras van a la carpeta "salidas", que se crea aqu√≠ si no existe:
+dir.create("salidas", showWarnings = FALSE)
+
+# Compruebe que los datos est√©n bien abiertos
 dim(tyson)
 head(tyson)
 
 
-# Ahora, vamos a hacer un mapa de la distribuciÛn de las especies de ·rboles en 
+# Ahora, vamos a hacer un mapa de la distribuci√≥n de las especies de √°rboles en 
 # la parcela de bosque
 
-# OPCI”N 1: SIN BUCLES #
+# OPCI√ìN 1: SIN BUCLES #
 
 sp.list <- unique(tyson$spcode)
 colors <- adjustcolor(rainbow(length(sp.list)), alpha.f=0.8)
 
-tiff(filename="TysonForestMap_1.tif", width=10, height=10, units="in", res=300)
+# SOBRE EL FORMATO: la versi√≥n original de esta clase guardaba un TIFF de
+# 10 x 10 pulgadas a 300 ppp. Un TIFF as√≠ son 3000 x 3000 pixeles SIN comprimir,
+# es decir unos 36 MB por figura. Peor a√∫n, el argumento 'compression' se ignora
+# en el dispositivo por defecto de macOS ('quartz'), as√≠ que ah√≠ no hay manera de
+# hacerlo m√°s chico. PNG comprime sin p√©rdida y da el mismo resultado en
+# pantalla, as√≠ que es mejor opci√≥n mientras no te pidan TIFF expl√≠citamente:
+png(filename="salidas/TysonForestMap_1.png", width=10, height=10, units="in",
+    res=300)
 
-  # Crea una gr·fica vacÌa
+  # Crea una gr√°fica vac√≠a
   plot(tyson$gx, tyson$gy, xlab="x", ylab="y", asp=1, type="n", cex.lab=1.5,
        cex.axis=1.5)
 
- # Grafica los ·rboles de la especie "ulmrub"
+ # Grafica los √°rboles de la especie "ulmrub"
   points(tyson$gx[tyson$spcode=="ulmrub"], tyson$gy[tyson$spcode=="ulmrub"],
          pch=16, col=colors[1])
 
-  # Grafica los ·rboles de la especies "lonmaa"
+  # Grafica los √°rboles de la especies "lonmaa"
   points(tyson$gx[tyson$spcode=="lonmaa"], tyson$gy[tyson$spcode=="lonmaa"],
          pch=16, col=colors[2])
 
@@ -201,17 +215,18 @@ tiff(filename="TysonForestMap_1.tif", width=10, height=10, units="in", res=300)
 
 dev.off()
 
-# øCÛmo se deberÌa modificar el cÛdigo anterior para cambiar el tamaÒo de los 
-# sÌmbolos que representan a cada ·rbol?
+# ¬øC√≥mo se deber√≠a modificar el c√≥digo anterior para cambiar el tama√±o de los 
+# s√≠mbolos que representan a cada √°rbol?
 
 
 
-# OPCI”N 2: SI POR FAVOR, NECESITO UN BUCLE! #
+# OPCI√ìN 2: SI POR FAVOR, NECESITO UN BUCLE! #
 
 sp.list <- unique(tyson$spcode)
 colors <- adjustcolor(rainbow(length(sp.list)), alpha.f=0.8)
 
-tiff(filename="TysonForestMap_2.tif", width=10, height=10, units="in", res=300)
+png(filename="salidas/TysonForestMap_2.png", width=10, height=10, units="in",
+    res=300)
 
   plot(tyson$gx, tyson$gy, xlab="x", ylab="y", asp=1, type="n", cex.lab=1.5,
        cex.axis=1.5)
@@ -222,8 +237,12 @@ tiff(filename="TysonForestMap_2.tif", width=10, height=10, units="in", res=300)
 
 dev.off()
 
-# øCÛmo se deberÌa modificar el cÛdigo anterior (con el bucle) para cambiar el 
-# tamaÒo de los sÌmbolos que representan a cada ·rbol?
+# ¬øC√≥mo se deber√≠a modificar el c√≥digo anterior (con el bucle) para cambiar el 
+# tama√±o de los s√≠mbolos que representan a cada √°rbol?
+
+list.files("salidas/")
+# Compara los dos archivos: son id√©nticos, pero el segundo se gener√≥ con 5
+# l√≠neas de c√≥digo en vez de 100.
 
 
 ################################################################################
@@ -233,8 +252,8 @@ dev.off()
 # Un bucle permite repetir un pedazo de c√≥digo m√∫ltiples veces sin tener que 
 # repetirlo.
 
-# *for* es la manera mas com√∫n de construir bucles. Este tipo de bucle repite 
-# un pedazo de c√≥digo un numero pre-determinado de veces.
+# *for* es la manera m√°s com√∫n de construir bucles. Este tipo de bucle repite 
+# un pedazo de c√≥digo un n√∫mero pre-determinado de veces.
 
 
 # La estructura general de un bucle *for* es la siguiente:
@@ -254,7 +273,7 @@ dev.off()
 
 
 #####################
-## Ejemplo f·cil 1 ##
+## Ejemplo f√°cil 1 ##
 #####################
 
 v <- 1:10
@@ -274,7 +293,7 @@ for(i in v)
 
 
 #####################
-## Ejemplo f·cil 2 ##
+## Ejemplo f√°cil 2 ##
 #####################
 
 v <- letters
@@ -288,7 +307,7 @@ for(i in v)
 
 
 #####################
-## Ejemplo f·cil 3 ##
+## Ejemplo f√°cil 3 ##
 #####################
 
 v <- letters
@@ -307,7 +326,7 @@ result
 
 
 #####################
-## Ejemplo f·cil 4 ##
+## Ejemplo f√°cil 4 ##
 #####################
 
 v <- c(1,3,5,2,4)
@@ -325,7 +344,7 @@ result
 
 
 #####################
-## Ejemplo f·cil 5 ##
+## Ejemplo f√°cil 5 ##
 #####################
 
 col.v <- rainbow(100)
@@ -333,6 +352,10 @@ cex.v  <- seq(1, 10, length.out=100)
 
 plot(0:1, 0:1, type="n")
 
+# 'Sys.sleep' hace una pausa en cada vuelta para que se vea aparecer los puntos
+# uno por uno. Solo tiene sentido en una sesi√≥n interactiva: cuando el archivo
+# se corre por lotes nada m√°s lo hace lento, as√≠ que aqu√≠ lo condicionamos con
+# 'interactive()', que devuelve TRUE solo si hay alguien mirando la pantalla.
 for(i in 1:200)
 {
 	print(i)
@@ -340,35 +363,35 @@ for(i in 1:200)
 	points(runif(1), runif(1), pch=16, col=sample(col.v, 1), 
 	    cex=sample(cex.v, 1))
 
-	Sys.sleep(0.1)
+	if (interactive()) Sys.sleep(0.1)
 }
 
 #####################
-## Ejemplo f·cil 6 ##
+## Ejemplo f√°cil 6 ##
 #####################
 
-# La secuencia de Fibonacci es una secuencia famosa en matem·ticas. Los primeros 
+# La secuencia de Fibonacci es una secuencia famosa en matem√°ticas. Los primeros 
 # dos elementos son 1 y 1. Los elementos posteriores se definen como la suma de 
 # los dos inmediatamente anteriores. Por ejemplo, el tercer elemento es 2 
-# (1 + 1), el cuarto elemento es 3 (2 + 1), y asÌ sucesivamente. En este ejemplo, 
-# vamos a calcular los primeros 'n' n˙meros en la secuencia de Fibonacci.
+# (1 + 1), el cuarto elemento es 3 (2 + 1), y as√≠ sucesivamente. En este ejemplo, 
+# vamos a calcular los primeros 'n' n√∫meros en la secuencia de Fibonacci.
 
 # Esto crea una variable que determina la longitud de la secuencia de Fibonacci:
 n <- 25
 
-# A menudo es ˙til para crear un objeto vacÌo que almacenar· los valores creados
-# en cada iteraciÛn de un bucle. En este caso, creamos un vector vacÌo de
+# A menudo es √∫til para crear un objeto vac√≠o que almacenar√° los valores creados
+# en cada iteraci√≥n de un bucle. En este caso, creamos un vector vac√≠o de
 # longitud 'n':
 fibonacci <- rep(NA, times=n)
 
 # Comprobamos el contenido de 'fibonacci':
 fibonacci
 
-# Por definiciÛn, los primeros dos elementos de la secuencia son 1 y 1:
+# Por definici√≥n, los primeros dos elementos de la secuencia son 1 y 1:
 fibonacci[1] <- 1
 fibonacci[2] <- 1
 
-# Este bucle calcular· los elementos 3 a 'n' de la secuencia:
+# Este bucle calcular√° los elementos 3 a 'n' de la secuencia:
 for(i in 3:n)
 {
   # El elemento 'i' se calcula como la suma de los elementos'i-1' e 'i-2'
@@ -392,19 +415,19 @@ fibonacci
 #
 # while(condici√≥n)
 # {
-#   cÛdigo
+#   c√≥digo
 # }
 
 # Esto quiere decir aproximadamente:
 #
 # mientras esta condici√≥n es verdadera repetir
 # {
-#   este cÛdigo
+#   este c√≥digo
 # }
 
 
 #####################
-## Ejemplo f·cil 1 ##
+## Ejemplo f√°cil 1 ##
 #####################
 
 v <- 1:10
@@ -419,7 +442,7 @@ while(i < max(v))
 
 
 #####################
-## Ejemplo f·cil 2 ##
+## Ejemplo f√°cil 2 ##
 #####################
 i <- 0
 while(i < max(v))
@@ -430,7 +453,7 @@ while(i < max(v))
 
 
 #####################
-## Ejemplo f·cil 3 ##
+## Ejemplo f√°cil 3 ##
 #####################
 
 Bp <- 0.1 
@@ -457,16 +480,16 @@ while(abund>0 & time<= max.t)
 
 
 #####################
-## Ejemplo f·cil 4 ##
+## Ejemplo f√°cil 4 ##
 #####################
 
 ## El bucle "WHILE DATING" ##
 
-you <- runif(1, 0, 100) # Tu personalidad en un n˙mero
-your.pickiness.score <- 0.1 # QuÈ tan cerca a tu personalidad quieres que sea tu
+you <- runif(1, 0, 100) # Tu personalidad en un n√∫mero
+your.pickiness.score <- 0.1 # Qu√© tan cerca a tu personalidad quieres que sea tu
                             # esposa/esposo
 
-date <- 0 # El n˙mero inicial de personas con las que has salido
+date <- 0 # El n√∫mero inicial de personas con las que has salido
 missmatch <- Inf # Tu diferencia inicial en personalidad antes de empezar a salir 
                  # con gente 
 
@@ -493,10 +516,10 @@ while(missmatch > your.pickiness.score)
 ################################################################################
 
 # El condicional *if* permite correr un pedazo de c√≥digo solamente si una 
-# condicÛn en particular es verdadera
+# condic√≥n en particular es verdadera
 
 #####################
-## Ejemplo f·cil 1 ##
+## Ejemplo f√°cil 1 ##
 #####################
 
 v <- 1:10
@@ -511,7 +534,7 @@ for(i in v)
 
 
 #####################
-## Ejemplo f·cil 2 ##
+## Ejemplo f√°cil 2 ##
 #####################
 
 trait <- 0
@@ -530,10 +553,12 @@ for(i in 1:max.time)
 	    COL <- "gold"
 	if(trait.shift < 0) 
 	    COL <- "lightblue"
+	if(trait.shift == 0) # Poco probable, pero si no lo cubrimos, en ese caso
+	    COL <- "grey50"  # 'COL' conservar√≠a el valor de la vuelta anterior
 	
 	points(i, trait, pch=16, col=COL)
 
-	Sys.sleep(0.2)
+	if (interactive()) Sys.sleep(0.2)
 }
 
 
@@ -546,7 +571,7 @@ for(i in 1:max.time)
 # conjunto con un condicional
 
 #####################
-## Ejemplo f·cil 1 ##
+## Ejemplo f√°cil 1 ##
 #####################
 
 v <- 1:10
@@ -572,20 +597,27 @@ for(i in v)
 # es posible, es buena idea evitar utilizar bucles en R y utilizar funciones
 # que ya existen en R. A esto se le llama: vectorizaci√≥n.
 
-# Por ejemplo, supongamos que tenemos una matriz muy grande de abundancia de 
-# 10 especies en 1,000,000 de sitios
+# Por ejemplo, supongamos que tenemos una matriz grande de abundancia de 50
+# especies (columnas) en 20,000 sitios (filas).
 
-M <- matrix(rpois(50000000, 10), ncol=50)
+# OJO con el tama√±o: cada valor num√©rico ocupa 8 bytes, as√≠ que esta matriz de
+# un mill√≥n de valores pesa unos 8 MB. Si pusieras 50 millones de valores ser√≠an
+# 400 MB, y la "Opci√≥n 1" de abajo tardar√≠a horas. Cuando pruebes cosas de
+# eficiencia, empieza siempre con un tama√±o peque√±o y ve subiendo.
 
+M <- matrix(rpois(1000000, 10), ncol=50)
 
 dim(M) 
 
-head(M)
+M[1:5, 1:5]
 
-# Como calcular la abundancia total de individuos por sitio (fila)?
+# ¬øC√≥mo calcular la abundancia total de individuos por sitio (fila)?
 
 
-## OpciÛn 1 - un bucle muy ineficiente ##
+## Opci√≥n 1 - un bucle muy ineficiente ##
+# El problema es 'c(abund.1, ...)': en cada vuelta R copia TODO el vector para
+# crear uno nuevo un poco m√°s largo. El costo crece con el cuadrado del n√∫mero
+# de vueltas.
 
 abund.1 <- numeric()
 
@@ -600,7 +632,9 @@ system.time(
 }) 
 
 
-## OpciÛn 2 - un bucle un poco mejor construido ##
+## Opci√≥n 2 - un bucle un poco mejor construido ##
+# Aqu√≠ el vector se crea UNA vez con su tama√±o final y el bucle solo rellena
+# posiciones. Mismo resultado, mucho menos trabajo.
 
 abund.2 <- rep(NA, nrow(M))
 
@@ -615,23 +649,26 @@ system.time(
 }) 
 
 
-## OpciÛn 4 - vectorizaciÛn ##
+## Opci√≥n 3 - vectorizaci√≥n ##
+# Preguntamos por la suma de cada FILA (cada sitio), as√≠ que la funci√≥n es
+# 'rowSums', no 'colSums'. 'colSums' sumar√≠a por especie, que es otra pregunta.
+
 system.time( 
 {
-  abund.4 <- colSums(M)
+  abund.3 <- rowSums(M)
 }) 
 
 
+# Los tres caminos dan exactamente el mismo resultado:
+identical(abund.1, abund.2)
+identical(abund.1, abund.3)
 
+
+# Y para comparar, la abundancia total por ESPECIE (columna) ser√≠a:
+spp.total <- colSums(M)
+length(spp.total)
+
+
+# La familia de funciones *apply* generaliza esta idea a cualquier funci√≥n,
+# no solo a sumas y promedios. La vemos en la clase 9-1:
 ?apply
-
-
-
-
-
-
-
-
-
-
-

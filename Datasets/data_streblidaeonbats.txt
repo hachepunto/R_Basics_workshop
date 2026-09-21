@@ -10,9 +10,9 @@ No QCAZ	ForeArm	Sex	Weight	Elevation	Sice_Code	SiteName	Habitat	Streblidae	T_job
 5451	40.49	m	20	886	4	Otongachi	Bosque primario	1	1	0	0	1
 5454	39.95	m	18.5	886	4	Otongachi	Bosque primario	2	2	0	0	1
 5460	41.2	m	20.75	886	4	Otongachi	Bosque primario	3	3	0	0	1
-5480	41.64	m	19	275	18	Parque Nacional YasunÌ	Bosque primario junto a carretera	0	0	0	0	0
-5485	41.03	h	19	275	18	Parque Nacional YasunÌ	Bosque primario junto a carretera	4	3	1	0	2
-5488	43.59	m	20.5	275	18	Parque Nacional YasunÌ	Bosque primario junto a carretera	0	0	0	0	0
+5480	41.64	m	19	275	18	Parque Nacional Yasun√≠	Bosque primario junto a carretera	0	0	0	0	0
+5485	41.03	h	19	275	18	Parque Nacional Yasun√≠	Bosque primario junto a carretera	4	3	1	0	2
+5488	43.59	m	20.5	275	18	Parque Nacional Yasun√≠	Bosque primario junto a carretera	0	0	0	0	0
 5599	42.46	h	18.25	1172	6	Santa Rosa	Bosque secundario junto a pastizal	2	2	0	0	1
 5600	42.57	m	21.25	1172	6	Santa Rosa	Bosque secundario junto a pastizal	1	0	0	1	1
 5601	41.46	h	20.25	1172	6	Santa Rosa	Bosque secundario junto a pastizal	1	0	1	0	1
@@ -55,19 +55,19 @@ No QCAZ	ForeArm	Sex	Weight	Elevation	Sice_Code	SiteName	Habitat	Streblidae	T_job
 6087	43.4	h	24	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	7	4	2	1	3
 6090	42.1	h	20	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	2	0	2	0	1
 6091	43.7	h	29.8	146	2	Quingue	Bosque secundario cerca a un camino vecinal y una que otra casa de campo.	4	2	1	1	3
-6101	42.6	h	20	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	13	9	4	0	2
-6102	42.1	m	21.25	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	1	0	0	1	1
-6103	43.9	h	28.5	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	3	3	0	0	1
-6105	44.8	h	29	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	2	1	0	1	2
-6106	42.7	m	23	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	8	7	0	1	2
-6107	43.7	m	27.5	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	4	4	0	0	1
-6113	42.6	m	22	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	3	3	0	0	1
-6114	43.8	h	23	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl·tano.	3	3	0	0	1
+6101	42.6	h	20	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	13	9	4	0	2
+6102	42.1	m	21.25	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	1	0	0	1	1
+6103	43.9	h	28.5	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	3	3	0	0	1
+6105	44.8	h	29	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	2	1	0	1	2
+6106	42.7	m	23	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	8	7	0	1	2
+6107	43.7	m	27.5	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	4	4	0	0	1
+6113	42.6	m	22	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	3	3	0	0	1
+6114	43.8	h	23	149	2	Quingue	Bosque secundario mezclado con algunas plantas de pl√°tano.	3	3	0	0	1
 6117	41.3	m	20.5	1185	10	"Macas, Bosque Domono"	"Bosque secundario junto a un camino vecinal, no construcciones cerca"	0	0	0	0	0
-6118	40.25	m	24.5	850	4	UniÛn del Toachi	"Bosque secundario, cerca de carreteras"	3	3	0	0	1
-6119	41.3	h	24.5	850	4	UniÛn del Toachi	"Bosque secundario, cerca de carreteras"	4	2	1	1	3
-6121	41.68	m	19.59	850	4	UniÛn del Toachi	"Bosque secundario, cerca de carreteras"	3	3	0	0	1
-6123	39.41	m	18.85	850	4	UniÛn del Toachi	"Bosque secundario, cerca de carreteras"	1	0	0	1	1
+6118	40.25	m	24.5	850	4	Uni√≥n del Toachi	"Bosque secundario, cerca de carreteras"	3	3	0	0	1
+6119	41.3	h	24.5	850	4	Uni√≥n del Toachi	"Bosque secundario, cerca de carreteras"	4	2	1	1	3
+6121	41.68	m	19.59	850	4	Uni√≥n del Toachi	"Bosque secundario, cerca de carreteras"	3	3	0	0	1
+6123	39.41	m	18.85	850	4	Uni√≥n del Toachi	"Bosque secundario, cerca de carreteras"	1	0	0	1	1
 6128	41.7	m	20	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	13	11	0	2	2
 6129	43.8	h	20	858	8	"Sucua, Platanera "	Platanera junto a camino vecinal y casas de campo. Aparentemente sin bosque cerca	13	11	1	1	3
 6130	43.2	h	18	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	12	6	0	6	2
@@ -87,24 +87,24 @@ No QCAZ	ForeArm	Sex	Weight	Elevation	Sice_Code	SiteName	Habitat	Streblidae	T_job
 6147	42.4	h	21.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	0	0	0	0	0
 6148	42.8	h	20.5	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	3	3	0	0	1
 6149	42.5	h	20	1008	13	"Platanera en el camino Macas - Sta. Rosa de Naranjales, en una comunidad quichua"	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque cerca?"	8	6	0	2	2
-6150	44.6	m	25.5	662	17	Punte del RÌo Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un rÌo"	0	0	0	0	0
-6156	44	m	21.5	662	17	Punte del RÌo Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un rÌo"	2	2	0	0	1
-6157	43	m	21	662	17	Punte del RÌo Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un rÌo"	1	0	0	1	1
-6163	42.5	h	17	662	17	Punte del RÌo Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un rÌo"	1	0	0	1	1
-6164	42.3	h	22.5	662	17	Punte del RÌo Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un rÌo"	0	0	0	0	0
-6165	42.4	h	19	662	17	Punte del RÌo Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un rÌo"	0	0	0	0	0
-6169	40.6	m	19	662	17	Punte del RÌo Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un rÌo"	0	0	0	0	0
+6150	44.6	m	25.5	662	17	Punte del R√≠o Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un r√≠o"	0	0	0	0	0
+6156	44	m	21.5	662	17	Punte del R√≠o Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un r√≠o"	2	2	0	0	1
+6157	43	m	21	662	17	Punte del R√≠o Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un r√≠o"	1	0	0	1	1
+6163	42.5	h	17	662	17	Punte del R√≠o Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un r√≠o"	1	0	0	1	1
+6164	42.3	h	22.5	662	17	Punte del R√≠o Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un r√≠o"	0	0	0	0	0
+6165	42.4	h	19	662	17	Punte del R√≠o Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un r√≠o"	0	0	0	0	0
+6169	40.6	m	19	662	17	Punte del R√≠o Pastaza	"Bosque bastante intervenido, cerca de cuevas y junto a un r√≠o"	0	0	0	0	0
 6175	42	h	18.25	1433	9	"Antenas, Macas"	Bosque secundario	1	0	0	1	1
 6176	44.5	h	19.75	1433	9	"Antenas, Macas"	Bosque secundario	2	0	0	2	1
 6185	44	h	17.25	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	13	9	0	4	2
 6186	44.15	m	21.75	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	4	3	0	0	1
 6187	43.4	m	22.25	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	24	12	0	12	2
 6188	41.4	h	19	912	12	Platanera en San Luis.	"Plataneras junto aun camino vecina y algunas casas de campo, con bosque en los alrededores."	11	8	0	2	2
-6200	40.53	m	14.94	850	4	UniÛn del Toachi	"Bosque secundario, cerca de carreteras"	8	3	4	1	3
-6202	43.55	h	20.96	850	4	UniÛn del Toachi	"Bosque secundario, cerca de carreteras"	4	2	1	1	3
-6203	41.42	m	19	1331	7	"Mariposario, Mindo"	"Plantaciones de pl·tanos, heliconias con piperaceae y solanaceae"	2	2	0	0	1
-6205	40.31	m	17.5	1331	7	"Mariposario, Mindo"	"Plantaciones de pl·tanos, heliconias con piperaceae y solanaceae"	1	1	0	0	1
-6206	42.32	m	19	1331	7	"Mariposario, Mindo"	"Plantaciones de pl·tanos, heliconias con piperaceae y solanaceae"	1	1	0	0	1
+6200	40.53	m	14.94	850	4	Uni√≥n del Toachi	"Bosque secundario, cerca de carreteras"	8	3	4	1	3
+6202	43.55	h	20.96	850	4	Uni√≥n del Toachi	"Bosque secundario, cerca de carreteras"	4	2	1	1	3
+6203	41.42	m	19	1331	7	"Mariposario, Mindo"	"Plantaciones de pl√°tanos, heliconias con piperaceae y solanaceae"	2	2	0	0	1
+6205	40.31	m	17.5	1331	7	"Mariposario, Mindo"	"Plantaciones de pl√°tanos, heliconias con piperaceae y solanaceae"	1	1	0	0	1
+6206	42.32	m	19	1331	7	"Mariposario, Mindo"	"Plantaciones de pl√°tanos, heliconias con piperaceae y solanaceae"	1	1	0	0	1
 6210	40.72	m	20.25	180	3	Pto. Quito	Platanera junto a jardines y construcciones	3	1	2	0	2
 6557	41.67	m	22	180	3	Pto. Quito	Platanera junto a jardines y construcciones	5	4	0	1	2
 6558	42.66	m	21.5	180	3	Pto. Quito	Platanera junto a jardines y construcciones	0	0	0	0	0

@@ -1,265 +1,201 @@
 ################################################################################
-### R BASICS WORKSHOP                                                                                                            ###
-### EJERCICIO 8-3: Control de flujo                                                                                              ###
-###                                                                                                                                                   ###
-### Unida de Servicios Bioinform·ticos                                                                                           ###
-### Instituto Nacional de Medicina GenÛmica                                                                                 ###
-### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
+### R BASICS WORKSHOP                                                        ###
+### EJERCICIO 8-3: Control de flujo: bucles y aleatorizaci√≥n                 ###
+###                                                                          ###
+### M√©todos de biolog√≠a computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ## OBJETIVO:
-## PracticaR el uso de de bucles ("loops")
+## Practicar el uso de bucles ("loops") en una prueba de aleatorizaci√≥n.
 
-# El an·lisis de componentes principales (PCA) es un procedimiento estadÌstico 
-# que utiliza una transformaciÛn ortogonal para convertir un conjunto de 
+# El an√°lisis de componentes principales (PCA) es un procedimiento estad√≠stico 
+# que utiliza una transformaci√≥n ortogonal para convertir un conjunto de 
 # observaciones de variables posiblemente correlacionadas en un conjunto de 
-# variables linealmente ortogonales llamadas componentes principales. El n˙mero 
-# de componentes principales es menor o igual que al n˙mero de variables 
-# originales. Esta transformaciÛn se define de tal manera que el primer 
+# variables linealmente ortogonales llamadas componentes principales. El n√∫mero 
+# de componentes principales es menor o igual que al n√∫mero de variables 
+# originales. Esta transformaci√≥n se define de tal manera que el primer 
 # componente principal tiene la mayor varianza posible (es decir, representa 
 # tanta variabilidad en los datos como sea posible), y cada componente 
-# subsiguiente a su vez tiene la mayor varianza posible bajo la restricciÛn de 
+# subsiguiente a su vez tiene la mayor varianza posible bajo la restricci√≥n de 
 # ser ortogonal a los componentes anteriores (Wikipedia).
 
-# El cÛdigo en este ejercicio examina la significancia estadÌstica de un PCA 
-# hecho sobre los datos morfolÛgicos de los Iris de Edgar Anderson (ver 
-# help(Iris)"). Para esto, utilizamos un mÈtodo basado en la randomizaciÛn de 
+# El c√≥digo en este ejercicio examina la significancia estad√≠stica de un PCA 
+# hecho sobre los datos morfol√≥gicos de los Iris de Edgar Anderson (ver 
+# help(iris)). Para esto usamos un m√©todo basado en la aleatorizaci√≥n de 
 # datos descrito en el apartado 2.1.2. de Peres-Neto et al. 2005 (How many 
 # principal components? stopping rules for determining the number of non-trivial 
 # axes revisited. Computational Statistics & Data Analysis 49:974-997.). Este 
-# mÈtodo pone a prueba la significancia estadÌstica de los "eigenvalues" del 
+# m√©todo pone a prueba la significancia estad√≠stica de los "eigenvalues" del 
 # PCA, y por lo tanto la significancia de cada componente principal. 
 
-data(iris) # Carga el set de datos Iris del paquete "datasets"
+data(iris) # Carga el conjunto de datos iris del paquete "datasets"
 
 iris[1:5, ] # Imprime las primeras 5 filas del marco de datos
 
 
 ## TAREA 1 ##
-## Cree un objeto llamado morfo que contiene sÛlo las primeras 4 columnas
-## del marco de datos "iris"
+## La l√≠nea de abajo crea un objeto llamado 'morpho' que contiene s√≥lo las
+## primeras 4 columnas de "iris" (las morfol√≥gicas; la quinta es la especie).
+## ¬øPor qu√© hay que dejar fuera la quinta columna antes de hacer un PCA?
+
+morpho <- iris[, 1:4]
+head(morpho)
 
 
-pca.iris <- prcomp(morpho, scale=TRUE) 
-# Esto corre un PCA usando la funciÛn "prcomp" sobre los datos morfolÛgicos
+# Esto corre un PCA usando la funci√≥n "prcomp" sobre los datos morfol√≥gicos.
+# OJO con el punto en 'scale.': el argumento de 'prcomp' se llama as√≠, con
+# punto final, para no chocar con la funci√≥n 'scale'. Escribir 'scale=TRUE'
+# tambi√©n funciona porque R completa nombres de argumentos a medias, pero si
+# se escribe mal (por ejemplo 'sclale=TRUE') R NO avisa: el argumento se va al
+# '...' y se ignora en silencio, y el PCA se corre SIN escalar. Es un error
+# dif√≠cil de detectar.
+pca.iris <- prcomp(morpho, scale. = TRUE) 
 
-summary(pca.iris) 
 # Hace un resumen de los resultados del PCA
+summary(pca.iris) 
 
-str(pca.iris)
 # Muestra la estructura de "pca.iris" que contienen los resultados del PCA
+str(pca.iris)
 
+# Este es un vector que contiene la ra√≠z cuadrada de los "eigenvalues" 
 pca.iris$sdev 
-# Este es un vector que contiene la raÌz cuadrada de los "eigenvalues" 
 
+# Esto pone "eigenvalues" emp√≠ricos (de los datos reales) en un objeto. 
+# Estos valores se compararan con "eigenvalues" generados al azar. 
 empirical.ev <- pca.iris$sdev
 names(empirical.ev) <- paste("PC", 1:length(empirical.ev), sep=" ")
-# Esto pone "eigenvalues" empÌricos (de los datos reales) en un objeto. 
-# Estos valores se compararan con "eigenvalues" generados al azar. 
 
 # Para cada componente principal existe un "eigenvalue" o valores propio. Estos
-# valores pueden interpretarse como proporcionales a la variaciÛn de todas las
-# variables originales (e.g. las variables morfolÛgicas) que puede ser capturada
+# valores pueden interpretarse como proporcionales a la variaci√≥n de todas las
+# variables originales (e.g. las variables morfol√≥gicas) que puede ser capturada
 # por cada componente principal. 
 
 
 ## TAREA 2 ##
-## Haga una "barplot" que muestre los "eigenvalues" empÌricos
+## Haga un "barplot" que muestre los "eigenvalues" emp√≠ricos. Recuerde que
+## 'pca.iris$sdev' tiene la RA√çZ CUADRADA de los eigenvalues, as√≠ que hay que
+## elevar al cuadrado.
 
 
+# Esto crea un objeto que va a definir el n√∫mero de iteraciones que la 
+# prueba de aleatorizaci√≥n utilizar√°
 k <- 999
-# Esto crea un objeto que va a definir el n˙mero de iteraciones que la 
-# prueba de aleatorizaciÛn utilizar·
 
 
+# Esto crea una matriz "vac√≠a" (llena de NAs) que ser√° llenada en cada iteraci√≥n 
+# del bucle con "eigenvalues" aleatorios
 rand.ev <- matrix(data=NA, nrow=k, ncol=length(empirical.ev))
 rownames(rand.ev) <- paste("rand", 1:k, sep="_")
-# Esto crea una matriz "vacÌa" (llena de NAs) que ser· llenada en cada iteraciÛn 
-# del bucle con "eigenvalues" aleatorios
 
 
 for (i in 1:k)
 {
   
+  # Esto copia los datos morfol√≥gicos emp√≠ricos que luego ser√°n randomizados
   rand.morpho <- morpho
-  # Esto copia los datos morfolÛgicos empÌricos que luego ser·n randomizados
   
-  rand.morpho[,1] <- sample(rand.morpho[,1])
-  # Esto aleatoriza la posiciÛn de los valores en la primera variable (columna) 
+  # Esto aleatoriza la posici√≥n de los valores en la primera variable (columna) 
   # en "rand.morpho". 
+  rand.morpho[,1] <- sample(rand.morpho[,1])
+
+  # Las tres l√≠neas siguientes hacen lo mismo con las dem√°s columnas (TAREA 3):
+  rand.morpho[,2] <- sample(rand.morpho[,2])
+  rand.morpho[,3] <- sample(rand.morpho[,3])
+  rand.morpho[,4] <- sample(rand.morpho[,4])
+
+  # Y esta repite el PCA con los datos aleatorizados (TAREA 4):
+  rand.pca.iris <- prcomp(rand.morpho, scale. = TRUE)
 
   ## TAREA 3 ##
-  ## Esta prueba se basa en la comparaciÛn de los "eigenvalues" empÌricos en 
+  ## Esta prueba se basa en la comparaci√≥n de los "eigenvalues" emp√≠ricos en 
   ## una PCA con "eigenvalues" del PCA donde las relaciones entre las variables 
   ## han sido randomizadas (donde las correlaciones entre las variables son 
   ## destruidas). Esto implica que los valores dentro de cada variable sean
   ## randomizados de manera independiente a como los valores son randomizados en 
   ## otras variables. Por esto:
   ## Repita el paso anterior de forma independiente para cada una de las otras
-  ## columnas del marco de datos morfolÛgico 
+  ## columnas del marco de datos morfol√≥gico 
   
 
   ## TAREA 4 ##
-  ## Despues de randomizar todas las variables, ejecute un nuevo an·lisis de 
-  ## componentes principales pero esta vez utilizando los datos morfolÛgicos 
-  ## aleatorizados. Guarde los resultados de este PCA en un objeto denominado 
-  ## "rand.pca.iris"
+  ## ¬øPor qu√© hay que volver a correr el PCA DENTRO del bucle y no una sola vez
+  ## antes de √©l?
 
 
   ## TAREA 5 ##
-  ## La lÌnea de abajo pone los "eigenvalues" del PCA randomizado en la matriz
-  ## "rand.ev". Con cada iteraciÛn del bucle, se supone que el cÛdigo debe poner 
-  ## estos valores en una fila distinta de esta matriz. Sin embargo hay un error,
-  ## y los resultados est·n siempre siendo colocandos en la ˙ltima fila. 
-  ## Solucione el problema en esta lÌnea de cÛdigo.
-  rand.ev[k,] <- rand.pca.iris$sdev
+  ## La l√≠nea de abajo pone los "eigenvalues" del PCA aleatorizado en la matriz
+  ## "rand.ev". En cada iteraci√≥n deber√≠a escribirlos en una fila DISTINTA. Tal
+  ## como est√° escrita, ¬øen qu√© fila los escribe siempre? Corr√≠jala.
+  ## (Aqu√≠ ya va corregida para que el ejercicio corra; compare 'i' contra 'k'
+  ## y explique la diferencia.)
+  rand.ev[i,] <- rand.pca.iris$sdev
   
 }
 # termina el bucle
 
 
 rand.ev <- rbind(empirical.ev, rand.ev)
-# Combina por filas ("rbind") el vector de los "eigenvalues" empÌricos con la 
-# matriz de "eigenvalues" aleatorios. Esto coloca los valores empÌricos en la 
+# Combina por filas ("rbind") el vector de los "eigenvalues" emp√≠ricos con la 
+# matriz de "eigenvalues" aleatorios. Esto coloca los valores emp√≠ricos en la 
 # primera fila de la matriz "rand.ev"
 
 
 ## TAREA 6 ##
-## Abra una ventana y dividala en 4 paneles con las funciones "par" o "layout"
+## La l√≠nea de abajo divide la ventana en 4 paneles. Comp√°rela con lo que har√≠a
+## 'layout(matrix(1:4, ncol=2))': ¬øen qu√© orden se llenan los paneles en cada caso?
+par(mfrow = c(2, 2))
 
 
+# Esto crea un histograma con la distribuci√≥n del primer "eigenvalue" (columna 1),
+# es decir de la variaci√≥n capturada por el primer componente principal
 hist(rand.ev[,1]^2, breaks=100, xlab="Eigenvalue", cex.lab=1.5, 
   cex.axis=1.5, main="PC 1")
-# Esto crea un histograma con la distribuciÛn del primer "eigenvalue" (columna 1),
-# es decir de la variaciÛn capturada por el primer componente principal
 
 
+# Esto resalta con una l√≠nea de la posici√≥n del "eigenvalue" emp√≠rico en esa 
+# distribuci√≥n
 abline(v=rand.ev[1,1]^2, col="red")
-# Esto resalta con una lÌnea de la posiciÛn del "eigenvalue" empÌrico en esa 
-# distribuciÛn
 
 
+# Esto calcula el valor de p. El valor de p se calcula como la proporci√≥n de
+# "eigenvalues" de la distribuci√≥n aleatorea que que son iguales o mayores que 
+# el "eigenvalue" emp√≠rico. Tome en cuenta que estamos haciendo la suma de un 
+# vector l√≥gico donde los TRUEs se tratan como 1 y los FALSE como 0.
 sum(rand.ev[,1] >= rand.ev[1,1]) / (k+1) 
-# Esto calcula el valor de p. El valor de p se calcula como la proporciÛn de
-# "eigenvalues" de la distribuciÛn aleatorea que que son iguales o mayores que 
-# el "eigenvalue" empÌrico. Tome en cuenta que estamos haciendo la suma de un 
-# vector lÛgico donde los TRUEs se tratan como 1 y los FALSE como 0.
 
 
 ## TAREA 7 ##
 ## Cree las figuras correspondientes para los "eigenvalues" 2, 3 y 4 en el resto
-## de paneles de la figura que est· produciendo. Adem·s, calcule tambiÈn los 
+## de paneles de la figura que est√° produciendo. Adem√°s, calcule tambi√©n los 
 ## valores de p para el resto de "eigenvalues".
 
 
 ## TAREA 8 ##
-## Repita la figura, pero esta vez haga que se vea lo m·s profesional posible y
-## guardela como un archivo TIFF con una alta resoluciÛn (600 ppp).
+## Repita la figura, pero esta vez haga que se vea lo m√°s profesional posible y
+## gu√°rdela en la carpeta "salidas".
+##
+## Muchas revistas piden TIFF a 600 ppp. Cuidado con el tama√±o: un TIFF de
+## 25 x 20 cm a 600 ppp son unos 5900 x 4700 pixeles sin comprimir, m√°s de
+## 100 MB. El argumento 'compression="lzw"' ayuda, pero se ignora en el
+## dispositivo por defecto de macOS ('quartz'). Para trabajar c√≥modo conviene
+## generar la figura en PNG y dejar el TIFF para la versi√≥n final que se manda
+## a la revista.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+par(mfrow = c(1, 1)) # Deja el dispositivo gr√°fico como estaba
 
 
 ################################################################################
-### SOLUCIONES PARA TAREAS #####################################################
+### SOLUCIONES #################################################################
 ################################################################################
 
-## TAREA 1 ##
-morpho <- iris[,1:4]
-
-
-## TAREA 2 ##
-barplot(empirical.ev^2, col="firebrick1", border="firebrick1", 
-  xlab="Principal Components", ylab="Eigenvalue")
-
-
-## TAREA 3 ##
-rand.morpho[,2] <- sample(rand.morpho[,2])
-rand.morpho[,3] <- sample(rand.morpho[,3])
-rand.morpho[,4] <- sample(rand.morpho[,4])
-  
-
-## TAREA 4 ##
-rand.pca.iris <- prcomp(rand.morpho, sclale=TRUE) 
-
- 
-## TAREA 5 ##
-rand.ev[i,] <- rand.pca.iris$sdev
-
-
-## TAREA 6 ##
-par(mfrow=c(2,2))
-#or
-layout(m=matrix(1:4, ncol=2))
-layout.show(4)
-
-
-## TAREA 7 ##
-hist(rand.ev[,2]^2, breaks=100, xlab="Eigenvalue", cex.lab=1.5, 
-  cex.axis=1.5, main="PC 2")
-abline(v=rand.ev[1,2]^2, col="red")
-sum(rand.ev[,2] >= rand.ev[1,2]) / (k+1) 
-
-hist(rand.ev[,3]^2, breaks=100, xlab="Eigenvalue", cex.lab=1.5, 
-  cex.axis=1.5, main="PC 3")
-abline(v=rand.ev[1,3]^2, col="red")
-sum(rand.ev[,3] >= rand.ev[1,3]) / (k+1) 
-
-hist(rand.ev[,4]^2, breaks=100, xlab="Eigenvalue", cex.lab=1.5, 
-  cex.axis=1.5, main="PC 4")
-abline(v=rand.ev[1,4]^2, col="red")
-sum(rand.ev[,4] >= rand.ev[1,4]) / (k+1) 
-
-
-## TAREA 8 ##
-getwd() # Revise el directorio de trabajo y c·mbielo si es necesario
-
-
-line.wd <- 2
-line.col <- "black"
-bar.col <- "firebrick3"
-main.size <- 1.75
-axis.size <- 1.5
-lab.size <- 1.5
-breaks.n <- 50
-
-
-tiff(filename = "PCA_exercise.tiff", width = 25, height = 20, units = "cm", 
-  pointsize = 12, res = 600)
-
-  par(mfrow=c(2,2), mar=c(5, 6, 4, 2), mgp=c(3.75, 1, 0))
-  
-  hist(rand.ev[,1]^2, breaks=breaks.n, xlab="Eigenvalue", las=1, cex.lab=lab.size, 
-    cex.axis=axis.size, main="PC 1", cex.main=main.size, col=bar.col, border=bar.col)
-  abline(v=rand.ev[1,1]^2, col=line.col, lwd=line.wd)
-  
-  hist(rand.ev[,2]^2, breaks=breaks.n, xlab="Eigenvalue", las=1, cex.lab=lab.size, 
-    cex.axis=axis.size, main="PC 2", cex.main=main.size, col=bar.col, border=bar.col)
-  abline(v=rand.ev[1,2]^2, col=line.col, lwd=line.wd)
-  
-  hist(rand.ev[,3]^2, breaks=breaks.n, xlab="Eigenvalue", las=1, cex.lab=lab.size, 
-    cex.axis=axis.size, main="PC 3", cex.main=main.size, col=bar.col, border=bar.col)
-  abline(v=rand.ev[1,3]^2, col=line.col, lwd=line.wd)
-  
-  hist(rand.ev[,4]^2, breaks=breaks.n, xlab="Eigenvalue", las=1, cex.lab=lab.size, 
-    cex.axis=axis.size, main="PC 4", cex.main=main.size, col=bar.col, border=bar.col)
-  abline(v=rand.ev[1,4]^2, col=line.col, lwd=line.wd)
-
-dev.off()
-
-
+## Las soluciones de este ejercicio est√°n en un archivo aparte:
+##
+##     soluciones/8-3_flujos_soluciones.r
+##
+## Int√©ntalo t√∫ primero y cons√∫ltalo despu√©s para autoevaluarte. Ese archivo
+## vuelve a correr este ejercicio por su cuenta, as√≠ que puedes abrirlo en una
+## sesi√≥n limpia:
+##
+##     source("soluciones/8-3_flujos_soluciones.r")

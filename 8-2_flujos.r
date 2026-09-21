@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                       				                     ###
-### EJERCICIO 8-2: Control de Flujo                                          ###
-###                                                               						                      ###
-### Unida de Servicios Bioinform�ticos    						                      ###
-### Instituto Nacional de Medicina Gen�mica                                               			          ###
-### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
+### R BASICS WORKSHOP                                                        ###
+### EJERCICIO 8-2: Control de flujo                                          ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ## TAREA 1 ##
@@ -22,7 +22,7 @@
 ## TAREA 4 ##
 ## Escriba un bucle "for" que eleva al cuadrado cada elemento del siguiente 
 ## vector e imprime los resultados en la pantalla.
-x <- c (3,4,6,2,4,9)
+x <- c(3, 4, 6, 2, 4, 9)
 
 
 ## TAREA 5 ##
@@ -31,36 +31,20 @@ x <- c (3,4,6,2,4,9)
 
 
 ## TAREA 6 ##
-## Escriba un bucle "for" que devuelva la multiplicaci�n acumulativa del vector
-## *y* que se produjo en la tarea 5. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Escriba un bucle "for" que devuelva la multiplicación acumulada del vector
+## *y* que produjo en la TAREA 5. Es decir: y[1], y[1]*y[2], y[1]*y[2]*y[3], ...
 
 
 ################################################################################
-### SOLUCIONES PARA TAREAS #####################################################
+### SOLUCIONES #################################################################
 ################################################################################
 
-# Lo siento, no hay soluciones aqu�!
-
-
-
-
-
+## Las soluciones de este ejercicio están en un archivo aparte:
+##
+##     soluciones/8-2_flujos_soluciones.r
+##
+## Inténtalo tú primero y consúltalo después para autoevaluarte. Ese archivo
+## vuelve a correr este ejercicio por su cuenta, así que puedes abrirlo en una
+## sesión limpia:
+##
+##     source("soluciones/8-2_flujos_soluciones.r")

@@ -52,3 +52,20 @@ Temporary Items
 
 other_data
 expr_data.txt
+
+# Salidas generadas por los scripts del taller
+salidas/
+Rplots.pdf
+R_Basics_workshop.RData
+
+# Salidas de versiones anteriores (ahora van a salidas/)
+SepalLenght_vs_SepalWidth.pdf
+SepalLenght_vs_SepalWidth.png
+TysonForestMap_*.tif
+TysonForestMap_*.png
+PCA_exercise.tiff
+PCA_exercise.png
+ListOfLinesAndSymbols.pdf
+heatmap.png
+expr.data.RData
+expr_data.rds

@@ -1,10 +1,10 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### PRESENTATION 10-1: ESCRIBIR TUS PROPIAS FUNCIONES                          ### 
-###                                                                                                                                                   ###
-### Unida de Servicios Bioinformáticos                                                                                           ###
-### Instituto Nacional de Medicina Genómica                                                                                 ###
-### Website: github.com/hachepunto/R_Basics_workshop                                                             ### 
+### CLASE 10-1: Escribir tus propias funciones                               ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 # Además de utilizar las funciones en los paquetes que están disponibles en R,
@@ -23,9 +23,9 @@ help("function")
 #}
 
 
-## Ejemplo fácil 2 ##
+## Ejemplo 1 ##
 
-my.fun # Todavía no existe una función con este nombre
+try(my.fun) # Error A PROPÓSITO: todavía no existe nada con este nombre
 
 
 my.fun <- function(x){
@@ -42,12 +42,12 @@ my.fun(34)
 
 
 
-## Ejemplo fácil 2 ##
+## Ejemplo 2 ##
 
 # Esta función calcula el estadístico t para comparar la media de dos 
 # vectores:
 
-my.twosam # Todavía no existe una función con este nombre
+try(my.twosam) # Error A PROPÓSITO: tampoco existe todavía
 
 
 my.twosam <- function(y1, y2) # dos argumentos sin valores pre-determinados
@@ -73,13 +73,14 @@ my.twosam <- function(y1, y2) # dos argumentos sin valores pre-determinados
     # Resultado que exporta la función
     tst
 }
-# ahora utilizamos esta función para calculare el estadístico de usando 
-# dos vectores:
+# Ahora usamos esta función para calcular el estadístico t con dos vectores:
 
 data(iris)
 
-PL.versi <- iris$Petal.Length[which(iris$Species=="versicolor")]
-PL.seto <- iris$Petal.Length[which(iris$Species=="setosa")]
+# Para indexar con una condición no hace falta 'which': el vector lógico se
+# puede usar directamente entre corchetes.
+PL.versi <- iris$Petal.Length[iris$Species == "versicolor"]
+PL.seto  <- iris$Petal.Length[iris$Species == "setosa"]
 
 boxplot(PL.versi, PL.seto)
 
@@ -89,8 +90,14 @@ tstat <- my.twosam(PL.versi, PL.seto)
 tstat
 
 
-# Muchas funciones en R están escritas en R, y el código detrás de estas 
-# funciones puede accederse si uno escribe el nombre de la función en la consola
+# Comparemos el resultado con la función que R ya trae:
+t.test(PL.versi, PL.seto, var.equal = TRUE)$statistic
+tstat
+# Deben coincidir: 'my.twosam' calcula exactamente la t de varianza conjunta.
+
+
+# Muchas funciones de R están escritas en R, y el código detrás de ellas puede
+# verse escribiendo el nombre de la función SIN paréntesis en la consola:
 
 lm
 
@@ -98,12 +105,12 @@ lm
 
 ## Ejemplo 3 ##
 
-# El siguiente código crea una función para simular las dinámicas de una 
+# El siguiente código crea una función para simular la dinámica de una 
 # población de acuerdo al modelo de Ricker. Este modelo incluye los siguientes
 # parámetros que se utilizan para definir los argumentos de la función:
 
 # "nzero": el tamaño inicial de la población
-# "r": la taza de crecimiento
+# "r": la tasa de crecimiento
 # "K": la capacidad de carga
 # "time": es el número total de unidades de tiempo sobre las que la población 
 #         va a ser simulada. 
@@ -130,8 +137,15 @@ my.ricker.fun <- function(nzero, r, K, time){
 par(mfrow=c(1,2))
 sim.abunds.1 <- my.ricker.fun(nzero=1, r=0.1, K=30, time=100)
 sim.abunds.2 <- my.ricker.fun(nzero=1, r=0.05, K=500, time=100)
+par(mfrow=c(1,1)) # Deja el dispositivo gráfico como estaba
 
+# La función devuelve el vector de abundancias ADEMÁS de dibujar la gráfica:
+head(sim.abunds.1)
+length(sim.abunds.1)
 
-
-
-
+# Con valores altos de 'r' el modelo de Ricker deja de converger a K y empieza a
+# oscilar, y para r > ~2.7 se vuelve caótico. Pruébalo:
+par(mfrow=c(1,2))
+invisible(my.ricker.fun(nzero=1, r=2.0, K=30, time=100))
+invisible(my.ricker.fun(nzero=1, r=3.0, K=30, time=100))
+par(mfrow=c(1,1))

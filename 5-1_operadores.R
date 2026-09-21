@@ -1,17 +1,20 @@
 ################################################################################
-### R BASICS WORKSHOP                                       				                     ###
-### PRESENTATION 6-1: OPERADORES                                               ### 
-###                                                               						                      ###
-### Unida de Servicios Bioinformáticos    						                      ###
-### Instituto Nacional de Medicina Genómica                                               			          ###
-### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
+### R BASICS WORKSHOP                                                        ###
+### CLASE 5-1: Operadores                                                    ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ## AYUDA CON OPERADORES ########################################################
 
 help("*")
 
-?* # Esto no funciona
+# Para pedir ayuda de un operador hay que poner su nombre ENTRE COMILLAS. Sin
+# comillas no funciona, porque R intenta interpretar el símbolo como código:
+?"*"
+# ?*   # Esto daría un error de sintaxis
 
 
 # Un par de vectores y matrices que vamos a utilizar para ejemplos
@@ -118,7 +121,7 @@ p - c(1, NA)
 
 ## OPERADORES COMPARATIVOS #####################################################
 
-# > mayor que
+# >  mayor que
 
 # < menor que
 
@@ -142,8 +145,8 @@ p <= z
 Z >= P
 
 
-p == c(33, 37)
-Z != c(NA, 37)
+p == c(33, 37) # 10 es múltiplo de 2: recicla sin quejarse
+Z != c(NA, 37) # 25 NO es múltiplo de 2: recicla, pero avisa con un warning
 
 # Aunque no es un operador, las funciones *is.na* y *!is.na* son útiles en este
 # contexto
@@ -162,7 +165,7 @@ is.na(p < c(5, NA))
 
 
 
-## OPERADORES LÓGICOS #####################################################
+## OPERADORES LÓGICOS #########################################################
 # &: quiere decir 'y'
 # |: quiere decir 'o'
 
@@ -207,18 +210,42 @@ p > 5
 z < 15
 
 
-p>5 & z<18 # Es TRUE solo para los elementos donde p>5 Y z<18 son TRUE
+p>5 & z<15 # Es TRUE solo para los elementos donde p>5 Y z<15 son TRUE
 
-p>5 | z<18 # Es TRUE para los elementos donde p>5 O z<18 son TRUE
-
-
-## IMPORTANTE: *&&* y *||* también existen pero hacen la comparación solo para
-## el primer elemento del vector
-
-p>5 && z<18 
-
-p>5 || z<18 
+p>5 | z<15 # Es TRUE para los elementos donde p>5 O z<15 son TRUE
 
 
+## IMPORTANTE: *&&* y *||* también existen, pero NO son la versión "doble" de
+## *&* y *|*: sirven para comparar UN SOLO valor lógico contra otro, no vectores.
+## Se usan en condiciones de 'if' y 'while', donde hace falta un único TRUE/FALSE.
 
+length(p) # p tiene 10 elementos
 
+## OJO, ESTO CAMBIÓ CON LAS VERSIONES DE R:
+## - Hasta R 4.1, *&&* con vectores usaba en silencio solo el PRIMER elemento.
+## - En R 4.2 eso pasó a ser una advertencia.
+## - Desde R 4.3 es un ERROR.
+## Como el comportamiento silencioso escondía errores, ahora R obliga a ser
+## explícito. Las dos líneas siguientes van en try() porque, en un R actual,
+## fallan a propósito:
+
+try(p>5 && z<15)
+
+try(p>5 || z<15)
+
+## Así se escribe hoy lo que antes hacía *&&* "por accidente": tomar
+## explícitamente el primer elemento.
+
+(p>5)[1] && (z<15)[1]
+
+(p>5)[1] || (z<15)[1]
+
+## Y cuando lo que quieres es resumir TODO el vector en un solo valor lógico,
+## las funciones correctas son *all* y *any*:
+
+all(p > 5) # ¿TODOS los elementos de p son mayores que 5?
+any(p > 5) # ¿ALGUNO de los elementos de p es mayor que 5?
+
+if (any(p > 5) && all(z > 0)) {
+  print("Aquí sí tiene sentido usar && : ambos lados son un solo TRUE/FALSE")
+}

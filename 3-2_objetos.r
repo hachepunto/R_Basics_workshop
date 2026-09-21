@@ -1,71 +1,106 @@
 ################################################################################
-### R BASICS WORKSHOP                                                					          ###
-### EJERCICIO 3-2: objetos                    					                                  ###
-###                                                               						                      ###
-### Unida de Servicios Bioinform·ticos    						                      ###
-### Instituto Nacional de Medicina GenÛmica                                               			          ###
-### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
+### R BASICS WORKSHOP                                                        ###
+### EJERCICIO 3-2: Objetos                                                   ###
+###                                                                          ###
+### M√©todos de biolog√≠a computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ## OBJETIVO:
-## El objetivo de este ejercicio es familiarizarse con los diferentes tipos de
-## objetos en R.
+## Familiarizarte con los distintos tipos y clases de objetos en R.
+
+## C√ìMO TRABAJAR ESTE EJERCICIO:
+## 1. Escribe tus respuestas en este mismo archivo, debajo de cada tarea.
+## 2. TODO lo que no sea c√≥digo debe ir precedido de '#'. Si escribes texto sin
+##    '#', el archivo deja de ser c√≥digo v√°lido y ya no corre.
+## 3. El archivo ya corre completo tal como est√°: el c√≥digo que necesitas para
+##    contestar ya viene escrito. Tu trabajo es leerlo, predecir qu√© hace,
+##    correrlo y explicar el resultado.
+## 4. Antes de entregar, corre el archivo de principio a fin
+##    (source("3-2_objetos.r") en la consola) y aseg√∫rate de que no truena.
+
+## DIRECTORIO DE TRABAJO:
+## Este ejercicio lee un archivo de la carpeta "Datasets". Tu directorio de
+## trabajo debe ser la carpeta del taller (la que contiene "Datasets").
+## Compru√©balo con getwd() y c√°mbialo con setwd() si hace falta.
+
+## NOTA SOBRE try():
+## Algunas l√≠neas de este ejercicio tienen errores A PROP√ìSITO; tu tarea es leer
+## el mensaje de error y entenderlo. Est√°n envueltas en try() para que el error
+## se imprima pero el archivo siga corriendo.
+
+## NOTA SOBRE REPRODUCIBILIDAD:
+## Este ejercicio usa n√∫meros aleatorios, as√≠ que tus resultados no van a ser
+## id√©nticos a los de tus compa√±eros. Eso es esperado y es parte de la lecci√≥n
+## (ver TAREA 6). Si quieres resultados repetibles, descomenta esta l√≠nea:
+# set.seed(123)
 
 
-rand.1 <- rnorm(100, mean=5, sd=1.5)
-# Crea un objeto con 100 valores aleatorios tomados de una distribuciÛn normal 
-# con un promedio de 5 y una desviaciÛn est·ndar de 1,5.
+# Crea un objeto con 100 valores aleatorios tomados de una distribuci√≥n normal
+# con un promedio de 5 y una desviaci√≥n est√°ndar de 1.5.
+rand.1 <- rnorm(100, mean = 5, sd = 1.5)
 
-## TAREA 1: øQuÈ clase de objeto es este?
-## TAREA 2: øQuÈ tipo de datos contiene?
-## TAREA 3: øCu·l es la longitud de este objeto?
+class(rand.1)
+mode(rand.1)
+length(rand.1)
 
-## TAREA 4: øCu·les son la media y la desviaciÛn est·ndar de "rand.1"
+## TAREA 1: ¬øQu√© clase de objeto es 'rand.1'? ¬øQu√© tipo de datos contiene?
+## ¬øCu√°l es su longitud? Las tres l√≠neas de arriba te lo dicen: explica en
+## un comentario qu√© significa cada una.
 
-## TAREA 5: Re-escriba "rand.1" con otro conjunto de 100 valores aleatorios 
-## tomados de una distribuciÛn normal con un promedio de 5 y una desviaciÛn 
-## est·ndar de 1.5.
+mean(rand.1)
+sd(rand.1)
 
-## TAREA 6: øCu·les son la media y la desviaciÛn est·ndar de esta nueva versiÛn 
-## de rand.1? Es la media identica a la de antes? øPor quÈ sÌ / no?
+## TAREA 2: ¬øLa media y la desviaci√≥n est√°ndar salieron exactamente 5 y 1.5?
+## ¬øPor qu√© s√≠ o por qu√© no?
 
+
+# Esto RE-ESCRIBE 'rand.1' con otros 100 valores de la misma distribuci√≥n.
+rand.1 <- rnorm(100, mean = 5, sd = 1.5)
+
+mean(rand.1)
+sd(rand.1)
+
+## TAREA 3: ¬øLa media es id√©ntica a la de antes? ¬øPor qu√© s√≠ / por qu√© no?
+
+
+# Abre el archivo de ayuda para la funci√≥n 'as.character'.
 ?as.character
-# Abre el archivo de ayuda para la funciÛn 'as.character'
 
-## TAREA 7: Utilice la funciÛn "as.character" para crear un vector de caracteres 
-## llamado 'rand.2' a partir de 'rand.1'.
-
+# Crea un vector de caracteres a partir de 'rand.1'.
+rand.2 <- as.character(rand.1)
 
 class(rand.2)
 mode(rand.2)
 length(rand.2)
-# Confirma los cambios realizados en el objeto.
 
+## TAREA 4: ¬øQu√© cambi√≥ y qu√© NO cambi√≥ entre 'rand.1' y 'rand.2'?
 
 rand.1
 rand.2
-## Al imprimir estos dos objetos en la pantalla, preste atenciÛn a cÛmo se ven
-## o no diferentes.
+## TAREA 5: Al imprimir estos dos objetos, ¬øen qu√© se ven diferentes?
 
 
 identical(rand.1, rand.2)
-## TAREA 8: øQuÈ hace la funciÛn 'identical'?, øpor quÈ este resultado es falso?
+## TAREA 6: ¬øQu√© hace la funci√≥n 'identical'? ¬øPor qu√© este resultado es FALSE,
+## si los dos objetos "tienen los mismos n√∫meros"?
 
-## TAREA 9: Utilice la funciÛn 'as.numeric' para crear un nuevo objeto "rand.3"
-## transformando de vuelta rand.2 a n˙meros. 
+
+# Transforma 'rand.2' de vuelta a n√∫meros.
+rand.3 <- as.numeric(rand.2)
 
 class(rand.1)
 class(rand.3)
 identical(class(rand.1), class(rand.3))
-# Esto confirma el cambio
-
-
+# Las clases s√≠ son id√©nticas.
 
 identical(rand.1, rand.3)
-## TAREA 10: øPuede entender por quÈ esto todavÌa es falso? Calcule la 
-## diferencia (resta) entre los valores de rand.1 y rand.3. Esta es una lecciÛn
-## sobre precisiÛn y la necesidad de tener cuidado cuando uno trabaja con valores
-## muy pequeÒos.
+rand.1 - rand.3
+## TAREA 7: ¬øPor qu√© 'identical(rand.1, rand.3)' todav√≠a es FALSE? Mira las
+## diferencias que imprime la l√≠nea de arriba: no son exactamente cero. Esta es
+## una lecci√≥n sobre precisi√≥n num√©rica y sobre el cuidado que hay que tener al
+## comparar n√∫meros con '=='. (El ejercicio 3-3 trata este tema a fondo.)
 
 
 seq.1 <- 1:5
@@ -73,501 +108,259 @@ seq.1
 ## Crea un vector con la secuencia 1, 2, 3, 4, 5.
 
 
-## TAREA 11: Queremos crear un vector de longitud 10 que es una muestra 
-## aleatoria de los n˙meros en 'seq.1'. Para ello, se utiliza la funciÛn 
-## "sample". La lÌnea de abajo, sin embargo, tiene un error. Solucione el 
-## problema con la ayuda de la funciÛn y el error que resulta de correr esta 
-## lÌnea de cÛdigo.
-sample(x=seq.1, size=10)
+## TAREA 8: Queremos un vector de longitud 10 que sea una muestra aleatoria de
+## los n√∫meros en 'seq.1'. La l√≠nea de abajo falla. Lee el error y la ayuda de
+## 'sample' y explica por qu√©. ¬øQu√© argumento hay que agregar?
+try(sample(x = seq.1, size = 10))
+
+sample(x = seq.1, size = 10, replace = TRUE)
+# As√≠ s√≠ funciona.
 
 
-## TAREA 12: Cree un objeto de nombre 'rand.3' (sobre-escribir el creado 
-## previamente) el cual es un vector de caracteres de longitud 300 y que es una 
-## muestra aleatoria de n˙meros enteros de 1 a 10.
+rand.3 <- as.character(sample(1:10, size = 300, replace = TRUE))
+# RE-ESCRIBE 'rand.3': ahora es un vector de caracteres de longitud 300 con una
+# muestra aleatoria de enteros del 1 al 10.
 
-is.numeric(rand.3)
-# Esto debe ser falso (FALSE). 
-
-is.character(rand.3)
-# Esto deberÌa ser TRUE
+is.numeric(rand.3) # Esto debe ser FALSE.
+is.character(rand.3) # Esto debe ser TRUE.
 
 class(rand.3)
 mode(rand.3)
 length(rand.3)
-# Confirma la clase, el modo y la longitud del objeto creado.
+
+## TAREA 9: Explica por qu√© 'is.numeric' es FALSE aunque el objeto est√© lleno
+## de lo que a simple vista parecen n√∫meros.
 
 
 rand.4 <- as.numeric(rand.3)
-# Crea un vector de transformaciÛn de los valores en 'rand.3' a n˙meros.
-
-## TAREA 13: Cree una objeto llamado "rand.5" utilizando la funciÛn "as.factor" 
-# para transofrmar el objeto "rand.4"
-## TAREA 14: øCu·l es la clase de "rand.5"?
-
-
-
-plot(rand.4, col="lightgreen")
-plot(rand.5, col="blue")
-# Aunque en esencia ambos objetos tienen n˙meros, la clase del objeto ("numeric" 
-# o "factor") determina el comportamiento de la funciÛn "plot" para graficar los
-# datos
-
-
-M.abund <- matrix(rpois(1000, 1)*rpois(1000, 10), ncol=50)
-M.abund
-## TAREA 15: øQuÈ hace la funciÛn de 'rpois'? øQuÈ hace esta lÌnea de cÛdigo?
-
-class(M.abund)
-## TAREA 16: Sin usar R, puede predecir las dimensiones de esta matriz?
-## øCu·l ser· su longitud? Confirmar sus predicciones utilizando las funciones
-## "dim" y "length".
-
-
-# Supongamos que la matriz 'M.abund' es una matriz de abundancias de especies
-# (columnas) en varios sitios (filas). En matrices como esta es ˙til tener
-# nombres para las filas y las columnas. La siguiente lÌnea de cÛdigo crea 
-# nombres para las columnas que representan diferentes especies.
-
-## TAREA 17: Hay un error en la lÌnea de abajo, lea el mensaje de error, 
-## encuentre el error y solucionelo.
-colnames(M.abund) <- paste("sp", 1:ncol("M.abund"), sep="_")
-colnames(M.abund)
-M.abund
-
-## TAREA 18: øPuede predecir cu·l ser· el resultado de la siguiente lÌnea de 
-## cÛdigo?
-class(colnames(M.abund))
-
-## TAREA 19: Ahora, escriba el cÛdigo para dar nombres a las filas 
-## (que representan sitios) en esta la matriz.
-
-
-M.presence <- M.abund > 0
-## Luego vamos a aprender en m·s detalle sobre operadores en R, pero por ahora, 
-## lo que esta lÌnea de cÛdigo hace es comparar cada elemento de la matriz 
-## 'M.abund' al valor 0. Este cÛdigo produce una nueva matriz llena de valores 
-## TRUE o FALSE, dependiendo de si los valores en 'M.abund' son mayores a 0 
-## o no. Las dimensiones de la nueva matriz son idÈnticas a la original. 
-
-M.presence
-## Confirma que el objeto se ve de la forma que deberÌa. Observe que la nueva 
-## matriz hereda los nombres de columnas y filas de la matriz 'M.abund'.
-
-## TAREA 20: øCu·l ser· la clase de "M.presence"? øCu·l ser· su modo?
-
-
-spp.abund <- colMeans(M.abund)
-# La funciÛn "colMeans" calcula los promedios (medias) de cada columna. Esto 
-# produce un vector con la media del n˙mero de individuos para cada especie.
-
-## TAREA 21: øCu·les son los nombres de los elementos de este vector? øDe dÛnde 
-## vienen estos nombres?
-
-
-spp.occup <- colSums(M.presence)
-# Este es un truco muy ˙til: R maneja TRUEs como 1s y FALSEs como 0s. AsÌ, hacer 
-# una suma por columnas de M.presence (llena de TRUE o FALSE) produce un vector 
-# que cuenta el n˙mero de sitios en los que cada especie est· presente.
-
-# Ahora, veamos si hay una relaciÛn entre la abundancia y la ocupancia de cada 
-# especie en estos datos simulados.
-
-LM.abund.occup <- lm(spp.abund~spp.occup)
-## TAREA 22: øQuÈ hace la funciÛn 'lm'?
-## TAREA 23: øCu·l es la clase del objeto "LM.abund.occup"?
-## TAREA 24: Investige la estructura de este objeto con la funciÛn 'str'.
-## TAREA 25: Utilice la funciÛn "summary" sobre este objeto para obtener los 
-## resultados.
-## TAREA 26: Haga un simple diagrama de dispersiÛn que corresponde a este 
-## an·lisis utilizando la funciÛn "plot".
-
-## TAREA 27: Haga un an·lisis similar que investiga la relaciÛn entre
-## el n˙mero total de individuos en un sitio con la riqueza (n˙mero de especies)
-## por sitio (use "rowSums" para obtener el n˙mero total de individuos por 
-## sitio).
-
-
-rm(M.abund)
-## TAREA 28: øQuÈ hace la funciÛn "rm"?
-
-
-sim.matrix <- matrix(rpois(50, 5), nrow=10, ncol=5)
-# Crea una matriz de 5 columnas y 10 filas, llen·ndolo con valores aleatorios a 
-# partir de una distribuciÛn de Poisson con una media de 5.
-
-rownames(sim.matrix) <- paste("site", 1:nrow(sim.matrix), sep="_")
-colnames(sim.matrix) <- paste("sp", 1:ncol(sim.matrix), sep="_")
-# Crea nombres de filas y columnas para "sim.matrix".
-
-
-
-letters
-# 'letters' es un vector pre-derminado en R que contiene el alfabeto.
-
-L.vector <- sample(c(letters, LETTERS), 50, replace=TRUE)
-## TAREA 29: øCu·les son la clase, el modo y longitud de este vector ("L.vector")?
-## TAREA 30: Cree un vector con una sequencia de n˙meros enteros de 1 a la 
-## longitud del vector de L.vector.
-## TAREA 31: utilice el vector del paso anterior para poner nombres a los 
-## elementos del vector "L.vector"
-
-## TAREA 32: Cree una matriz denominada "L" que contiene los valores en el 
-## vector "L.vector", y que tiene 5 filas (y tantas columnas como sean 
-## necesarias para contener los datos).
-
-
-### ** Descarge el archivo: StreblidaeOnBats.txt desde el sitio web del taller ** ###
-
-# Usando de la siguiente lÌnea de cÛdigo, abra el archivo "StreblidaeOnBats.txt".
-# Esta linea tambiÈn pone los contenidos del archivo en un objeto llamado "streb".
-
-
-streb <- read.table(file.choose(), header=TRUE, sep="\t")
-# Este set de datos contiene informaciÛn sobre la abundancia y riqueza de tres
-# especies de ectopar·sitos en murciÈlagos hospederos (filas). Estos datos 
-# fueron colectados en m˙ltiples localidades en Ecuador.
-
-## TAREA 33: Sin utilizar R, øsabe quÈ tipo de objeto es "streb"? Confirme su 
-## predicciÛn en R.
-
-dim(streb)
-# Indica las dimensiones del Streb.
-
-
-## TAREA 34: øCu·ntas observaciones y cu·ntas variables existen en este set de 
-## datos?
-## TAREA 35: Obtenga los nombres de las variables en este set de datos.
-
-
-rownames(streb)
-# Obtiene los nombres de las filas/observaciones en el set de datos.
-
-## TAREA 36: Cambie el nombre de las fila utilizando una combinaciÛn caracteres 
-## "obs_" con el n˙mero de cada observaciÛn; por ejemplo 'obs_1', 'obs_2', etc.
-## TAREA 37: øCu·l es la estructura del conjunto de datos? Utilice la funciÛn 
-## "str".
-## TAREA 38: Haga un resumen del conjunto de datos - utilice la funciÛn 
-## "summary".
-
-
-streb_sex <- streb$Sex
-# Luego vamos a aprender m·s acerca sobre indizaciÛn, pero por ahora, la lÌnea 
-# de arriba toma la columnas denominada "Sex" en el marco de datos "streb", y 
-# pone los datos en un nuevo objeto llamado 'streb_sex'.
-## TAREA 39: øCu·l es la clase de "streb_sex"?
-
-streb_sex.2 <- as.character(streb$Sex)
-## TAREA 40: øCu·l es la clase de "streb_sex.2"?
-
-## TAREA 41: øPuede predecir los resultados de las siguientes lÌneas de cÛdigo?
-levels(streb_sex)
-levels (streb_sex.2)
-
-
-## TAREA 42: øPuede predecir los resultados de las siguientes lÌneas de cÛdigo?
-plot(streb_sex)
-plot(streb_sex.2)
-
-## NÛtese cÛmo estas dos lÌneas imprimen los datos ligeramente diferentes
-streb_sex
-as.character(streb_sex)
-
-## TAREA 43: Utilice la funciÛn "identical" para comparar "streb_sex" y 
-## "streb_sex.2". Los dos objetos tienen los mismos datos?
-
-SexMatrix <- cbind(streb_sex, as.character(streb_sex))
-# La funciÛn "cbind" concatena vectores para hacer matrices, cada vector se 
-# convierte en una columna distinta.
-
-SexMatrix
-## TAREA 44: øQuÈ pasÛ con los datos del factor "streb_sex" cuando se usa para
-## crear una matriz?
-
-## Ejecute el siguiente cÛdigo, el cual crea una serie de vectores:
-V1 <- rnorm(10)
-class(V1)
-
-V2 <- rpois(10,  5)
-class(V2)
-
-V3 <- sample(letters, 10)
-class(V3)
-
-V4 <- sample(c(TRUE, FALSE), 11, replace=TRUE)
-class(V4)
-
-## TAREA 45: øPuede predecir (antes de correr el cÛdigo) si el siguiente 
-## cÛdigo producir· un error?
-DF <- data.frame(V1, V2, V3, V4)
-
-## TAREA 46: Cambie cÛmo se creÛ "V4" para que tenga solo 10 elementos. Entonces
-## produzca el marco de datos otra vez utilizando los vectores "V1" a "V4."
-## TAREA 47: Produzca una lista con el nombre "DF.list" que tenga los mismos 
-## datos que "DF", y donde cada elemento de la lista sea uno de los vectores 
-## V1 a V4.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-################################################################################
-### SOLUCIONES PARA TAREAS #####################################################
-################################################################################
-
-## TAREA 1 ##
-class(rand.1) # Vector numÈrico
-
-
-## TAREA 2 ##
-mode(rand.1)
-
-
-## TAREA 3 ##
-length(rand.1)
-
-
-## TAREA 4 ##
-mean(rand.1)
-sd(rand.1)
-
-
-## TAREA 5 ##
-rand.1 <- rand(100, mean=5, sd=1.5)
-
-
-## TAREA 6 ##
-mean(rand.1)
-sd(rand.1)
-# No, porque estas son muestras independientes
-
-
-## TAREA 7 ##
-rand.2 <- as.character(rand.1)
-
-
-## TAREA 8 ##
-help(identical)
-# Comprueba si dos objetos son exactamente iguales. Es FALSE, porque se trata de 
-# un vector numÈrico versus un vector de caracteres
-
-
-## TAREA 9 ##
-rand.3 <- as.numeric(rand.2)
-
-
-## TAREA 10 ##
-rand.1 - rand.3
-# Las diferencias est·n cerca, pero no son exactamente cero. En el cambio de 
-# tipo de datos se pierde cierta precisiÛn
-
-
-## TAREA 11 ##
-help(sample)
-sample(x=seq.1, size=10, replace=TRUE)
-
-
-## TAREA 12 ##
-rand.3 <- as.character(sample(1:10, size=300, replace=TRUE))
-
-
-## TAREA 13 ##
 rand.5 <- as.factor(rand.4)
 
-
-## TAREA 14 ##
+class(rand.4)
 class(rand.5)
+levels(rand.5)
+## TAREA 10: ¬øCu√°l es la clase de cada uno? ¬øQu√© son los "levels" de 'rand.5'?
+
+par(mfrow = c(1, 2))
+plot(rand.4, col = "lightgreen", main = "numeric")
+plot(rand.5, col = "blue", main = "factor")
+par(mfrow = c(1, 1))
+## TAREA 11: Aunque en esencia ambos objetos tienen los mismos n√∫meros, la clase
+## del objeto ("numeric" o "factor") determina el comportamiento de 'plot'.
+## Describe en qu√© se diferencian las dos gr√°ficas y por qu√©.
 
 
-## TAREA 15 ##
-help(rpois)
-# rpois toma valores al azar de una distribuciÛn Poisson
+M.abund <- matrix(rpois(1000, 1) * rpois(1000, 10), ncol = 50)
+## TAREA 12: ¬øQu√© hace la funci√≥n 'rpois'? Lee help(rpois) y describe paso a
+## paso qu√© hace esta l√≠nea de c√≥digo.
 
-M.abund <- matrix(rpois(1000, 1)*rpois(1000, 10), ncol=50)
-                    # 1. Crear un vector de 100 valores a partir de una 
-                    #    distribuciÛn de Poisson con lambda = 1
-                    # 2. Crear otro vector como en el paso 1.
-                    # 3. Multiplica cada elemento de los vectores creados en los 
-                    #    pasos 1 y 2.
-                    # 4. Pone el resultado del paso 3 en una matriz de 50 
-                    #    columnas y tantas filas como sean necesarias.
-
-
-## TAREA 16 ##
-# 50 columnas establecidas en el momento de ajustar el par·metro ncol = 50
-# 20 filas porque, con 50 columnas, se necesitan 20 filas para almacenar 1000 valores
-# Longitud de 1000 porque son 1000 valores en esta matriz
+class(M.abund)
+## TAREA 13: SIN correr R, predice las dimensiones y la longitud de esta matriz.
+## Despu√©s conf√≠rmalo con las dos l√≠neas siguientes.
 dim(M.abund)
 length(M.abund)
 
 
-## TAREA 17 ##
-# Cuando se utiliza "M.abund", esperamos acceder a los valores dentro del objeto 
-# (matriz).
-# Debido a que est· entre comillas, le estamos diciendo que esto es pedazo de 
-# texto, no el nombre de un objeto
-colnames(M.abund) <- paste("sp", 1:ncol(M.abund), sep="_")
+# Supongamos que 'M.abund' es una matriz de abundancias de especies (columnas)
+# en varios sitios (filas). En matrices como esta es √∫til tener nombres para
+# filas y columnas.
 
+## TAREA 14: La l√≠nea de abajo falla. Lee el error, encuentra el problema y
+## expl√≠calo. Pista: f√≠jate en las comillas.
+try(colnames(M.abund) <- paste("sp", 1:ncol("M.abund"), sep = "_"))
 
-## TAREA 18 ##
-# Ser· carcter porque, a pesar de que los valores dentro de "M.abund" son 
-# n˙meros, los nombres de "M.abund" son texto. AquÌ estamos pidiendo la clase de 
-# los nombres, no la clase de la matriz
+colnames(M.abund) <- paste("sp", 1:ncol(M.abund), sep = "_")
+rownames(M.abund) <- paste("site", 1:nrow(M.abund), sep = "_")
+M.abund[1:5, 1:5]
+
+## TAREA 15: ¬øPuedes predecir el resultado de la siguiente l√≠nea? Ojo: no se
+## pregunta por la clase de la matriz sino por la clase de sus nombres.
 class(colnames(M.abund))
 
 
-## TAREA 19 ##
-rownames(M.abund) <- paste("site", 1:nrow(M.abund), sep="_")
+M.presence <- M.abund > 0
+## M√°s adelante veremos operadores con detalle, pero por ahora: esta l√≠nea
+## compara cada elemento de 'M.abund' con 0 y produce una nueva matriz llena de
+## TRUE o FALSE, con las mismas dimensiones que la original.
 
+M.presence[1:5, 1:5]
+## Observa que la nueva matriz hereda los nombres de 'M.abund'.
 
-## TAREA 20 ##
 class(M.presence)
 mode(M.presence)
+## TAREA 16: ¬øCoinciden la clase y el modo con lo que esperabas?
 
 
-## TAREA 21 ##
+spp.abund <- colMeans(M.abund)
+# 'colMeans' calcula el promedio de cada columna: la abundancia media de cada
+# especie a trav√©s de los sitios.
+
 names(spp.abund)
-# Estas son las sumas por columna, por lo tanto los nombres provienen de los 
-# nombres de las columnas de "M.presence"
+## TAREA 17: ¬øDe d√≥nde vienen los nombres de los elementos de este vector?
 
 
-## TAREA 22 ##
-help(lm)
-# "lm" crea modelos lineales 
+spp.occup <- colSums(M.presence)
+# Truco muy √∫til: R trata los TRUE como 1 y los FALSE como 0. Sumar por columnas
+# una matriz de TRUE/FALSE cuenta en cu√°ntos sitios est√° presente cada especie.
 
 
-## TAREA 23 ##
+LM.abund.occup <- lm(spp.abund ~ spp.occup)
+## TAREA 18: ¬øQu√© hace la funci√≥n 'lm'? ¬øCu√°l es la clase del objeto resultante?
 class(LM.abund.occup)
 
-
-## TAREA 24 ##
 str(LM.abund.occup)
+## TAREA 19: 'str' muestra la estructura interna del objeto. ¬øDe qu√© clase
+## b√°sica de objeto est√° hecho un modelo lineal por dentro?
 
-
-## TAREA 25 ##
 summary(LM.abund.occup)
+## TAREA 20: Interpreta el resumen: ¬øhay relaci√≥n entre abundancia y ocupancia?
+
+plot(spp.occup, spp.abund, cex = 1.5, pch = 21, col = "black", bg = "grey30",
+     xlab = "Ocupancia de la especie", ylab = "Abundancia media de la especie")
+## TAREA 21: Este es el diagrama de dispersi√≥n que corresponde al an√°lisis.
+## Agr√©gale la l√≠nea de regresi√≥n con abline(LM.abund.occup).
+
+## TAREA 22: Haz un an√°lisis similar, pero ahora entre el n√∫mero total de
+## individuos por sitio y la riqueza (n√∫mero de especies) por sitio. Usa
+## 'rowSums' en lugar de 'colSums'/'colMeans'. (La soluci√≥n est√° m√°s abajo.)
 
 
-## TAREA 26 ##
-plot(spp.occup, spp.abund, cex=1.5, pch=21, col="black", bg="grey30",
-  xlab="Species Occupancy", ylab="Species Mean Abundance")
+# Crea una copia desechable de 'M.abund' solo para el siguiente ejemplo.
+basura <- M.abund
+
+# Lista los objetos que existen en este momento en tu sesi√≥n. Ah√≠ est√° 'basura'.
+ls()
+
+rm(basura)
+ls()
+## TAREA 23: ¬øQu√© hace la funci√≥n 'rm'? Compara las dos salidas de 'ls()'.
+## (Ojo: borramos una copia y no 'M.abund' misma, porque todav√≠a la necesitamos.)
 
 
-## TAREA 27 ##
-site.density <- rowSums(M.abund)
-site.rich <- rowSums(M.presence)
+letters
+# 'letters' es un vector predeterminado en R que contiene el alfabeto en
+# min√∫sculas; 'LETTERS' lo tiene en may√∫sculas.
 
-plot(site.density, site.rich, cex=1.5, pch=21, col="black", bg="grey30",
-  xlab="Site Density", ylab="Site Richness")
+L.vector <- sample(c(letters, LETTERS), 50, replace = TRUE)
 
-LM.rich.dens <- lm(site.rich~site.density)
-summary(LM.rich.dens)
-
-
-## TAREA 28 ##
-help(rm)
-# "rm" remueve objetos de la sesiÛn de R
-
-
-## TAREA 29 ##
 class(L.vector)
 mode(L.vector)
 length(L.vector)
+## TAREA 24: Explica qu√© hizo 'sample' aqu√≠ y por qu√© hizo falta replace = TRUE.
 
-
-## TAREA 30 ##
-seq(from=1, to=length(L.vector), by=1)
-# or
-1:length(L.vector)
-
-
-## TAREA 31 ##
 names(L.vector) <- 1:length(L.vector)
+L.vector
+## TAREA 25: Las dos l√≠neas anteriores le ponen nombres a los elementos.
+## ¬øQu√© diferencia hay entre L.vector[3] y L.vector["3"]? Pru√©balo.
+
+L <- matrix(L.vector, nrow = 5)
+L
+## TAREA 26: ¬øCu√°ntas columnas tiene 'L'? ¬øDe d√≥nde sali√≥ ese n√∫mero?
 
 
-## TAREA 32 ##
-L <- matrix(L.vector, nrow=5)
+### DATOS REALES ###############################################################
 
+# Este conjunto de datos tiene informaci√≥n sobre la abundancia y riqueza de tres
+# especies de ectopar√°sitos (Streblidae) en murci√©lagos hospederos (filas).
+# Los datos fueron colectados en m√∫ltiples localidades en Ecuador.
 
-## TAREA 33 ##
-# data.frame. La funcion "read.table" siempre produce marcos de datos
+streb <- read.table("Datasets/data_streblidaeonbats.txt", header = TRUE,
+                    sep = "\t", stringsAsFactors = TRUE)
+
+# OJO con 'stringsAsFactors = TRUE': desde R 4.0.0 'read.table' ya NO convierte
+# texto a factores autom√°ticamente. Lo pedimos expl√≠citamente porque varias
+# tareas de abajo comparan el comportamiento de un factor contra el de un vector
+# de caracteres. Si lo dejas en su valor por defecto (FALSE), la columna 'Sex'
+# llega como texto y las TAREAS 31 a 35 dejan de tener sentido.
+
 class(streb)
-
-
-## TAREA 34 ##
 dim(streb)
-# 139 observaciones
-# 13 variables
+## TAREA 27: ¬øQu√© tipo de objeto produce siempre 'read.table'? ¬øCu√°ntas
+## observaciones y cu√°ntas variables hay?
 
-
-## TAREA 35 ##
 colnames(streb)
+## TAREA 28: ¬øCu√°les son los nombres de las variables?
 
+rownames(streb)[1:10]
+rownames(streb) <- paste("obs", 1:nrow(streb), sep = "_")
+rownames(streb)[1:10]
+## TAREA 29: Explica qu√© hizo la l√≠nea de en medio.
 
-## TAREA 36 ##
-rownames(streb) <- paste("obs", 1:nrow(streb), sep="_")
-
-
-## TAREA 37 ##
 str(streb)
-
-
-## TAREA 38 ##
 summary(streb)
+## TAREA 30: 'str' y 'summary' dan dos vistas distintas del mismo objeto.
+## ¬øQu√© te dice cada una que la otra no?
 
 
-## TAREA 39 ##
+streb_sex <- streb$Sex
+streb_sex.2 <- as.character(streb$Sex)
+# La primera l√≠nea toma la columna "Sex" tal cual (un factor); la segunda la
+# convierte a texto.
+
 class(streb_sex)
-
-
-## TAREA 40 ##
 class(streb_sex.2)
+## TAREA 31: ¬øCu√°l es la clase de cada uno?
 
+## TAREA 32: ¬øPuedes predecir el resultado de las siguientes l√≠neas?
+levels(streb_sex)
+levels(streb_sex.2)
 
-## TAREA 41 ##
-levels(streb_sex) # Reporta los niveles de la variable
-levels(streb_sex.2) # Reporta nada porque este no es un factor
+## TAREA 33: ¬øPuedes predecir el resultado de estas dos? (La segunda va dentro
+## de try() porque produce un error, no una gr√°fica.)
+plot(streb_sex)
+try(plot(streb_sex.2))
 
+## Nota c√≥mo estos dos objetos se imprimen de forma distinta:
+streb_sex
+as.character(streb_sex)
 
-## TAREA 42 ##
-plot(streb_sex) # Hace un plot del n˙mero de observaciones por nivel
-plot(streb_sex.2) # No hace nada porque este es un vector de caracteres
-
-
-## TAREA 43 ##
 identical(streb_sex, streb_sex.2)
+## TAREA 34: ¬øLos dos objetos tienen la misma informaci√≥n? ¬øPor qu√© 'identical'
+## dice que no son iguales?
+
+SexMatrix <- cbind(streb_sex, as.character(streb_sex))
+head(SexMatrix)
+## TAREA 35: 'cbind' pega vectores para formar una matriz, cada vector como una
+## columna. ¬øQu√© le pas√≥ a los datos del factor 'streb_sex' en la primera
+## columna? Pista: una matriz solo admite UN tipo de dato.
 
 
-## TAREA 44 ##
-SexMatrix
-# Debido a que las matrices pueden contener sÛlo un tipo de datos, estos datos
-# numÈricos se transformaron a texto
+### MARCOS DE DATOS Y LISTAS ###################################################
 
+V1 <- rnorm(10)
+V2 <- rpois(10, 5)
+V3 <- sample(letters, 10)
+V4 <- sample(c(TRUE, FALSE), 11, replace = TRUE)
 
-## TAREA 45 ##
-# Debido a que el ˙ltimo vector utilizado para construir el marco de datos 
-# contiene 11 valores, mientras que todos los otros contienen 10
+class(V1)
+class(V2)
+class(V3)
+class(V4)
 
+## TAREA 36: ANTES de correr la siguiente l√≠nea, predice si dar√° error y por qu√©.
+try(DF <- data.frame(V1, V2, V3, V4))
 
-## TAREA 46 ##
-V4 <- sample(c(TRUE, FALSE), 10, replace=TRUE)
+V4 <- sample(c(TRUE, FALSE), 10, replace = TRUE)
 DF <- data.frame(V1, V2, V3, V4)
+DF
+## TAREA 37: ¬øQu√© cambi√≥ para que ahora s√≠ funcione?
 
-
-## TAREA 47 ##
-DF.list <- list(V1, V2, V3, V4)
+DF.list <- list(V1 = V1, V2 = V2, V3 = V3, V4 = V4)
 str(DF.list)
+## TAREA 38: 'DF' y 'DF.list' tienen los mismos datos. ¬øQu√© puede hacer una
+## lista que un marco de datos no? (Pista: intenta meter en cada uno un quinto
+## vector de longitud 3.)
+
+
+################################################################################
+### SOLUCIONES #################################################################
+################################################################################
+
+## Las soluciones de este ejercicio est√°n en un archivo aparte:
+##
+##     soluciones/3-2_objetos_soluciones.r
+##
+## Int√©ntalo t√∫ primero y cons√∫ltalo despu√©s para autoevaluarte. Ese archivo
+## vuelve a correr este ejercicio por su cuenta, as√≠ que puedes abrirlo en una
+## sesi√≥n limpia:
+##
+##     source("soluciones/3-2_objetos_soluciones.r")

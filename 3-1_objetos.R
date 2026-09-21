@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                                					          ###
-### PRESENTACIÓN 3-1: objetos  			                           			         ###
-###                                                               						                      ###
-### Unida de Servicios Bioinformáticos    						                      ###
-### Instituto Nacional de Medicina Genómica                                               			          ###
-### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
+### R BASICS WORKSHOP                                                        ###
+### CLASE 3-1: Objetos                                                       ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 
@@ -16,17 +16,23 @@
 
 # La manera más sencilla de crear un objeto es utilizando el operador *<-*
 
+# Esto crea un objeto llamado *x* que contiene el valor 10
 x <- 10
 x
-# Esto crea un objeto llamado *x* que contiene el valor 10
 
+# Esto crea otro objeto llamado *y* que contiene el valor 5.3
 y <- 5.3
 y
-# Esto creo otro objeto llamado *y* que contiene el valor 5.3
 
+# Esto RE-ESCRIBE el objeto *x* y le asigna una secuencia de 3 valores
 x <- c(10, 5, 2)
 x
-# Esto RE-ESCRIBE el objeto *x* y le asigna una secuencia de 3 valores
+
+# También existe *=* para asignar, pero *<-* es lo que se acostumbra en R
+# porque *=* también sirve para dar valores a argumentos dentro de funciones:
+x = 10
+x
+x <- c(10, 5, 2)
 
 
 # Otra manera de crear un objeto es con la función *assign*
@@ -67,7 +73,7 @@ mode(genes)
 
 # IMPORTANTE: Tomar en cuenta que los valores de caracteres siempre van entre 
 # comillas. Esto generaría un error:
-genes <- c(TP53, MYC, BRCA1, BRCA2, ATM)
+try(genes <- c(TP53, MYC, BRCA1, BRCA2, ATM)) # Error A PROPÓSITO
 
 
 ## 3. LÓGICOS ##
@@ -110,11 +116,11 @@ is.null(x)
 
 # 1. Vectores: 1 dimensión - numéricos, caracteres, lógicos
 # 2. Factores: 1 dimensión - niveles de un factor
-# 2. Matrices: 2 dimensiones
-# 3. Arreglos: n dimensiones
-# 4. Marcos de datos (data frames): 2 dimensiones
-# 5. Lista
-# 6. Otras clases
+# 3. Matrices: 2 dimensiones
+# 4. Arreglos: n dimensiones
+# 5. Marcos de datos (data frames): 2 dimensiones
+# 6. Listas
+# 7. Otras clases
 
 ## IMPORTANTE: Cada objeto tiene ATRIBUTOS que definen como funciona en R ##
 
@@ -144,8 +150,12 @@ names(x=logFCh)
 # Para crear nombres en este vector:
 logFCh <- c(1, 0, 0, 6, 2)
 
-names(x=logFCh) <- paste("gene", seq(1,length(logFCh)), sep = "_")
+names(x=logFCh) <- paste("gene", seq(1, length(logFCh)), sep = "_")
 names(x=logFCh)
+logFCh
+
+# Los nombres se borran asignando NULL:
+names(x=logFCh) <- NULL
 logFCh
 
 # Alternativamente:
@@ -176,7 +186,7 @@ class(x2)
 
 
 
-### F. FACTORES ################################################################
+### E. FACTORES ################################################################
 # Factores también representan una secuencia linear de valores, pero están 
 # diseñados para ser NIVELES DE UNA VARIABLE CATEGÓRICA. 
 
@@ -204,14 +214,23 @@ levels(diff2)
 # IMPORTANTE: la clase frecuentemente afecta como funciones procesan objetos.
 # Por ejemplo:
 
-plot(diff)
-plot(diff2)
+try(plot(diff))  # Error A PROPÓSITO: *diff* es texto, no un factor. 'plot'
+                 # intenta convertirlo a número, obtiene NA y se queda sin
+                 # valores finitos para los ejes.
+plot(diff2)      # *diff2* sí es factor: sale una gráfica de barras.
 
 
+# CUIDADO: asignar sobre *levels* RE-ETIQUETA los niveles, NO reordena ni
+# recodifica los datos. El primer nivel de diff2 es "down"; con la línea de
+# abajo todo lo que decía "down" pasa a decir "equal". Es una fuente clásica
+# de errores silenciosos.
+levels(diff2)
+diff2
 levels(diff2) <- c("equal", "up", "down")
+diff2 # Compara con la salida anterior: los datos quedaron mal etiquetados.
 
 
-### G. MATRICES ################################################################
+### F. MATRICES ################################################################
 # Las matrices son parecidas a vectores, pero tienen dos dimensiones: FILAS Y 
 # COLUMNAS.
 
@@ -280,7 +299,7 @@ mode(mixed.matrix)
 
 
 
-### H. ARREGLOS ################################################################
+### G. ARREGLOS ################################################################
 # Los arreglos son parecidos a matrices, pero tienen MÁS DE DOS DIMENSIONES. 
 # Con tres dimensiones, es como dos matrices de las mismas dimensiones una
 # detrás de otra (con filas y columnas alineadas).
@@ -305,7 +324,7 @@ logFCh.A
 
 
 
-### I. MARCOS DE DATOS #########################################################
+### H. MARCOS DE DATOS #########################################################
 # Los marcos de datos organizan variables (columnas) medidos para diferentes 
 # observaciones (filas). De esta manera, CADA COLUMNA PUEDE TENER VALORES DE 
 # TIPOS DISTINTOS (numéricos, caracteres, lógicos o factores).
@@ -356,15 +375,16 @@ length(x)
 length(y)
 length(z)
 
-xy <- data.frame(x,y)
+try(xy <- data.frame(x,y)) # Error A PROPÓSITO: 5 no es múltiplo de 2
 
-xz <- data.frame(x,z)
+xz <- data.frame(x,z) # Esta sí funciona: 6 sí es múltiplo de 2, así que R
+                      # "recicla" los valores de x
 
 xz
 
 
 
-### J. LISTAS ##################################################################
+### I. LISTAS ##################################################################
 # Las listas también pueden contener elementos de distintos tipos o clases, y NO
 # necesitan tener la misma longitud.
 
@@ -414,7 +434,7 @@ str(lm.res)
 
 
 
-### K. OTROS ###################################################################
+### J. OTROS ###################################################################
 # Muchos análisis o funciones generan objetos de clases particulares. Pero, la 
 # gran mayoría son construcciones de los objetos básicos que hemos
 # revisado. Por ejemplo:
@@ -428,21 +448,32 @@ class(lm.res)
 # Sin embargo, el hecho de ser de clase *lm* hace que ciertas funciones manejen
 # este objeto de maneras específicas a su clase.
 
+par(mfrow = c(2, 2)) # Los 4 diagnósticos de un modelo lineal, en un solo panel
 plot(lm.res)
+par(mfrow = c(1, 1)) # Deja el dispositivo gráfico como estaba
 
-# Otra clase de objeto son árboles filogenéticos
-install.packages("ape") # Esto instala un paquete llamado *ape*
-library(ape) # Esto abre el paquete
+# Otra clase de objeto son árboles filogenéticos.
+# Para instalar el paquete *ape* (solo hace falta una vez):
+# install.packages("ape")
 
-# El paquete *ape* contiene un árbol filogenético de murciélagos
-data(chiroptera)
-class(chiroptera)
+# Este bloque solo corre si *ape* ya está instalado, para que el archivo
+# completo pueda ejecutarse aunque falte el paquete:
+if (requireNamespace("ape", quietly = TRUE)) {
 
-# A pesar de ser un objeto de clase *phylo*, este objeto tiene la estructura 
-# de una lista
-str(chiroptera)
+  library(ape) # Esto abre el paquete
 
-# La función *plot* sabe que hacer cuando se le da un árbol filogenético
-plot(chiroptera, show.tip.label=FALSE)
+  # El paquete *ape* contiene un árbol filogenético de murciélagos
+  data(chiroptera, package = "ape")
+  print(class(chiroptera))
 
+  # A pesar de ser un objeto de clase *phylo*, este objeto tiene la estructura
+  # de una lista
+  str(chiroptera)
 
+  # La función *plot* sabe que hacer cuando se le da un árbol filogenético.
+  # Son ~800 especies: con show.tip.label=TRUE los nombres no se alcanzan a leer.
+  plot(chiroptera, show.tip.label = FALSE)
+
+} else {
+  message("El paquete 'ape' no está instalado; se omite el ejemplo del árbol.")
+}

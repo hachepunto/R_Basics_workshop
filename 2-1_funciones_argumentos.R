@@ -1,10 +1,10 @@
 ################################################################################
-### R BASICS WORKSHOP                                                					          ###
-### PRESENTACIÓN 2.1: Funciones y argumentos                           			         ###
-###                                                               						                      ###
-### Unida de Servicios Bioinformáticos    						                      ###
-### Instituto Nacional de Medicina Genómica                                               			          ###
-### Website: github.com/hachepunto/R_Basics_workshop			                                   ### 
+### R BASICS WORKSHOP                                                        ###
+### CLASE 2-1: Funciones y argumentos                                        ###
+###                                                                          ###
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 
@@ -90,6 +90,10 @@ help(seq)
 # o usa el símbolo de interrogación:
 ?seq
 
+# Con dos signos de interrogación se busca el texto en TODA la ayuda instalada,
+# no solo en el nombre de la función. Sirve cuando no recuerdas cómo se llama:
+??correlation
+
 # 8. Cuando aparecen *...* en el archivo de ayuda de una función frecuentemente significan  
 # multiples argumentos sin nombre:
 
@@ -98,18 +102,23 @@ c(9, 5, 3, 5)
 
 # Un par de cosillas extras que es necesario que saber: 
 
-# 9. R es sencible a las mayúsculas y minúsculas, Así que la función seq existe, 
+# 9. R es sensible a mayúsculas y minúsculas, así que la función seq existe, 
 # pero la función Seq no:
 
-Seq(from = 5, to = 20, by = 0.5)
+try(Seq(from = 5, to = 20, by = 0.5)) # Error A PROPÓSITO: 'Seq' no existe.
 
 # 10. En R los espacios en blanco no significan nada:
 
 seq(from=5, to=20, by=0.5)
 
+seq(from=5,to=20,by=0.5)
+
 seq     (from     =     5,      to     =     20,      by     =     0.5)
 
-https://google.github.io/styleguide/Rguide.xml
+# Los tres comandos anteriores dan el mismo resultado. Que R los acepte no
+# quiere decir que se valga escribir así: el código se escribe para que otra
+# persona lo lea. Una guía de estilo recomendable:
+# https://google.github.io/styleguide/Rguide.xml
 
 ### D. UNOS EJEMPLOS ADICIONALES DE FUNCIONES Y ARGUMENTOS #####################
 
@@ -117,7 +126,7 @@ rep(x = "R", times = 10)
 
 rpois(n = 10, lambda = 5)
 
-rpois(n =10) # ¿Por qué esta no funciona?
+try(rpois(n = 10)) # ¿Por qué esta no funciona? Lee el error.
 
 rnorm(n=10)
 
@@ -143,7 +152,8 @@ c(19, 4, 2, 6, 2) # Concatena varios valores
  
 mean(x=c(19, 4, 2, 6, 2)) # Calcula el promedio de los valores en el argumento x
 
-mean(x=19, 4, 2, 6, 2) # Esta versión NO hace lo mismo
+try(mean(x=19, 4, 2, 6, 2)) # Esta versión NO hace lo mismo: 'mean' solo usa
+                            # el primer argumento y se queja de los demás.
 
 mean(x=rnorm(100))
 
@@ -185,6 +195,8 @@ sum(19, 5) # Usando la función *sum*
 19*5
 19/5
 19^5
+19%%5
+19%/%5
 
 # Un operador usado comúnmente es *:*, el cual genera secuencias regulares:
 help(":")
@@ -199,9 +211,9 @@ pi:6
 ### G. FUENTES PRINCIPALES DE AYUDA SOBRE FUNCIONES Y SUS ARGUMENTOS  ##########
 
 # 1. Lee el archivo de ayuda para la función
-# 2. Has una búsqueda en la web - usa www.rseek.org
+# 2. Haz una búsqueda en la web - usa www.rseek.org
 # 3. Pregunta a un amigo
-# 4. Has una pregunta en un foro en línea
+# 4. Haz una pregunta en un foro en línea
 # 5. Estudia el código detrás de la función 
 
 
@@ -222,26 +234,29 @@ help(seq)
 # 6. EXAMPLES - una serie de ejemplos del uso de la función
 
 
-### I. PAQUETES DE R PACKAGES Y TASK VIEWS ###############################################
+### I. PAQUETES DE R Y TASK VIEWS #############################################
 
 # Los PAQUETES son conjuntos de funciones (y conjuntos de datos opcionales) que pueden
-# ser usados como extensiones a las disponibles por defaults en R
+# ser usados como extensiones a las disponibles por defecto en R
 
 # La mayoría de los paquetes se pueden encontrar en: http://cran.r-project.org/web/packages/
 
-# Para que un paquete pueda ser usado, primero necesita ser instalado usando *install.pacakges*
-install.packages("gProfileR")
+# Para que un paquete pueda ser usado, primero necesita ser instalado usando
+# *install.packages*. Las siguientes líneas están comentadas porque descargan
+# cosas de internet; descoméntalas cuando quieras instalar de verdad.
+
+# install.packages("gProfileR")
 
 # Después, cada vez que va a ser usado, el paquete necesita ser cargado con *library*
-library(gProfileR)
+# library(gProfileR)
 
-??gProfileR
+# ??gProfileR
 
 # Los paquetes pueden ser actualizados con *update.packages*
-update.packages("gProfileR")
+# update.packages("gProfileR")
 
 
-### J BIOCONDUCTOR  ########################################################
+### J. BIOCONDUCTOR ###########################################################
 
 # Bioconductor es un proyecto que provee de herramientas para el análisis y la compresión de 
 # los datos genómicos de alto rendimiento. 
@@ -250,13 +265,14 @@ update.packages("gProfileR")
 # Su sitio web está en: www.bioconductor.org y para usarlo hay que instalar el paquete básico y
 # luego el conjunto de paquetes específicos que necesitemos.
 
-# instalar Bioconductor:
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install(version = "3.11")
+# instalar Bioconductor (también comentado por la misma razón):
+
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# BiocManager::install()   # Sin 'version' instala la que corresponde a tu R.
 
 # instalar un paquete:
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("affy")
 
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# BiocManager::install("affy")

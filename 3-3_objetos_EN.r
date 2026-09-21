@@ -1,20 +1,18 @@
 ################################################################################
 ### R BASICS WORKSHOP                                                        ###
-### EXERCISE 3.2: The First Circle of the R Inferno: falling into the        ###
-### Floating Point Trap                                                      ###
-###                                                                          ### 
+### EXERCISE 3-3: The First Circle of the R Inferno: the Floating Point Trap ###
 ###                                                                          ###
-### Center for Conservation and Sustainable Development                      ###
-### Missouri Botanical Garden                                                ###
-### Website: rbasicsworkshop.weebly.com                                      ### 
+### Métodos de biología computacional                                        ###
+### Facultad de Ciencias, UNAM                                               ###
+### Website: github.com/hachepunto/R_Basics_workshop                         ###
 ################################################################################
 
 ### INTRODUCTION ###############################################################
 # According to Dante, an inscription posted at the gates of Hell hints at what
 # lies beyond:
 #
-# "Per me si va ne la citt� dolente,
-# per me si va ne l�etterno dolore,
+# "Per me si va ne la città dolente,
+# per me si va ne l’etterno dolore,
 # per me si va tra la perduta gente..."
 #
 # The First Circle of the R Inferno is "home of the virtuous pagans. These are
