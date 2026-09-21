@@ -186,12 +186,22 @@ consola equivalente escrita en Rust, aún marcada como inestable.
 VS Code y pensado para trabajar con R y Python a la vez. Todavía es joven: vale
 la pena tenerlo en el radar, pero para este curso quédate con RStudio.
 
-**Otros editores de texto** (sin integración con R, pero cómodos para escribir
-código):
+**Editores de texto de propósito general.** No sustituyen a un IDE para trabajar
+en R, pero sirven para abrir un script rápido, revisar un archivo de datos
+enorme o escribir código sin arrancar todo RStudio. Todos los siguientes son
+gratuitos y de código abierto:
 
-Multiplataforma: [Sublime Text](https://www.sublimetext.com/) ·
-[gedit](https://gedit-text-editor.org/)
+[Zed](https://zed.dev/) — multiplataforma, muy rápido, con extensión de R para
+resaltado de sintaxis. El más moderno de esta lista.
 
-Mac: [BBEdit](https://www.barebones.com/products/bbedit/)
+[CotEditor](https://coteditor.com/) — Mac, ligero y nativo. Está en la App Store.
 
-Windows: [Notepad++](https://notepad-plus-plus.org/)
+[Notepad++](https://notepad-plus-plus.org/) — Windows, el clásico.
+
+[gedit](https://gedit-text-editor.org/) — multiplataforma, sencillo.
+
+Dos que quizá conozcas y conviene aclarar: [Sublime
+Text](https://www.sublimetext.com/) es excelente pero **de paga** (la evaluación
+no caduca, pero la licencia cuesta); y [BBEdit](https://www.barebones.com/products/bbedit/)
+(Mac) tiene un modo gratuito permanente y sin molestias, aunque con menos
+funciones que la versión con licencia.
