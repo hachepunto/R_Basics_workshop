@@ -111,46 +111,87 @@ clase 7-1 en adelante. Tampoco envejece: las paletas son las mismas.
 **[`1-1_introduccion.pdf`](1-1_introduccion.pdf)** — las diapositivas de la
 primera sesión.
 
-### Websites sobre R
+### Sitios de consulta
 
-<http://www.r-project.org/> Official R website 
+<https://www.r-project.org/> — sitio oficial de R
 
-<http://www.rseek.org/> Web searches for R related content 
+<https://rseek.org/> — buscador especializado en R (filtra el ruido que mete
+Google cuando buscas una letra sola)
 
-<http://www.statmethods.net/> Quick R
+<https://www.statmethods.net/> — Quick-R, referencia rápida por tema
 
-<http://www.r-bloggers.com/> R-bloggers
+<https://www.r-bloggers.com/> — agregador de blogs sobre R
 
-[Guía de estilo de R](https://google.github.io/styleguide/Rguide.xml)
+<https://stackoverflow.com/questions/tagged/r> — casi cualquier error que veas
+ya se lo encontró alguien más
+
+### Libros libres
+
+<https://r4ds.hadley.nz/> — *R for Data Science*, la continuación natural de
+este taller (hay [traducción al español](https://es.r4ds.hadley.nz/))
+
+<https://adv-r.hadley.nz/> — *Advanced R*, para cuando quieras entender cómo
+funciona R por dentro
+
+### Guías de estilo
+
+Escribir código que otra persona pueda leer es parte del trabajo. Las dos guías
+de referencia:
+
+[Guía de estilo de tidyverse](https://style.tidyverse.org/) — la más usada hoy
+
+[Guía de estilo de R de Google](https://google.github.io/styleguide/Rguide.html) —
+una variante de la anterior, con algunas diferencias
 
 ### Cursos de R
 
-<https://www.codeschool.com/courses/try-r>
+<https://swirlstats.com> — aprende R dentro de R; se instala como un paquete y
+da lecciones interactivas en la consola. Muy buena opción después de este taller.
 
-<https://www.datacamp.com/courses/free-introduction-to-r>
- 
-<https://campus.datacamp.com/courses/introduccion-a-r> (en español)
+<https://www.coursera.org/learn/r-programming> — R Programming (Johns Hopkins)
 
-<https://www.coursera.org/learn/r-programming> (en cursera)
+<https://www.coursera.org/learn/intro-data-science-programacion-estadistica-r> —
+en español
 
-<https://www.coursera.org/learn/intro-data-science-programacion-estadistica-r> (en cursera, en español)
+<https://www.datacamp.com/courses/free-introduction-to-r> — introducción gratuita
 
-<http://swirlstats.com> (aprende R en R)
+### Editores y entornos de desarrollo (IDE)
 
-### Editores de texto y entornos de desarrollo integrado 
-#### (integrated development environment, IDE)
+**Para empezar: [RStudio](https://posit.co/products/open-source/rstudio/).** Es
+lo que usa casi todo el mundo y lo que se asume en este taller cuando se habla
+de menús. Trae editor, consola, gráficos, ayuda y manejo de directorio de
+trabajo en una sola ventana. (La empresa que lo hace ahora se llama Posit; el
+programa sigue llamándose RStudio y es gratuito.)
 
-#### Multiplataforma:
-[RStudio](https://www.rstudio.com/) (IDE)
+**Si ya te mueves bien en la terminal**, hay alternativas que valen la pena:
 
-[Atom](https://atom.io/)
+[VS Code](https://code.visualstudio.com/) con la extensión
+[vscode-R](https://github.com/REditorSupport/vscode-R) — editor de propósito
+general con soporte de R: ejecución por línea, ayuda, visor de objetos y de
+gráficos. Conviene si ya lo usas para otros lenguajes y no quieres cambiar de
+programa según el proyecto.
 
-[Gedit](https://wiki.gnome.org/Apps/Gedit)
+[radian](https://github.com/randy3k/radian) — **no es un editor sino una consola
+de R**, en reemplazo de la que trae R por omisión. Agrega resaltado de sintaxis,
+edición multilínea, autocompletado y un historial decente. Se instala con
+`pip install radian` y se lanza escribiendo `radian`. Combina bien con VS Code,
+que puede usarla como terminal de R.
 
-[SublimeText](https://www.sublimetext.com/)
+Nota: su autor anunció que ya no le agregará funciones nuevas (sigue arreglando
+errores). Funciona perfectamente y es la opción madura; si te interesa algo en
+desarrollo activo, él mismo sugiere [arf](https://github.com/eitsupi/arf), una
+consola equivalente escrita en Rust, aún marcada como inestable.
 
-#### Mac
-[BBEdit](http://www.barebones.com/products/bbedit/)
+[Positron](https://positron.posit.co/) — el IDE nuevo de Posit, construido sobre
+VS Code y pensado para trabajar con R y Python a la vez. Todavía es joven: vale
+la pena tenerlo en el radar, pero para este curso quédate con RStudio.
 
-#### Windows
-[Notepad++](https://notepad-plus-plus.org/)
+**Otros editores de texto** (sin integración con R, pero cómodos para escribir
+código):
+
+Multiplataforma: [Sublime Text](https://www.sublimetext.com/) ·
+[gedit](https://gedit-text-editor.org/)
+
+Mac: [BBEdit](https://www.barebones.com/products/bbedit/)
+
+Windows: [Notepad++](https://notepad-plus-plus.org/)
