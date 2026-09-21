@@ -83,6 +83,34 @@ coordenadas de parcelas de EUA, checklist de Nicaragua, consumo de alcohol); eso
 ejercicios se reescribieron sobre los datos que sí están incluidos, conservando
 el contenido estadístico original.
 
+## Material de referencia
+
+### Hojas de referencia incluidas
+
+**[`cheatsheet_eng_30mar2015.pdf`](cheatsheet_eng_30mar2015.pdf)** — 3 páginas de
+base R: funciones y argumentos, clases de objetos, indexado, control de flujo,
+gráficos y estadística. Es la hoja del curso original de Tello y Jiménez, y sigue
+el mismo orden y vocabulario que las clases 2, 3 y 6 de este taller, por lo que
+encaja mejor que una hoja genérica.
+
+A pesar de la fecha, nada de lo que dice quedó obsoleto: no habla de
+`stringsAsFactors`, y su sección de operadores documenta solo `&` y `|`
+(elemento a elemento), así que los dos cambios de R que sí afectan a este
+material (ver *Versión de R*) no la contradicen. Lo que **no** trae es lo
+posterior a R 4.1: el pipe nativo `|>` y las lambdas `\(x)`. Tampoco se enseñan
+en este curso, así que van a la par.
+
+Ojo: el PDF conserva el encabezado y los datos de contacto del curso original
+(`rbasicsworkshop.weebly.com`), no los de este.
+
+**[`colorPaletteCheatsheet.pdf`](colorPaletteCheatsheet.pdf)** — 5 páginas sobre
+color en R, con muestras impresas de las paletas: notación hexadecimal,
+`col2rgb`, el modelo HSV y las paletas de RColorBrewer (`brewer.pal`). Útil de la
+clase 7-1 en adelante. Tampoco envejece: las paletas son las mismas.
+
+**[`1-1_introduccion.pdf`](1-1_introduccion.pdf)** — las diapositivas de la
+primera sesión.
+
 ### Websites sobre R
 
 <http://www.r-project.org/> Official R website 
